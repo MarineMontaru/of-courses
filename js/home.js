@@ -20,9 +20,9 @@ export const home = {
     },
 
     initElements: function () {
-        home.sliderGauche = document.querySelectorAll('.dernieres-recettes__nav')[0];
-        home.sliderDroite = document.querySelectorAll('.dernieres-recettes__nav')[1];
-        home.recettes = document.querySelectorAll('.dernieres-recettes__recette');
+        home.sliderGauche = document.querySelectorAll('.last-recipes__nav')[0];
+        home.sliderDroite = document.querySelectorAll('.last-recipes__nav')[1];
+        home.recettes = document.querySelectorAll('.last-recipes__recipe');
         home.recettes[home.recetteCourante].classList.add('recette-slider');
     },
 

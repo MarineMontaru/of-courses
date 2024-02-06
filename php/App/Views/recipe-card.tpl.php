@@ -1,24 +1,24 @@
 <?php 
 
     if(!empty($_GET)) {
-        $recetteId = $bddRecettes[filter_input(INPUT_GET, "id")];
+        $recipeId = $bddRecettes[filter_input(INPUT_GET, "id")];
     };
 
-    $typePlat = $recetteId['type de plat'];
-    $niveau = $recetteId['niveau'];
-    $temps = $recetteId['temps'];
-    $portions = $recetteId['portions'];
-    $saisons = $recetteId['saisons'];
-    $meteo = $recetteId['meteo'];
-    $ingredients = $recetteId['ingredients'];
-    $etapes = $recetteId['etapes'];
-    $tags = $recetteId['tags'];
+    $typePlat = $recipeId['type de plat'];
+    $niveau = $recipeId['niveau'];
+    $temps = $recipeId['temps'];
+    $portions = $recipeId['portions'];
+    $saisons = $recipeId['saisons'];
+    $meteo = $recipeId['meteo'];
+    $ingredients = $recipeId['ingredients'];
+    $etapes = $recipeId['etapes'];
+    $tags = $recipeId['tags'];
 
 ?>
 
 <link rel="stylesheet" href="assets/css/recipe-card.css">
 
-<h2 class="pdg-lr"><?= $recetteId['titre'] ?></h2>
+<h2 class="pdg-lr"><?= $recipeId['titre'] ?></h2>
 
 <section class="infos-recette">
     
@@ -48,12 +48,12 @@
         <div class="portions">
             <!-- TODO? Ajouter un include pour le nombre de portions (revient souvent) -->
             <div>
-                <p class="portions__modif">-</p>
+                <button class="portions__remove">-</button>
                 <div class="portions__nb">  
                     <p>4</p> 
                 </div>
                 <!-- TODO modifier le nb de portions selon ce qui est dans la semaine -->
-                <p class="portions__modif">+</p>
+                <button class="portions__add">+</button>
             </div>
             <p>portions</p>
         </div>

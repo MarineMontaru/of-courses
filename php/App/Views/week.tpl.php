@@ -16,13 +16,13 @@
 
 <section class="menus">
 
-    <section class="menus__jourJ pdg-lr visible">
+    <section class="menus__Dday pdg-lr visible">
 
         <h4>Dimanche 14/01</h4>
         <!-- TODO mettre à jour automatiquement le jour avec le jour J -->
         <!-- TODO rajouter J+1 et jours suivants -->
 
-        <section class="menus__jourJ__dejeuner">
+        <section class="menus__Dday__lunch">
 
             <!-- TODO ajouter le diner également -->
 
@@ -30,23 +30,23 @@
                 <p>Déjeuner</p>
             </aside>
 
-            <div  class="menus__jourJ__details">
+            <div  class="menus__Dday__details">
 
                 <?php
-                foreach ($bddRecettes as $recetteId => $recetteDetail) : ?>
+                foreach ($bddRecettes as $recipeId => $recipeDetail) : ?>
                     <!-- TODO boucler uniquement sur les recettes de la semaine, uniquement pour ce jour et ce repas -->
 
-                    <article class="menus__jourJ__details__recette">
-                        <a href="./recipe-card&id=<?=$recetteId?>"><?=$recetteDetail['titre']?></a>
+                    <article class="menus__Dday__details__recipe">
+                        <a href="./recipe-card&id=<?=$recipeId?>"><?=$recipeDetail['titre']?></a>
                         <div class="portions">
                             <!-- TODO? Ajouter un include pour le nombre de portions (revient souvent) -->
                             <div>
-                                <p class="portions__modif">-</p>
+                                <button class="portions__remove">-</button>
                                 <div class="portions__nb">  
                                     <p>4</p> 
                                 </div>
                                 <!-- TODO modifier le nb de portions selon ce qui est dans la semaine -->
-                                <p class="portions__modif">+</p>
+                                <button class="portions__add">+</button>
                             </div>
                             <p>portions</p>
                         </div>
@@ -58,7 +58,7 @@
 
         </section>
 
-        <section class="menus__jourJ__diner">
+        <section class="menus__Dday__diner">
 
             <!-- TODO ajouter le diner également -->
 
@@ -66,22 +66,22 @@
                 <p>Dîner</p>
             </aside>
 
-            <div class="menus__jourJ__details">
+            <div class="menus__Dday__details">
 
                 <?php
-                foreach ($bddRecettes as $recetteId => $recetteDetail) : ?>
+                foreach ($bddRecettes as $recipeId => $recipeDetail) : ?>
                     <!-- TODO boucler uniquement sur les recettes de la semaine, uniquement pour ce jour et ce repas -->
 
-                    <article class="menus__jourJ__details__recette">
-                        <a href="./recipe-card&id=<?=$recetteId?>"><?=$recetteDetail['titre']?></a>
+                    <article class="menus__Dday__details__recipe">
+                        <a href="./recipe-card&id=<?=$recipeId?>"><?=$recipeDetail['titre']?></a>
                         <div class="portions">
                             <div>
-                                <p class="portions__modif">-</p>
+                                <button class="portions__remove">-</button>
                                 <div class="portions__nb">  
                                     <p>4</p> 
                                 </div>
                                 <!-- TODO modifier le nb de portions selon ce qui est dans la semaine -->
-                                <p class="portions__modif">+</p>
+                                <button class="portions__add">+</button>
                             </div>
                             <p>portions</p>
                         </div>

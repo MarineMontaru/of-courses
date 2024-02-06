@@ -1,19 +1,19 @@
 /*--------------MES PROCHAINS MENUS--------------*/
 
-.menus__jourJ__dejeuner,
-.menus__jourJ__diner,
-.menus__jourJ__dejeuner article,
-.menus__jourJ__dejeuner article {
+.menus__Dday__lunch,
+.menus__Dday__diner,
+.menus__Dday__lunch article,
+.menus__Dday__lunch article {
     display: flex;
 }
 
-.menus__jourJ__dejeuner,
-.menus__jourJ__diner {
+.menus__Dday__lunch,
+.menus__Dday__diner {
     display: flex;
 }
 
-.menus__jourJ__dejeuner aside,
-.menus__jourJ__diner aside {
+.menus__Dday__lunch aside,
+.menus__Dday__diner aside {
     text-align: bottom;
     width: 30px;
     border-right: solid 3px var(--pink-color);
@@ -23,17 +23,17 @@
     color: var(--pink-color);
 }
 
-.menus__jourJ__dejeuner aside p,
-.menus__jourJ__diner aside p {
+.menus__Dday__lunch aside p,
+.menus__Dday__diner aside p {
     transform: rotate(90deg) translateX(5px);
 }
 
-.menus__jourJ__details {
+.menus__Dday__details {
     display: flex;
     flex-direction: column;
 }
 
-.menus__jourJ__details__recette {
+.menus__Dday__details__recipe {
     width: calc(100vw - 40px - 30px - 10px);
     display: flex;
     justify-content: space-between;
@@ -43,12 +43,12 @@
     margin-bottom: 5px;
 }
 
-.btn_voir-plus {
+.btn-see-more {
     display: flex;
     justify-content: right;
 }
 
-.btn_voir-plus a {
+.btn-see-more a {
     margin-top: 20px;
     background-color: var(--blue-color);
     color: white;
@@ -58,56 +58,56 @@
 /*----------FIN DE MES PROCHAINS MENUS-----------*/
 /*-------------------RECHERCHE-------------------*/
 
-.barre-recherche,
-.barre-recherche > figure {
+.search-home,
+.search-home > figure {
     height: 150px;
 }
 
-.barre-recherche {
+.search-home {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.barre-recherche > figure {
+.search-home > figure {
     position: absolute;
     width: 100%;
     z-index: -10;
 }
 
-.barre-recherche > figure > img {
+.search-home > figure > img {
     object-position: top;
 }
 
-#index-recherche,
-.barre-recherche > form {
+#index-search,
+.search-home > form {
     padding: 5px 40px;
 }
 
-#index-recherche {
+#index-search {
     color: white;
     text-shadow: 1px 1px 10px rgb(75, 74, 74);
     
 }
 
-.barre-recherche > form {
+.search-home > form {
     width: 100%;
     position: relative;
 }
 
-.recherche-accueil {
+.search-home-input {
     width: 100%;
     padding: 10px 10px 10px 40px;
     border: solid 1px var(--pink-color);
     border-radius: 20px;
 }
 
-.recherche-accueil::placeholder {
+.search-home-input::placeholder {
     font-style: italic;
 }
 
-.barre-recherche > form > i {
+.search-home > form > i {
     position: absolute;
     left: 55px;
     top: 15px;
@@ -119,12 +119,12 @@
 /*----------------FIN DE RECHERCHE---------------*/
 /*-------------------RACCOURCIS------------------*/
 
-.raccourcis {
+.shortcuts {
     display: flex;
     justify-content: space-around;
 }
 
-.raccourcis > a {
+.shortcuts > a {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -132,12 +132,12 @@
     width: 120px;
 }
 
-.raccourcis > a > i {
+.shortcuts > a > i {
     font-size: 24;
     margin-bottom: 10px;
 }
 
-.raccourcis__text {
+.shortcuts__text {
     font-weight: 700;
     font-size: 18;
     text-align: center;
@@ -147,24 +147,24 @@
 /*---------------FIN DE RACCOURCIS---------------*/
 /*------------LES DERNIERES RECETTES-------------*/
 
-.dernieres-recettes {
+.last-recipes {
     padding-top: 20px;
     padding-bottom: 20px;
     background-color: var(--pink-color);
     color: white;
 }
 
-.dernieres-recettes__container {
+.last-recipes__container {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
 
-.dernieres-recettes__container > article {
+.last-recipes__container > article {
     display: none;
 }
 
-.dernieres-recettes__container > .recette-slider {
+.last-recipes__container > .recette-slider {
     padding: 20px;
     width: 150px;
     background-color: white;
@@ -176,7 +176,7 @@
     box-shadow: 2px 2px 10px grey;
 }
 
-.dernieres-recettes__nav {
+.last-recipes__nav {
     color: white;
     font-size: 30px;
 }

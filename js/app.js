@@ -4,7 +4,7 @@ import {home} from "./home.js";
 const app = {
 
     initElements: function () {
-        app.classHome = document.querySelector('.dernieres-recettes');
+        app.classHome = document.querySelector('.last-recipes');
         app.classWeek = document.querySelector('.courses');
         app.init();
     },
