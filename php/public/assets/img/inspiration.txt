@@ -1,0 +1,55 @@
+
+********************PHOTOS********************
+
+
+** Photo utilisée pour la première version (desktop) de of courses **
+Crédits :
+Photo de a href=httpsunsplash.comfr@eduardo_cgutm_content=creditCopyText&utm_medium=referral&utm_source=unsplashEduardo Casajús Gorostiagaa sur a href=httpsunsplash.comfrphotosfruits-orange-sur-panier-en-bois-brun-1zyf0dfFqSkutm_content=creditCopyText&utm_medium=referral&utm_source=unsplashUnsplasha
+
+** Photo recherche accueil **
+https://unsplash.com/fr/photos/gobelet-doseur-sur-papier-blanc-AemWnTSPxoE
+Remerciements :
+Photo de <a href="https://unsplash.com/fr/@karaeads?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Kara Eads</a> sur <a href="https://unsplash.com/fr/photos/gobelet-doseur-sur-papier-blanc-AemWnTSPxoE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+
+
+
+********************ICONES********************
+
+Accueil		<i class="fas fa-home" style="color: #33344a;"></i>
+Ma semaine	<i class="fas fa-calendar" style="color: #33344a;"></i>
+Mes recettes	<i class="fas fa-book"></i>
+Recherche	<i class="fas fa-search"></i>
+Mon compte	<i class="far fa-user" style="color: #33344a;"></i>
+		<i class="fas fa-user" style="color: #33344a;"></i>
+
+Liste courses	<i class="fas fa-shopping-cart" style="color: #33344a;"></i>
+
+
+Icones saisons 
+- Automne arbre		<a href="https://www.flaticon.com/fr/icones-gratuites/lautomne" title="l'automne icônes">L'automne icônes créées par justicon - Flaticon</a>
+
+- Automne feuilles	<a href="https://www.flaticon.com/fr/icones-gratuites/lautomne" title="lautomne icônes">Lautomne icônes créées par Freepik - Flaticon</a>
+
+- Eté soleil		<a href="https://www.flaticon.com/fr/icones-gratuites/lumiere-du-soleil" title="lumière du soleil icônes">Lumière du soleil icônes créées par Freepik - Flaticon</a>
+
+- Hiver flocon		<a href="https://www.flaticon.com/fr/icones-gratuites/neige" title="neige icônes">Neige icônes créées par Freepik - Flaticon</a>
+
+- Printemps fleur	<a href="https://www.flaticon.com/fr/icones-gratuites/fleur" title="fleur icônes">Fleur icônes créées par Freepik - Flaticon</a>
+
+
+
+- Thermo soleil fleur <a href="https://www.flaticon.com/fr/icones-gratuites/chaud" title="chaud icônes">Chaud icônes créées par Freepik - Flaticon</a>
+- Thermo flocon <a href="https://www.flaticon.com/fr/icones-gratuites/du-froid" title="du froid icônes">Du froid icônes créées par Freepik - Flaticon</a>
+- Arc en ciel nuage <a href="https://www.flaticon.com/fr/icones-gratuites/arc-en-ciel" title="arc en ciel icônes">Arc en ciel icônes créées par Freepik - Flaticon</a>
+
+Icone bien mais pas trouvé en froid : https://www.flaticon.com/fr/icone-gratuite/temperature_1591794
+
+
+Tri 
+<i class="fas fa-sort"></i>
+
+
+
+***********Idees amelioration***********
+- Cases à cocher dans les étapes de préparation pour dire que terminée (et mets en grisé l'étape en question)
+- Importer une recette depuis un autre site

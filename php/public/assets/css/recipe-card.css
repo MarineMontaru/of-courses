@@ -1,0 +1,52 @@
+h3 {
+    margin-top: 30px;
+}
+
+h4 {
+    margin-top: 10px;
+    color: var(--pink-color);
+}
+
+.infos-recette__main {
+    display: flex;
+    justify-content: space-around;
+}
+
+.info-recette,
+.tags,
+.infos-recette__quand {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.infos-recette {
+    margin-top: 20px;
+}
+
+.info-recette {
+    flex-direction: column;
+}
+
+.info-recette i {
+    font-size: 25px;
+    margin-bottom: 5px;
+}
+
+.tag,
+.infos-recette__quand > div {
+    margin: 5px;
+    padding: 2px 5px;
+    font-weight: 700;
+    display: inline;
+}
+
+.tag {
+    border: solid var(--pink-color) 1px;
+    color: var(--pink-color);
+}
+
+.infos-recette__quand > div {
+    background-color: var(--pink-color);
+    color: white;
+}

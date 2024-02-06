@@ -1,0 +1,52 @@
+/*--------------MAIN------------*/
+
+.week-nav {
+    display: flex;
+    justify-content: center;
+    text-align: start;
+    margin-bottom: 30px;
+}
+
+.week-nav > h3 {
+    margin: auto;
+}
+
+.week-nav > .active {
+    position: relative;
+    &::after {
+        content:"";
+        background-color: var(--pink-color);
+        height: 5px;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        animation: soulignement 0.2s ease-in-out forwards;
+        border-radius: 84% 16% 84% 16% / 25% 75% 25% 75% ;
+    }
+}
+
+@keyframes soulignement {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+form {
+    margin-bottom: 20px;
+}
+
+.en-stock + label {
+    color: grey;
+    font-style: italic;
+    text-decoration: line-through;
+}
+
+
+/*-----------FIN DE MAIN--------*/
+/*-------------FOOTER-----------*/
+
+.fa-calendar {
+    color: var(--pink-color);
+    scale: 1.2;
+}
+
+/*---------FIN DE FOOTER--------*/
