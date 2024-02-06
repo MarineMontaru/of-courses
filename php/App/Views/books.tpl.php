@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="assets/css/books.css">
+
 <section class="container pdg-lr books">
 
     <h3 class="books__title">Mes carnets</h3>
@@ -6,18 +8,42 @@
 
         <form action="">
             <input type="text" placeholder="Exemples : butternut, risotto...">
-            <i class="fas fa-search"></i>
+            <button><i class="fas fa-search"></i></button>
         </form>
 
     </section>
 
     <section class="books__list">
 
-        <h4>Toutes mes recettes <em>(25)</em></h4>
-        <h4>Mes favoris <em>(5)</em></h4>
-        <h4>Idées à tester <em>(12)</em></h4>
-        <h4>Grandes tablées <em>(3)</em></h4>
+        <!-- TODO ajouter boucle sur les différents carnets de l'utilisateur -->
+        <a href="#">
+            <!-- TODO ajouter lien -->
+            <h4>
+                Toutes mes recettes <em>(25)</em>
+            </h4>
+        </a>
 
+        <a href="#">
+            <!-- TODO ajouter lien -->
+            <h4>
+                Mes favoris <em>(5)</em>
+            </h4>
+        </a>
+
+        <a href="#">
+            <!-- TODO ajouter lien -->
+            <h4>
+                Idées à tester <em>(12)</em>
+            </h4>
+        </a>
+
+        <a href="#">
+            <!-- TODO ajouter lien -->
+            <h4>
+                Grandes tablées <em>(3)</em>
+            </h4>
+        </a>
+    
     </section>
 
     <section class="books__add">
