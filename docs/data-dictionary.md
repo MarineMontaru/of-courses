@@ -8,10 +8,10 @@
 | title | VARCHAR(255) | Title of the recipe | NOT NULL |
 | creationDate | TIMESTAMP | Creation date of the recipe in the database | NOT NULL |
 | time | INT | Time needed to prepare the recipe | UNSIGNED |
-| categoryCode | INT | Id of the category of the recipe (starter, desert...) | SECONDARY KEY |
-| difficultyCode | INT | Id of the difficulty level of the recipe | SECONDARY KEY, UNSIGNED, NOT NULL |
-| weatherCode | INT | Id of the weather suitable to prepare the recipe (sunny, cloudy, ...) | SECONDARY KEY, UNSIGNED, NOT NULL |
-| seasonCode | INT | Id of the season suitable for the foods of the recipe | SECONDARY KEY, UNSIGNED, NOT NULL |
+| categoryCode | INT | Id of the category of the recipe (starter, desert...) | SECONDARY KEY, UNSIGNED, NOT NULL |
+| difficultyCode | INT | Id of the difficulty level of the recipe | SECONDARY KEY, UNSIGNED |
+| weatherCode | INT | Id of the weather suitable to prepare the recipe (sunny, cloudy, ...) | SECONDARY KEY, UNSIGNED |
+| seasonCode | INT | Id of the season suitable for the foods of the recipe | SECONDARY KEY, UNSIGNED |
 | userCode | INT | Id of the user who created the recipe | SECONDARY KEY, UNSIGNED, NOT NULL |
 
 ## Table _Food_ (`food`)
@@ -97,7 +97,7 @@
 | bookCode | INT | Id of the book of recipes | PRIMARY KEY, UNSIGNED, NOT NULL, AUTO_INCREMENT |
 | title | VARCHAR(255) | Title of the book of recipes | NOT NULL |
 | position | INT | Position of the book of recipes among all user's books (_evolution_) | UNSIGNED |
-| userCode | INT | Id of the user who created the recipe | SECONDARY KEY |
+| userCode | INT | Id of the user who created the recipe | SECONDARY KEY, UNSIGNED, NOT NULL |
 
 ## Table of relationship _`FOLLOW`_ between tables _`recipe`_ and _`instruction`_
 
@@ -124,14 +124,14 @@
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
-| bookCode | INT | Id of the book of recipes | PRIMARY KEY, UNSIGNED, NOT NULL, AUTO_INCREMENT |
+| bookCode | INT | Id of the book of recipes | PRIMARY KEY, UNSIGNED, NOT NULL |
 | recipeCode | INT | Id of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL |
 
 ## Table of relationship _`CALL`_ between tables _`meal`_, _`recipe`_ and _`portions`_
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
-| mealCode | INT | Id of the meal date/time | PRIMARY KEY, UNSIGNED, NOT NULL, AUTO_INCREMENT |
+| mealCode | INT | Id of the meal date/time | PRIMARY KEY, UNSIGNED, NOT NULL |
 | recipeCode | INT | Id of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL |
 | portionsCode | INT | Id of the number of portions for the recipe | PRIMARY KEY, UNSIGNED, NOT NULL |
 
