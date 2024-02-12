@@ -1,4 +1,4 @@
-# MLD
+# Logical Data Model
 
 **Recipe** (<u>recipeCode</u>, title, creationDate, time, _#categoryCode_, _#difficultyCode_, _#weatherCode_, _#seasonCode_, _#userCode_)  
 **Food** (<u>foodCode</u>, name)  

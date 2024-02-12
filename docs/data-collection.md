@@ -1,4 +1,4 @@
-# Recueil de données
+# Data collection
 
 | Name | Description | Type | Comments | Entity |
 | --- | --- | --- | --- | --- |
