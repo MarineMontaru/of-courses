@@ -1,8 +1,7 @@
 </main>
 
         <footer>
-            <!-- TODO mettre dans un inc -->
-            <!-- TODO mettre en couleur l'icone de nav sur laquelle on est-->
+            <!-- TODO mettre en couleur l'icone de nav sur laquelle on est (autre que par le CSS spécifique à la page) -->
 
             <nav>
 
@@ -26,8 +25,8 @@
 
         </footer>
 
-        <script type="module" src="../../js/app.js"></script>
-
+        <script type="module" src="./assets/js/app.js"></script>
+        
     </body>
 
 </html>

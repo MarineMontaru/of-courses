@@ -9,6 +9,7 @@ if(isset($_GET['page']) && !empty($_GET['page'])) {
     $page = $_GET['page'];
 }
 
+/* TODO SOON mettre les routes avec Altorouteur */
 $routes =[
     '/' => [
         'controller'=> 'MainController',
