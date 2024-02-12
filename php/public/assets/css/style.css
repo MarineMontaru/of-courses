@@ -56,6 +56,11 @@ ul {
     list-style-type: circle;
 }
 
+em {
+    font-weight: 400;
+    font-size: 0.8em;
+}
+
 .fleche-retour {
     font-size: 20px;
     margin: 10px;
@@ -82,6 +87,33 @@ main {
 
 .hidden {
     display: none;
+}
+
+/*--Search--*/
+
+.search > form {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.search > form > input {
+    width: 100%;
+    padding: 10px 40px 10px 10px;
+    border: solid var(--pink-color) 1px;
+    border-radius: 20px;
+
+    &::placeholder {
+        font-style: italic;
+    }
+}
+
+.search > form > button {
+    border: none;
+    background-color: white;
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    font-size: 18px;
 }
 
 /*--Portions--*/

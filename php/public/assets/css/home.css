@@ -58,61 +58,31 @@
 /*----------FIN DE MES PROCHAINS MENUS-----------*/
 /*-------------------RECHERCHE-------------------*/
 
-.search-home,
-.search-home > figure {
+.home-search,
+.home-search > figure {
     height: 150px;
 }
 
-.search-home {
+.home-search {
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
-.search-home > figure {
+.home-search > figure {
     position: absolute;
     width: 100%;
     z-index: -10;
 }
 
-.search-home > figure > img {
+.home-search > figure > img {
     object-position: top;
 }
 
-#index-search,
-.search-home > form {
-    padding: 5px 40px;
-}
-
-#index-search {
+.home-search-title {
     color: white;
-    text-shadow: 1px 1px 10px rgb(75, 74, 74);
-    
-}
-
-.search-home > form {
-    width: 100%;
-    position: relative;
-}
-
-.search-home-input {
-    width: 100%;
-    padding: 10px 10px 10px 40px;
-    border: solid 1px var(--pink-color);
-    border-radius: 20px;
-}
-
-.search-home-input::placeholder {
-    font-style: italic;
-}
-
-.search-home > form > i {
-    position: absolute;
-    left: 55px;
-    top: 15px;
-    font-size: 18px;
-    color: var(--pink-color);
+    text-shadow: 1px 1px 10px rgb(75, 74, 74); 
 }
 
 

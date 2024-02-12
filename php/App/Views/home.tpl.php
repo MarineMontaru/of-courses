@@ -89,7 +89,7 @@
 
 </section>
 
-<section class="container search-home">
+<section class="container home-search">
 
     <figure>
         <img src="assets/img/photo-livre-cuilleres.jpg" alt="Photo livre de cuisine et cuillères doseuses">
@@ -98,12 +98,14 @@
         </figcaption>
     </figure>             
 
-    <h3 id="index-search">Rechercher une recette, un ingrédient...</h3>
+    <h3 class="pdg-lr home-search-title">Rechercher une recette, un ingrédient...</h3>
 
-    <form action="">
-        <input type="text" class="search-home-input" placeholder="Exemples : butternut, risotto...">
-        <i class="fas fa-search"></i>
-    </form>
+    <div class="search pdg-lr">
+        <form action="">
+            <input type="text" class="home-search-input" placeholder="Exemples : butternut, risotto...">
+            <button><i class="fas fa-search"></i></button>
+        </form>
+    </div>
 
 </section>
 

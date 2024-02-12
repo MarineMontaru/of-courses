@@ -1,0 +1,22 @@
+.books__add {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 40px;
+}
+
+.books__add > div {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    flex-basis: 100px;
+}
+
+.btn-add {
+    width: 20px;
+    height: 20px;
+    align-self: center;
+    border: none;
+    border-radius: 50%;
+    background-color: var(--pink-color);
+    color: white;
+}
