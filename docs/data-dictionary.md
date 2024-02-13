@@ -1,6 +1,6 @@
 # Data dictionary
 
-## Table _Recipe_ (`recipe`)
+## Table _Recipes_ (`recipes`)
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
@@ -14,14 +14,14 @@
 | seasonCode | INT | Id of the season suitable for the foods of the recipe | SECONDARY KEY, UNSIGNED |
 | userCode | INT | Id of the user who created the recipe | SECONDARY KEY, UNSIGNED, NOT NULL |
 
-## Table _Food_ (`food`)
+## Table _Foods_ (`foods`)
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
 | foodCode | INT | Id of the food | PRIMARY KEY, UNSIGNED, NOT NULL, AUTO_INCREMENT |
 | name | VARCHAR(100) | Name of the food | NOT NULL |
 
-## Table _Instruction_ (`instruction`)
+## Table _Instructions_ (`instructions`)
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
@@ -30,35 +30,35 @@
 | batchcook | BOOLEAN | Can the instruction be realized as batch cooking? | - |
 | position | INT |  Position of the instruction among all instructions of the recipe | UNSIGNED, NOT NULL |
 
-## Table _Category_ (`category`)
+## Table _Categories_ (`categories`)
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
 | categoryCode | INT | Id of the category of the recipe (starter, desert...) | PRIMARY KEY, UNSIGNED, NOT NULL, AUTO_INCREMENT |
 | category | VARCHAR(80) | Name of the category of the recipe (starter, desert...) | NOT NULL |
 
-## Table _Difficulty level_ (`difficulty`)
+## Table _Difficulty levels_ (`difficulties`)
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
 | difficultyCode | INT | Id of the difficulty level of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL, AUTO_INCREMENT |
 | difficulty | VARCHAR(30) | Level of difficulty of the recipe | NOT NULL |
 
-## Table _Weather_ (`weather`)
+## Table _Weathers_ (`weathers`)
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
 | weatherCode | INT | Id of the weather suitable to prepare the recipe (sunny, cloudy, ...) | PRIMARY KEY, UNSIGNED, NOT NULL, AUTO_INCREMENT |
 | weather | VARCHAR(80) | Name of the category of weather suitable to prepare the recipe (sunny, cloudy, ...) | NOT NULL |
 
-## Table _Season_ (`season`)
+## Table _Seasons_ (`seasons`)
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
 | seasonCode | INT | Id of the season suitable for the foods of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL, AUTO_INCREMENT |
 | season | VARCHAR(30) | Name of the season suitable for the foods of the recipe | NOT NULL |
 
-## Table _Tag_ (`tag`)
+## Table _Tags_ (`tags`)
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
@@ -74,14 +74,14 @@
 | portionsCode | INT | Id of the number of portions for the recipe | PRIMARY KEY, UNSIGNED, NOT NULL, AUTO_INCREMENT |
 | nbPortions | INT | Number of portions for the recipe | NOT NULL, UNSIGNED |
 
-## Table _Meal_ (`meal`)
+## Table _Meals_ (`meals`)
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
 | mealCode | INT | Id of the meal date/time | PRIMARY KEY, UNSIGNED, NOT NULL, AUTO_INCREMENT |
 | mealDateTime | TIMESTAMP | Timstamp of of the meal (for instance: 01/25/2024 12am) | NOT NULL |
 
-## Table _User_ (`user`)
+## Table _Users_ (`users`)
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
@@ -90,7 +90,7 @@
 | firstname | VARCHAR(100) | User's firstname | NOT NULL |
 | email | VARCHAR(100) | User's email address | NOT NULL |
 
-## Table _Book of recipes_ (`book`)
+## Table _Books of recipes_ (`books`)
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
@@ -99,35 +99,35 @@
 | position | INT | Position of the book of recipes among all user's books (_evolution_) | UNSIGNED |
 | userCode | INT | Id of the user who created the recipe | SECONDARY KEY, UNSIGNED, NOT NULL |
 
-## Table of relationship _`FOLLOW`_ between tables _`recipe`_ and _`instruction`_
+## Table of relationship _`FOLLOW`_ between tables _`recipes`_ and _`instructions`_
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
 | recipeCode | INT | Id of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL |
 | instructionCode | INT | Id of the instruction | PRIMARY KEY, UNSIGNED, NOT NULL |
 
-## Table of relationship _`BELONG TO`_ between tables _`recipe`_ and _`tag`_
+## Table of relationship _`BELONG TO`_ between tables _`recipes`_ and _`tags`_
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
 | recipeCode | INT | Id of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL |
 | tagCode | INT | Id of the tag of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL |
 
-## Table of relationship _`PLAN`_ between tables _`user`_ and _`meal`_
+## Table of relationship _`PLAN`_ between tables _`users`_ and _`meals`_
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
 | userCode | INT | Id of the user who created the recipe | PRIMARY KEY, UNSIGNED, NOT NULL |
 | mealCode | INT | Id of the meal date/time | PRIMARY KEY, UNSIGNED, NOT NULL |
 
-## Table of relationship _`LIST`_ between tables _`book`_ and _`recipe`_
+## Table of relationship _`LIST`_ between tables _`books`_ and _`recipes`_
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
 | bookCode | INT | Id of the book of recipes | PRIMARY KEY, UNSIGNED, NOT NULL |
 | recipeCode | INT | Id of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL |
 
-## Table of relationship _`CALL`_ between tables _`meal`_, _`recipe`_ and _`portions`_
+## Table of relationship _`CALL`_ between tables _`meals`_, _`recipes`_ and _`portions`_
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
@@ -135,7 +135,7 @@
 | recipeCode | INT | Id of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL |
 | portionsCode | INT | Id of the number of portions for the recipe | PRIMARY KEY, UNSIGNED, NOT NULL |
 
-## Table of relationship _`REQUIRE`_ between tables _`recipe`_, _`food`_ and _`instruction`_
+## Table of relationship _`REQUIRE`_ between tables _`recipes`_, _`foods`_ and _`instructions`_
 
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
