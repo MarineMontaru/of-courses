@@ -65,7 +65,7 @@
 | tagCode | INT | Id of the tag of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL, AUTO_INCREMENT |
 | tag | VARCHAR(100) | Name of the tag of the recipe | NOT NULL |
 | position | INT | Position of the tag among the entire list of tags, to display all tags in a specific order | NOT NULL, UNSIGNED |
-| alwaysProposed | BOOLEAN | Specifies if the tag is a geenric tag which is always proposed to be selected when creating a new recipe or searching for recipes | NOT NULL |
+| alwaysProposed | BOOLEAN | Specifies if the tag is a generic tag which is always proposed to be selected when creating a new recipe or searching for recipes | NOT NULL |
 
 ## Table _Portions_ (`portions`)
 
@@ -79,7 +79,7 @@
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
 | mealCode | INT | Id of the meal date/time | PRIMARY KEY, UNSIGNED, NOT NULL, AUTO_INCREMENT |
-| mealDateTime | TIMESTAMP | Timstamp of of the meal (for instance: 01/25/2024 12am) | NOT NULL |
+| mealDateTime | DATETIME | Date/time of of the meal (for instance: 01/25/2024 12am) | NOT NULL |
 
 ## Table _Users_ (`users`)
 
