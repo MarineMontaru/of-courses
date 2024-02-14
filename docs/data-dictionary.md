@@ -140,6 +140,6 @@
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
 | recipeCode | INT | Id of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL |
-| foodCode | ENTITY | Id of the food | PRIMARY KEY, NOT NULL, UNSIGNED |
-| portionsCode | ENTITY | Id of the number of portions for the recipe | PRIMARY KEY, NOT NULL, UNSIGNED |
-| quantity | INT | Quantity of food required for the recipe of the number of portions | NOT NULL, UNSIGNED |
+| foodCode | INT | Id of the food | PRIMARY KEY, NOT NULL, UNSIGNED |
+| portionsCode | INT | Id of the number of portions for the recipe | PRIMARY KEY, NOT NULL, UNSIGNED |
+| quantity | INT | Quantity of food required for the number of portions for the recipe | NOT NULL, UNSIGNED |
