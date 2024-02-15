@@ -6,12 +6,12 @@
 | --- | --- | --- | --- |
 | recipeCode | INT | Id of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL, AUTO_INCREMENT |
 | title | VARCHAR(255) | Title of the recipe | NOT NULL |
+| picture | VARCHAR(255) | Path of the picture of the recipe | - |
 | creationDate | TIMESTAMP | Creation date of the recipe in the database | NOT NULL |
 | time | INT | Time needed to prepare the recipe | UNSIGNED |
 | categoryCode | INT | Id of the category of the recipe (starter, desert...) | SECONDARY KEY, UNSIGNED, NOT NULL |
 | difficultyCode | INT | Id of the difficulty level of the recipe | SECONDARY KEY, UNSIGNED |
 | weatherCode | INT | Id of the weather suitable to prepare the recipe (sunny, cloudy, ...) | SECONDARY KEY, UNSIGNED |
-| seasonCode | INT | Id of the season suitable for the foods of the recipe | SECONDARY KEY, UNSIGNED |
 | userCode | INT | Id of the user who created the recipe | SECONDARY KEY, UNSIGNED, NOT NULL |
 
 ## Table _Foods_ (`foods`)
@@ -125,6 +125,13 @@
 | Variable | Type | Description | Specific feature |
 | --- | --- | --- | --- |
 | bookCode | INT | Id of the book of recipes | PRIMARY KEY, UNSIGNED, NOT NULL |
+| recipeCode | INT | Id of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL |
+
+## Table of relationship _`CAN BE COOKIED IN`_ between tables _`seasons`_ and _`recipes`_
+
+| Variable | Type | Description | Specific feature |
+| --- | --- | --- | --- |
+| seasonCode | INT | Id of the season suitable for the foods of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL |
 | recipeCode | INT | Id of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL |
 
 ## Table of relationship _`CALL`_ between tables _`meals`_, _`recipes`_ and _`portions`_

@@ -14,7 +14,7 @@ class MainController {
         $this->show('recipe-card');
     }
 
-    public function searchAction () {
+    public function searchAction () { 
         $this->show('search');
     }
 

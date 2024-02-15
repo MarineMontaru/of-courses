@@ -1,6 +1,6 @@
 # Logical Data Model
 
-**Recipes** (<u>recipeCode</u>, title, creationDate, time, _#categoryCode_, _#difficultyCode_, _#weatherCode_, _#seasonCode_, _#userCode_)  
+**Recipes** (<u>recipeCode</u>, title, picture, creationDate, time, _#categoryCode_, _#difficultyCode_, _#weatherCode_, _#seasonCode_, _#userCode_)  
 **Foods** (<u>foodCode</u>, name)  
 **Instructions** (<u>instructionCode</u>, description, batchcook, position)  
 **Categories** (<u>categoryCode</u>, category)  
@@ -16,5 +16,6 @@
 **BELONG TO** (<u>recipeCode</u>, <u>tagCode</u>)  
 **PLAN** (<u>userCode</u>, <u>mealCode</u>)  
 **LIST** (<u>bookCode</u>, <u>recipeCode</u>)  
+**CAN BE COOKED IN** (<u>seasonCode</u>, <u>recipeCode</u>)
 **CALL** (<u>mealCode</u>, <u>recipeCode</u>, <u>portionsCode</u>)  
 **REQUIRE** (<u>recipeCode</u>, <u>foodCode</u>, <u>portionsCode</u>)  
