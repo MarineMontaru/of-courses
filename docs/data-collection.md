@@ -7,7 +7,7 @@
 | Difficulty | Difficulty level of the recipte | short text |  | Recipe |
 | Type | Type of the recipe | short text | Entrée, plat, ... | Recipe |
 | Time | Time needed to prepare the recipe | number |  | Recipe |
-| Season | Season to prepare the recipe | short text |  | Recipe |
+| Season | Season to prepare the recipe (+picture) | short text |  | Recipe |
 | Weather | For which weather prepare the recipe | short text | Pour se réchauffer, pour se rafraichir, pour tous les temps | Recipe |
 | Tag | Tag of the recipe | short text |  | Recipe |
 | Portion | Number of portions of the recipe | number |  | Recipe |

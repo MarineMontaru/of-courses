@@ -6,7 +6,7 @@
 **Categories** (<u>categoryCode</u>, category)  
 **Difficulties** (<u>difficultyCode</u>, difficulty)  
 **Weathers** (<u>weatherCode</u>, weather)  
-**Seasons** (<u>seasonCode</u>, season)  
+**Seasons** (<u>seasonCode</u>, season, picture)  
 **Tags** (<u>tagCode</u>, tag, position, alwaysProposed)  
 **Portions** (<u>portionsCode</u>, nbPortions)  
 **Meals** (<u>mealCode</u>, mealDateTime)  

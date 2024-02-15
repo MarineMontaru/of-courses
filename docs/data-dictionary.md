@@ -57,6 +57,7 @@
 | --- | --- | --- | --- |
 | seasonCode | INT | Id of the season suitable for the foods of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL, AUTO_INCREMENT |
 | season | VARCHAR(30) | Name of the season suitable for the foods of the recipe | NOT NULL |
+| picture | VARCHAR(255) | Path of the picutre of the season | NOT NULL |
 
 ## Table _Tags_ (`tags`)
 
