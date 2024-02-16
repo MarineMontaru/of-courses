@@ -1,6 +1,8 @@
 <?php
 
-class MainController {
+namespace app\Controllers;
+
+class MainController extends CoreController {
 
     public function homeAction () {
         $this->show('home');
@@ -20,14 +22,6 @@ class MainController {
 
     public function weekAction () {
         $this->show('week');
-    }
-
-    public function show($page) {
-        require __DIR__ . '/../../php/inc/bdd-recettes.php';
-        require __DIR__ . '/../../php/inc/listes.php';
-        require __DIR__ . "/../Views/partials/header.tpl.php";
-        require __DIR__ . "/../Views/" . $page . ".tpl.php";
-        require __DIR__ . "/../Views/partials/footer.tpl.php";
     }
 
 }

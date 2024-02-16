@@ -1,25 +1,26 @@
 <?php
 
-include __DIR__ . "./../vendor/autoload.php";
-require __DIR__ . "/../App/Controllers/MainController.php";
-require __DIR__ . "/../App/Controllers/ErrorController.php";
+require_once __DIR__ . "./../vendor/autoload.php";
+use app\Controllers\MainController;
+use app\Controllers\ErrorController;
+
+// ================
+// ROUTER
+// ================
 
 // Create new instance of Altorouter to create the routes
 $routes = new AltoRouter();
-
 
 // Set the base path thanks to .htaccess file
 $baseUri = $_SERVER['BASE_URI'];	
 $routes->setBasePath($baseUri);
 
-
 // Create all routes
-
 $routes->map(
     'GET',
     '/',
     [
-        'controller'=> 'MainController',
+        'controller'=> MainController::class,
         'method'=> 'homeAction',
     ],
     'home_route'
@@ -29,7 +30,7 @@ $routes->map(
     'GET',
     '/books',
     [
-        'controller'=> 'MainController',
+        'controller'=> MainController::class,
         'method'=> 'booksAction',
     ],
     'books_route'
@@ -39,7 +40,7 @@ $routes->map(
     'GET',
     '/book/[i:book_id]',
     [
-        'controller'=> 'MainController',
+        'controller'=> MainController::class,
         'method'=> 'bookAction',
     ],
     'book_route'
@@ -49,7 +50,7 @@ $routes->map(
     'GET',
     '/recipe/[i:recipe_id]',
     [
-        'controller'=> 'MainController',
+        'controller'=> MainController::class,
         'method'=> 'recipeAction',
     ],
     'recipe_route'
@@ -59,7 +60,7 @@ $routes->map(
     'GET',
     '/search',
     [
-        'controller'=> 'MainController',
+        'controller'=> MainController::class,
         'method'=> 'searchAction',
     ],
     'search_route'
@@ -69,12 +70,16 @@ $routes->map(
     'GET',
     '/week',
     [
-        'controller'=> 'MainController',
+        'controller'=> MainController::class,
         'method'=> 'weekAction',
     ],
     'week_route'
 );
 
+
+// ================
+// DISPATCHER
+// ================
 
 // Match the routes with the URL
 $match = $routes->match();
@@ -86,13 +91,16 @@ if($match) {
     $currentRouteTarget = $match['target'];
     $controllerName = $currentRouteTarget['controller'];
     $methodName = $currentRouteTarget['method'];
+    $params = $match['params'];
 
     $controller = new $controllerName();
     $controller->$methodName();
 
 } else {
 
-    $controller = new ErrorController();
+    $controllerName = ErrorController::class;
+
+    $controller = new $controllerName();
     $controller->error404Action();
 
 }

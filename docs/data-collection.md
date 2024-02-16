@@ -4,7 +4,7 @@
 | --- | --- | --- | --- | --- |
 | Title | Title of the recipte | mid text |  | Recipe |
 | Picture | Picture of the recipte | mid text |  | Recipe |
-| Difficulty | Difficulty level of the recipte | short text |  | Recipe |
+| Difficulty | Difficulty level of the recipe | short text |  | Recipe |
 | Type | Type of the recipe | short text | Entrée, plat, ... | Recipe |
 | Time | Time needed to prepare the recipe | number |  | Recipe |
 | Season | Season to prepare the recipe (+picture) | short text |  | Recipe |

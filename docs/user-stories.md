@@ -10,7 +10,7 @@
 | visiteur connecté | ajouter une recette à ma semaine |  |
 | visiteur connecté | adapter les portions lorsque j'ajoute une recette à ma semaine | calculer automatiquement les quantités d'ingrédients pour mes courses |
 | visiteur connecté | que l'outil liste automatiquement les ingrédients et quantités correspondant aux recettes de ma semaine | d'avoir une liste de courses |
-| visiteur connecté | puovoir cocher les ingrédients de ma liste de courses | savoir ce que j'ai à acheter uniquement |
+| visiteur connecté | pouvoir cocher les ingrédients de ma liste de courses | savoir ce que j'ai à acheter uniquement |
 | visiteur connecté | rechercher une recette selon plusieurs critères : mot clé, ingrédient, tag, saison, météo, temps de préparation | - |
 | visiteur connecté | rechercher une recette qui ne contient pas un ingrédient |  |
 | visiteur connecté | pouvoir accéder rapidement à ma semaine, mes carnets et la recherche partout depuis le site | - |
