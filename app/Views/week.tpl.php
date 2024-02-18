@@ -4,10 +4,10 @@
 
 <nav class="week-nav pdg-lr">
     
-    <!-- TODO mettre les h3 dans des ancres, pour que le curseur apparaisse -->
-    <h3 class="active">Mes menus</h3>
+    <!-- TODO mettre les h2 dans des ancres, pour que le curseur apparaisse -->
+    <h2 class="active">Mes menus</h2>
     <!-- TODO mettre en JS la classe active sur l'élément sélectionné selon bouton du bas et bouton liste de courses raccourci sur la page d'accueil -->
-    <h3>Mes courses</h3>
+    <h2>Mes courses</h2>
 
 </nav>
 
@@ -16,13 +16,13 @@
 
 <section class="menus">
 
-    <section class="menus__Dday pdg-lr visible">
+    <section class="menus__day pdg-lr visible">
 
-        <h4>Dimanche 14/01</h4>
+        <h3>Dimanche 14/01</h3>
         <!-- TODO mettre à jour automatiquement le jour avec le jour J -->
         <!-- TODO rajouter J+1 et jours suivants -->
 
-        <section class="menus__Dday__lunch">
+        <section class="menus__day__lunch">
 
             <!-- TODO ajouter le diner également -->
 
@@ -30,13 +30,13 @@
                 <p>Déjeuner</p>
             </aside>
 
-            <div  class="menus__Dday__details">
+            <div  class="menus__day__details">
 
                 <?php
                 foreach ($bddRecettes as $recipeId => $recipeDetail) : ?>
                     <!-- TODO boucler uniquement sur les recettes de la semaine, uniquement pour ce jour et ce repas -->
 
-                    <article class="menus__Dday__details__recipe">
+                    <article class="menus__day__details__recipe recipe-card">
                         <a href="./recipe-card&id=<?=$recipeId?>"><?=$recipeDetail['titre']?></a>
                         <div class="portions">
                             <!-- TODO? Ajouter un include pour le nombre de portions (revient souvent) -->
@@ -58,7 +58,7 @@
 
         </section>
 
-        <section class="menus__Dday__diner">
+        <section class="menus__day__diner">
 
             <!-- TODO ajouter le diner également -->
 
@@ -66,15 +66,16 @@
                 <p>Dîner</p>
             </aside>
 
-            <div class="menus__Dday__details">
+            <div class="menus__day__details">
 
                 <?php
                 foreach ($bddRecettes as $recipeId => $recipeDetail) : ?>
                     <!-- TODO boucler uniquement sur les recettes de la semaine, uniquement pour ce jour et ce repas -->
 
-                    <article class="menus__Dday__details__recipe">
+                    <article class="menus__day__details__recipe recipe-card">
                         <a href="./recipe-card&id=<?=$recipeId?>"><?=$recipeDetail['titre']?></a>
                         <div class="portions">
+                            <!-- TODO? Ajouter un include pour le nombre de portions (revient souvent) -->
                             <div>
                                 <button class="portions__remove">-</button>
                                 <div class="portions__nb">  
@@ -86,6 +87,7 @@
                             <p>portions</p>
                         </div>
                     </article>
+                
                 
                 <?php endforeach; ?>
 
@@ -104,7 +106,7 @@
 
 <!-- TODO faire en sorte que les ingrédients cochés restent cochés même en revenant plus tard sur la page -->
     
-    <h4>Risotto au brocoli</h4>
+    <h3>Risotto au brocoli</h3>
     <form>
         <!-- TODO spécifier la liste de courses en fonction des recettes au menu et de la quantité sélectionnée -->
         <input type="checkbox" class="ingredient" id="ingredient1" name="ingredient1">
@@ -121,7 +123,7 @@
         <br>
     </form>
 
-    <h4>Galette des rois</h4>
+    <h3>Galette des rois</h3>
     <form>
         <!-- TODO spécifier la liste de courses en fonction des recettes au menu et de la quantité sélectionnée -->
         <input type="checkbox" class="ingredient" id="ingredient1" name="ingredient1">

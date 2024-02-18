@@ -76,6 +76,15 @@ $routes->map(
     'week_route'
 );
 
+$routes->map(
+    'GET',
+    '/account',
+    [
+        'controller'=> MainController::class,
+        'method'=> 'accountAction',
+    ],
+    'account_route'
+);
 
 // ================
 // DISPATCHER

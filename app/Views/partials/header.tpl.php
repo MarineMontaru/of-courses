@@ -20,18 +20,42 @@
         
         <header> 
 
-            <!-- TODO ajouter lien vers page précédente quand on cliquer sur l'icone -->
-            <!-- TODO mettre uniquement le nom du site quand on est sur la page d'accueil, plutot que la fleche -->
-            <i class="fleche-retour fas fa-arrow-left"></i>
+            <a href="<?= $routes->generate('home_route') ?>">
+                <h1>Of courses</h1>
+            </a>
 
-            <h1>Of courses</h1>
+            <nav class="navbar">
+                
+                <section class="navbar__shortcuts">
 
-            <div aria-label="mon compte">
-                <a href="#"> 
-                    <!-- TODO ajouter lien vers page mon compte -->
-                    <i class="far fa-user" style="color: #33344a;"></i>
+                    <a href="<?= $routes->generate('home_route') ?>"> 
+                        <i class="fas fa-home"></i>
+                        <span>Accueil</span>
+                    </a>
+
+                    <a href="<?= $routes->generate('week_route') ?>"> 
+                        <i class="fas fa-calendar"></i>
+                        <span>Ma semaine</span>
+                    </a>
+
+                    <a href="<?= $routes->generate('books_route') ?>"> 
+                        <i class="fas fa-book"></i>
+                        <span>Mes carnets</span>
+                    </a>
+
+                    <a href="<?= $routes->generate('search_route') ?>"> 
+                        <i class="fas fa-search"></i>
+                        <span>Rechercher</span>
+                    </a>
+
+                </section>
+
+                <a href="<?= $routes->generate('account_route') ?>"> 
+                    <i class="fas fa-user"></i>
+                    <span>Mon compte</span>
                 </a>
-            </div>
+
+            </nav>
 
         </header>
 

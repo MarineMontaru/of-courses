@@ -2,7 +2,7 @@
 
 <section class="container pdg-lr books">
 
-    <h3 class="books__title">Mes carnets</h3>
+    <h2 class="books__title">Mes carnets</h2>
 
     <section class="books__search search">
 
@@ -18,30 +18,30 @@
         <!-- TODO ajouter boucle sur les différents carnets de l'utilisateur -->
         <a href="#">
             <!-- TODO ajouter lien -->
-            <h4>
+            <h3>
                 Toutes mes recettes <em>(25)</em>
-            </h4>
+            </h3>
         </a>
 
         <a href="#">
             <!-- TODO ajouter lien -->
-            <h4>
+            <h3>
                 Mes favoris <em>(5)</em>
-            </h4>
+            </h3>
         </a>
 
         <a href="#">
             <!-- TODO ajouter lien -->
-            <h4>
+            <h3>
                 Idées à tester <em>(12)</em>
-            </h4>
+            </h3>
         </a>
 
         <a href="#">
             <!-- TODO ajouter lien -->
-            <h4>
+            <h3>
                 Grandes tablées <em>(3)</em>
-            </h4>
+            </h3>
         </a>
     
     </section>

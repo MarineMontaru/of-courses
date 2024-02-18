@@ -1,10 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Corinthia&family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
-    --blue-color: #33344A;
+    --blue-color: #252934;
     --grey-color: #949494;
     --pink-color: #F69A7A;
-    --green-color: #B8D6CA;
 }
 
 body {
@@ -20,31 +19,27 @@ body::-webkit-scrollbar {
     width: 0px;
 }
 
-h1, h2 {
+h1 {
     font-family: 'Corinthia', cursive;
     font-weight: 400;
-}
-
-h1 {
     font-size: 40px;
 }
 
 h2 {
-    font-size: 50px;
-}
-
-h3, h4 {
+    font-size: 18px;
     margin-bottom: 10px;
 }
 
 h3 {
-    font-size: 20px;
+    margin-bottom: 10px;
+    font-size: 14px;
 }
 
 figure > img {
     object-fit: cover;
     width: 100%;
     height: 100%;
+    object-position: top;
 }
 
 figure figcaption {
@@ -61,15 +56,64 @@ em {
     font-size: 0.8em;
 }
 
-.fleche-retour {
-    font-size: 20px;
-    margin: 10px;
+
+/*----------------HEADER & FOOTER----------------*/
+
+header,
+.navbar__shortcuts {
+    position: fixed;
+    background-color: white;
+    width: 100vw;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    box-shadow: 0px 0px 10px 3px var(--grey-color);
+    height: 60px;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
+header {
+    justify-content: space-between;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navbar__shortcuts {
+    bottom: 0;
+    left: 0;
+    padding: 20px;
+    justify-content: space-around;
+}
+
+.navbar i {
+    font-size: 18px;
+    display: unset;
+}
+
+.navbar span {
+    display: none;
+}
+
+.navbar i:hover {
+    transform: scale(1.2);
+    transition: 300ms ease-in-out;
+}
+
+.nav-actif {
+    font-size: 1.2;
+    color: var(--pink-color);
+}
+
+/*-------------END OF HEADER & FOOTER------------*/
 /*---------------------MAIN----------------------*/
 
 main {
-    padding: 80px 0;
+    padding: 60px 0;
 }
 
 .container {
@@ -88,6 +132,73 @@ main {
 .hidden {
     display: none;
 }
+
+
+/*--Menus--*/
+
+.menus__day__lunch,
+.menus__day__diner,
+.menus__day__lunch article,
+.menus__day__lunch article {
+    display: flex;
+}
+
+.menus__day__lunch,
+.menus__day__diner {
+    margin-bottom: 20px;
+    min-height: 70px;
+}
+
+.menus__day__lunch aside,
+.menus__day__diner aside {
+    width: 30px;
+    border-right: solid 3px var(--pink-color);
+    margin-right: 5px;
+    font-weight: 700;
+    color: var(--pink-color);
+}
+
+.menus__day__lunch aside p,
+.menus__day__diner aside p {
+    transform: rotate(90deg) translateX(5px);
+}
+
+.menus__day__details {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.menus__day__details__recipe {
+    justify-content: space-between;
+    align-items: center;
+}
+
+.recipe-card {
+    display: flex;
+    box-shadow: 0 0 10px var(--grey-color);
+    margin: 5px;
+    padding: 10px 10px 10px 20px;
+    color: var(--blue-color);
+}
+
+.menus__day__details .recipe-card:first-of-type {
+    margin-top: 0px;
+}
+
+.btn-see-more {
+    display: flex;
+    justify-content: right;
+}
+
+.btn-see-more a {
+    margin-top: 20px;
+    background-color: var(--blue-color);
+    color: white;
+    padding: 5px 10px;
+}
+
+
 
 /*--Search--*/
 
@@ -166,65 +277,83 @@ main {
     text-align: center;
 }
 
-/*--Dernières recettes--*/
-
-.last-recipes__recipe {
-    visibility: hidden;
-}
-
-.recette-slider {
-    visibility: unset;
-}
-
 
 
 /*------------------END OF MAIN------------------*/
-/*----------------HEADER & FOOTER----------------*/
+/*---------TABLET AND NOTEBOOK (>= 768px)--------*/
 
-header, 
-footer {
-    position: fixed;
-    background-color: white;
-    width: 100vw;
-    z-index: 50;
+@media (min-width: 768px) {
+
+    h1 {
+        font-size: 40px;
+    }
+    
+    h2 {
+        font-size: 24px;
+    }
+    
+    h3 {
+        font-size: 18px;
+    }
+
+    .pdg-lr {
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
 }
 
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 5px 20px 5px 10px;
-    box-shadow: 0 2px 5px var(--grey-color);
-    margin-bottom: 10px;    
+/*----------END OF NOTEBOOK (>= 768px)----------*/
+/*--------------DESKTOP (>= 1024px)-------------*/
+
+@media (min-width: 1024px) {
+    
+    body {
+        font-size: 16px;
+    }
+    
+    h1 {
+        font-size: 48px;
+    }
+    
+    h2 {
+        font-size: 32px;
+    }
+    
+    h3 {
+        font-size: 24px;
+    }
+
+    .pdg-lr {
+        padding-left: 100px;
+        padding-right: 100px;
+    }
+
+    .navbar__shortcuts {
+        position: unset;
+        width: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: none;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .navbar__shortcuts a {
+        margin-left: 20px;
+    }
+
+    .navbar i {
+        display: none;
+    }
+
+    .navbar span {
+        display: unset;
+    }
+
 }
 
-footer {
-    bottom: 0;
-    box-shadow: 0 -2px 5px var(--grey-color);
-    width: 100vw;
-}
 
-footer nav {
-    display: flex;
-    justify-content: space-around;
-    padding: 5px 10px;
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
 
-header i,
-footer nav i {
-    font-size: 18px;
-}
-
-footer nav i:hover {
-    transform: scale(1.2);
-    transition: 300ms ease-in-out;
-}
-
-.nav-actif {
-    font-size: 1.2;
-    color: var(--pink-color);
-}
-
-/*-------------END OF HEADER & FOOTER------------*/
+/*----------END OF DESKTOP (>= 1024px)----------*/

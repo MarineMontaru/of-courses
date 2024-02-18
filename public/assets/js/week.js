@@ -12,8 +12,8 @@ export const week = {
     },
 
     initElements: function () {
-        week.navMenus = document.querySelectorAll('.week-nav > h3')[0];
-        week.navCourses = document.querySelectorAll('.week-nav > h3')[1];
+        week.navMenus = document.querySelectorAll('.week-nav > h2')[0];
+        week.navCourses = document.querySelectorAll('.week-nav > h2')[1];
         week.contenuMenus = document.querySelector('.menus');
         week.contenuCourses = document.querySelector('.courses');
         week.ingredients = document.querySelectorAll('.ingredient');

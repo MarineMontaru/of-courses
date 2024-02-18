@@ -4,10 +4,11 @@
     display: flex;
     justify-content: center;
     text-align: start;
+    margin-top: 20px;
     margin-bottom: 30px;
 }
 
-.week-nav > h3 {
+.week-nav > h2 {
     margin: auto;
 }
 

@@ -87,7 +87,7 @@
 </section>
 
 <section class="ingredients pdg-lr">
-    <h3>Ingrédients</h3>
+    <h2>Ingrédients</h2>
     <ul>
         <!-- TODO répercuter les modifs de portions sur les quantités -->
         <?php foreach ($ingredients as $ingredient): ?>
@@ -97,10 +97,10 @@
 </section>
 
 <section class="etapes pdg-lr">
-    <h3>Etapes de préparation</h3>
+    <h2>Etapes de préparation</h2>
 
     <section>
-        <h4>Batch cooking</h4>
+        <h3>Batch cooking</h3>
         <ul>
             <!-- TODO répercuter les modifs de portions sur les quantités -->
             
@@ -115,7 +115,7 @@
     </section>
     
     <section>
-        <h4>Le jour J</h4>
+        <h3>Le jour J</h3>
         <ul>
             <!-- TODO répercuter les modifs de portions sur les quantités -->
             

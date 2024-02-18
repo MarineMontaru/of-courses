@@ -24,4 +24,8 @@ class MainController extends CoreController {
         $this->show('week');
     }
 
+    public function accountAction () {
+        $this->show('account');
+    }
+
 }

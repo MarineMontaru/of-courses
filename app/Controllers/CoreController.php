@@ -12,6 +12,9 @@ class CoreController {
 
     protected function show($viewName, $viewData=[]) {
 
+        global $routes;
+        global $baseUri;
+
         /* TODO supprimer ces require */
         require __DIR__ . '/../../php/inc/bdd-recettes.php';
         require __DIR__ . '/../../php/inc/listes.php';

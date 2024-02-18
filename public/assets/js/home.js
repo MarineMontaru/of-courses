@@ -23,7 +23,7 @@ export const home = {
         home.sliderGauche = document.querySelectorAll('.last-recipes__nav')[0];
         home.sliderDroite = document.querySelectorAll('.last-recipes__nav')[1];
         home.recettes = document.querySelectorAll('.last-recipes__recipe');
-        home.recettes[home.recetteCourante].classList.add('recette-slider');
+        home.recettes[home.recetteCourante].classList.add('current-recipe-slider');
     },
 
     bind: function () {
@@ -49,13 +49,12 @@ export const home = {
 
     afficherRecette: function(nouvelleRecette) {
         for (const recette of home.recettes) {
-            recette.classList.remove('recette-slider');
+            recette.classList.remove('current-recipe-slider');
         }
 
-        home.recettes[nouvelleRecette].classList.add('recette-slider');
+        home.recettes[nouvelleRecette].classList.add('current-recipe-slider');
 
         home.recetteCourante = nouvelleRecette;
     },
-
 
 }
