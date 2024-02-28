@@ -1,6 +1,6 @@
 <!-- TODO ajouter le lien vers le css dans le header ? (comment récupérer le nom du fichier ) -->
-<link rel="stylesheet" href="assets/css/home.css">
-<link rel="stylesheet" href="assets/css/week.css">
+<link rel="stylesheet" href="<?= $baseUri ?>/assets/css/home.css">
+<link rel="stylesheet" href="<?= $baseUri ?>/assets/css/week.css">
 
 <nav class="week-nav pdg-lr">
     

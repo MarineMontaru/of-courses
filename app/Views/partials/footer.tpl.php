@@ -4,7 +4,7 @@
 
         </footer>
 
-        <script type="module" src="./assets/js/app.js"></script>
+        <script type="module" src="<?= $baseUri ?>/assets/js/app.js"></script>
         
     </body>
 

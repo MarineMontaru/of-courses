@@ -6,11 +6,14 @@
     --pink-color: #F69A7A;
 }
 
+html {
+    font-size: 14px;
+}
+
 body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     transition: 300ms ease-in-out;
-    font-size: 14px;
     color: var(--blue-color);
     position: relative;
 }
@@ -22,17 +25,16 @@ body::-webkit-scrollbar {
 h1 {
     font-family: 'Corinthia', cursive;
     font-weight: 400;
-    font-size: 40px;
+    font-size: 2.5rem;
 }
 
 h2 {
-    font-size: 18px;
+    font-size: 1.2rem;
     margin-bottom: 10px;
 }
 
 h3 {
     margin-bottom: 10px;
-    font-size: 14px;
 }
 
 figure > img {
@@ -53,7 +55,6 @@ ul {
 
 em {
     font-weight: 400;
-    font-size: 0.8em;
 }
 
 
@@ -91,7 +92,7 @@ header {
 }
 
 .navbar i {
-    font-size: 18px;
+    font-size: 1.2rem;
     display: unset;
 }
 
@@ -105,7 +106,6 @@ header {
 }
 
 .nav-actif {
-    font-size: 1.2;
     color: var(--pink-color);
 }
 
@@ -224,7 +224,7 @@ main {
     position: absolute;
     right: 10px;
     top: 10px;
-    font-size: 18px;
+    font-size: 1.2rem;
 }
 
 /*--Portions--*/
@@ -265,15 +265,15 @@ main {
 }
 
 .portions__remove {
-    font-size: 24px;
+    font-size: 1.5rem;
 }
 
 .portions__add {
-    font-size: 18px;
+    font-size: 1.5rem;
 }
 
 .portions > p {
-    font-size: 10px;
+    font-size: 0.8rem;
     text-align: center;
 }
 
@@ -284,16 +284,8 @@ main {
 
 @media (min-width: 768px) {
 
-    h1 {
-        font-size: 40px;
-    }
-    
-    h2 {
-        font-size: 24px;
-    }
-    
-    h3 {
-        font-size: 18px;
+    html {
+        font-size: 16px;
     }
 
     .pdg-lr {
@@ -307,21 +299,9 @@ main {
 /*--------------DESKTOP (>= 1024px)-------------*/
 
 @media (min-width: 1024px) {
-    
-    body {
-        font-size: 16px;
-    }
-    
-    h1 {
-        font-size: 48px;
-    }
-    
+
     h2 {
-        font-size: 32px;
-    }
-    
-    h3 {
-        font-size: 24px;
+        font-size: 1.5rem;
     }
 
     .pdg-lr {
@@ -357,3 +337,12 @@ main {
 
 
 /*----------END OF DESKTOP (>= 1024px)----------*/
+/*-----------LARGE SCREENS (>= 1024px)----------*/
+
+.pdg-lr {
+    padding-left: 300px;
+    padding-right: 300px;
+}
+
+
+/*-------END OF LARGE SCREENS (>= 1024px)-------*/

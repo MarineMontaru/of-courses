@@ -2,6 +2,8 @@
 
 namespace app\Models;
 
+use app\Utils\Database;
+
 class Recipe {
 
     private $recipe_id;
@@ -9,12 +11,26 @@ class Recipe {
     private $picture;
     private $creation_date;
     private $time;
+    private $portions_default;
     private $category_id;
     private $difficulty_id;
     private $weather_id;
-    private $season_id;
     private $user_id;
 
+    /**
+     * Get the recipe from the database
+     * @param {INT} $id is the id of the recipe in the database
+     * @return {Object} returns the object Recipe of the id
+     */ 
+    public function findRecipe($id) {
+
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `recipes` WHERE `recipe_id` = {$id}";
+        $pdoStatement = $pdo->query($sql);
+        $recipe = $pdoStatement->fetchObject(Recipe::class);
+        return $recipe;
+
+    }
 
 
     /**
@@ -102,7 +118,14 @@ class Recipe {
      */ 
     public function getTime()
     {
-        return $this->time;
+        if ($this->time >= 60) {
+            $hours = intdiv($this->time, 60);
+            $min = $this->time % 60;
+            return $hours." h ".$min." min";
+        } else {
+            return $this->time . " min";
+        }
+        
     }
 
     /**
@@ -113,6 +136,26 @@ class Recipe {
     public function setTime($time)
     {
         $this->time = $time;
+
+        return $this;
+    }
+
+    /**
+     * Get the number of portions for which the recipe is designed by default
+     */ 
+    public function getPortionsDefault()
+    {
+        return $this->portions_default;        
+    }
+
+    /**
+     * Set the time required to cook the recipe
+     *
+     * @return  self
+     */ 
+    public function setPortionsDefault($portions)
+    {
+        $this->portions_default = $portions;
 
         return $this;
     }
@@ -173,26 +216,6 @@ class Recipe {
     public function setWeatherId($weather_id)
     {
         $this->weather_id = $weather_id;
-
-        return $this;
-    }
-
-    /**
-     * Get the id of the season suitable for the foods of the recipe
-     */ 
-    public function getSeasonId()
-    {
-        return $this->season_id;
-    }
-
-    /**
-     * Set the id of the season suitable for the foods of the recipe
-     *
-     * @return  self
-     */ 
-    public function setSeasonId($season_id)
-    {
-        $this->season_id = $season_id;
 
         return $this;
     }

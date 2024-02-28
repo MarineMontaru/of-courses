@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="assets/css/books.css">
+<link rel="stylesheet" href="<?= $baseUri ?>/assets/css/books.css">
 
 <section class="container pdg-lr books">
 

@@ -1,5 +1,8 @@
 <?php
 
+namespace app\Utils;
+use PDO;
+
 // Retenir son utilisation  => Database::getPDO() => envoie toujours un objet PDO
 // Design Pattern : Singleton
 class Database

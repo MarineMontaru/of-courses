@@ -7,8 +7,6 @@ class Portion {
     private $portions_id;
     private $portions_nb;
 
-    
-
 
     /**
      * Get the id of the portions

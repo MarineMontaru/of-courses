@@ -1,12 +1,27 @@
 <?php 
 
 namespace app\Models;
+use app\Utils\Database;
 
 class Weather {
 
     private $weather_id;
-    private $weather;
+    private $name;
 
+
+    /**
+    * Get the weather name from its id
+    * @param {INT} $id is the id of the weather of recipe
+    * @return {String} returns the name of the weather
+    */ 
+    public function find($id) 
+    {
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `weathers` WHERE `weather_id` = {$id}";
+        $pdoStatement = $pdo->query($sql);
+        $weather = $pdoStatement->fetchObject(self::class);
+        return $weather;
+    }
 
     /**
      * Get the id of the weather
@@ -31,9 +46,9 @@ class Weather {
     /**
      * Get the name of the weather
      */ 
-    public function getWeather()
+    public function getName()
     {
-        return $this->weather;
+        return $this->name;
     }
 
     /**
@@ -41,9 +56,9 @@ class Weather {
      *
      * @return  self
      */ 
-    public function setWeather($weather)
+    public function setWeather($name)
     {
-        $this->weather = $weather;
+        $this->name = $name;
 
         return $this;
     }

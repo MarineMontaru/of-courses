@@ -1,58 +1,45 @@
-<?php 
+<?php dump($viewData); ?>
 
-    if(!empty($_GET)) {
-        $recipeId = $bddRecettes[filter_input(INPUT_GET, "id")];
-    };
+<link rel="stylesheet" href="<?= $baseUri ?>/assets/css/recipe-card.css">
 
-    $typePlat = $recipeId['type de plat'];
-    $niveau = $recipeId['niveau'];
-    $temps = $recipeId['temps'];
-    $portions = $recipeId['portions'];
-    $saisons = $recipeId['saisons'];
-    $meteo = $recipeId['meteo'];
-    $ingredients = $recipeId['ingredients'];
-    $etapes = $recipeId['etapes'];
-    $tags = $recipeId['tags'];
 
-?>
+<h2 class="pdg-lr"><?= $viewData['recipe']->getTitle() ?></h2>
 
-<link rel="stylesheet" href="assets/css/recipe-card.css">
-
-<h2 class="pdg-lr"><?= $recipeId['titre'] ?></h2>
+<!-- TODO insérer photo recette si existe (peut être null) -->
 
 <section class="infos-recette">
     
+    <!-- Bandeau contenant les informations principales de la recette -->
     <section class="infos-recette__main pdg-lr">
         
-        <?php if(!empty($typePlat)): ?>
+        <?php if(!empty($viewData['recipe']->getCategoryId())): ?>
             <div class="info-recette">
-                <i class="fas fa-<?=$typesPlat[$typePlat]?>"></i>
-                <p><?=$typePlat?></p>
+                <i class="fas fa-cookie-bite"></i>
+                <p><?= $viewData['category']->getCategory() ?></p>
             </div>
         <?php endif; ?>
 
-        <?php if(!empty($niveau)): ?>
+        <?php if(!empty($viewData['recipe']->getDifficultyId())): ?>
             <div class="info-recette">
                 <i class="fas fa-utensil-spoon"></i>
-                <p><?=$niveau?></p>
+                <p><?= $viewData['difficulty']->getDifficulty() ?></p>
             </div>
         <?php endif; ?>
 
-        <?php if(!empty($temps)): ?>
+        <?php if(!empty($viewData['recipe']->getTime())): ?>
             <div class="info-recette">
                 <i class="fas fa-clock"></i>
-                <p><?=$temps?></p>
+                <p><?= $viewData['recipe']->getTime() ?></p>
             </div>
         <?php endif; ?>
 
         <div class="portions">
-            <!-- TODO? Ajouter un include pour le nombre de portions (revient souvent) -->
             <div>
                 <button class="portions__remove">-</button>
                 <div class="portions__nb">  
-                    <p>4</p> 
+                    <!-- TODO ?? modifier le nb de portions selon ce qui est dans la semaine/dans la recette par défaut -->
+                    <p><?= $viewData['recipe']->getPortionsDefault() ?></p>
                 </div>
-                <!-- TODO modifier le nb de portions selon ce qui est dans la semaine -->
                 <button class="portions__add">+</button>
             </div>
             <p>portions</p>
@@ -61,24 +48,26 @@
     </section>
 
     <section class="tags pdg-lr">
-        <?php if(!empty($tags)): 
-            foreach ($tags as $tag): ?>
-            <p class="tag"><?=$tag?></p>
+        <?php if(!empty($viewData['tags'])): 
+            foreach ($viewData['tags'] as $tag): ?>
+            <p class="tag"><?= $tag->getName() ?></p>
             <?php endforeach;
         endif; ?>
     </section>
 
     <section class="infos-recette__quand pdg-lr">
 
-        <?php if(!empty($saisons)): 
-            foreach ($saisons as $saison): ?>
-                <div class="info-recette__saison"><?= $saison ?></div>
+        <!-- TODO (attention, plusieurs saisons) -->
+        <?php if(!empty($viewData['seasons'])): 
+            foreach ($viewData['seasons'] as $season): ?>
+                <!-- <img src="../assets/img/<?= $season->getPicture() ?>" alt=""> -->
+                <div class="info-recette__saison"><?= $season->getName() ?></div>
+                
             <?php endforeach; 
         endif; ?>
-
-        <?php if(!empty($meteo)): ?>
+        <?php if(!empty($viewData['weather'])): ?>
             <div class="info-recette__meteo">
-                <p><?=$meteo?></p>
+                <p><?= $viewData['weather']->getName() ?></p>
             </div>
         <?php endif; ?>
     
@@ -90,8 +79,8 @@
     <h2>Ingrédients</h2>
     <ul>
         <!-- TODO répercuter les modifs de portions sur les quantités -->
-        <?php foreach ($ingredients as $ingredient): ?>
-            <li><?=$ingredient?></li>
+        <?php foreach ($viewData['foods'] as $food): ?>
+            <li><?= $food->getQuantity() . " " . $food->getName() ?></li>
         <?php endforeach; ?>
     </ul>
 </section>
@@ -102,30 +91,36 @@
     <section>
         <h3>Batch cooking</h3>
         <ul>
-            <!-- TODO répercuter les modifs de portions sur les quantités -->
-            
-            <?php if (empty($etapes['batchCooking'])) { ?>
-                <p>Aucune étape de batch cooking</p>
-            <?php } else { ?>
-                <?php foreach ($etapes['batchCooking'] as $etape): ?>
-                    <li><?=$etape?></li>
-                <?php endforeach;
+            <?php
+            $batchCook = 0;
+            foreach ($viewData['instructions'] as $instruction) {
+                if ($instruction->getBatchcook() === 1) { ?>
+                    <li><?= $instruction->getInstruction() ?></li>
+                    <?php $batchCook = 1;
+                }
             } ?>
+
+            <?php if ($batchCook === 0) : ?>
+                <p><em>Aucune étape de batch cooking</em></p>
+            <?php endif; ?>
         </ul>
     </section>
     
     <section>
         <h3>Le jour J</h3>
         <ul>
-            <!-- TODO répercuter les modifs de portions sur les quantités -->
-            
-            <?php if (empty($etapes['jourJ'])) { ?>
-                <p>Aucune étape le jour J</p>
-            <?php } else { ?>
-                <?php foreach ($etapes['jourJ'] as $etape): ?>
-                    <li><?=$etape?></li>
-                <?php endforeach;
+            <?php
+            $dDay = 0;
+            foreach ($viewData['instructions'] as $instruction) {
+                if ($instruction->getBatchcook() !== 1) { ?>
+                    <li><?= $instruction->getInstruction() ?></li>
+                    <?php $dDay = 1;
+                    }
             } ?>
+
+            <?php if ($dDay === 0) : ?>
+                <p><em>Aucune étape de préparation le jour J</em></p>
+            <?php endif; ?>
         </ul>
     </section>
             

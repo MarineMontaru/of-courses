@@ -2,7 +2,7 @@
 
 **Recipes** (<u>recipeCode</u>, title, picture, creationDate, time, _#categoryCode_, _#difficultyCode_, _#weatherCode_, _#seasonCode_, _#userCode_)  
 **Foods** (<u>foodCode</u>, name)  
-**Instructions** (<u>instructionCode</u>, description, batchcook, position)  
+**Instructions** (<u>instructionCode</u>, description, batchcook, position, _#recipeCode_)  
 **Categories** (<u>categoryCode</u>, category)  
 **Difficulties** (<u>difficultyCode</u>, difficulty)  
 **Weathers** (<u>weatherCode</u>, weather)  
@@ -12,7 +12,6 @@
 **Meals** (<u>mealCode</u>, mealDateTime)  
 **Users** (<u>userCode</u>, name, firstName, email)  
 **Book** (<u>bookCode</u>, title, position, #userCode)  
-**FOLLOW** (<u>recipeCode</u>, <u>instructionCode</u>)  
 **BELONG TO** (<u>recipeCode</u>, <u>tagCode</u>)  
 **PLAN** (<u>userCode</u>, <u>mealCode</u>)  
 **LIST** (<u>bookCode</u>, <u>recipeCode</u>)  

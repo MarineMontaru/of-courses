@@ -1,15 +1,30 @@
 <?php 
 
 namespace app\Models;
+use app\Utils\Database;
+use PDO;
 
 class Tag {
 
     private $tag_id;
-    private $tag;
+    private $name;
     private $position;
     private $always_proposed;
 
-    
+    public function findAllByRecipe($recipeId) 
+    {
+        $pdo = Database::getPDO();
+        $sql = 'SELECT `tags`.*
+		    FROM `tags`
+		    INNER JOIN `recipes_tags` ON recipes_tags.tag_id = tags.tag_id
+            INNER JOIN `recipes` ON recipes_tags.recipe_id = recipes.recipe_id 
+	    	WHERE `recipes`.recipe_id = :id';
+        $pdoStatement = $pdo->prepare($sql);
+	    $pdoStatement->bindValue(':id', $recipeId, PDO::PARAM_INT);
+	    $pdoStatement->execute();
+	    $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+	    return $results;
+    }
 
 
     /**
@@ -35,9 +50,9 @@ class Tag {
     /**
      * Get the name of the tag
      */ 
-    public function getTag()
+    public function getName()
     {
-        return $this->tag;
+        return $this->name;
     }
 
     /**
@@ -45,9 +60,9 @@ class Tag {
      *
      * @return  self
      */ 
-    public function setTag($tag)
+    public function setName($name)
     {
-        $this->tag = $tag;
+        $this->name = $name;
 
         return $this;
     }

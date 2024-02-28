@@ -1,9 +1,9 @@
-<link rel="stylesheet" href="assets/css/home.css">
+<link rel="stylesheet" href="<?= $baseUri ?>/assets/css/home.css">
 
 <section class="container home-search">
 
     <figure>
-        <img src="assets/img/photo-livre-cuilleres.jpg" alt="Photo livre de cuisine et cuillères doseuses">
+        <img src="<?= $baseUri ?>/assets/img/photo-livre-cuilleres.jpg" alt="Photo livre de cuisine et cuillères doseuses">
         <figcaption>
             Photo de <a href="https://unsplash.com/fr/@karaeads?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Kara Eads</a> sur <a href="https://unsplash.com/fr/photos/gobelet-doseur-sur-papier-blanc-AemWnTSPxoE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
         </figcaption>
@@ -43,7 +43,7 @@
                     <!-- TODO boucler uniquement sur les recettes de la semaine, uniquement pour ce jour et ce repas -->
 
                     <article class="menus__day__details__recipe recipe-card">
-                        <a href="./recipe-card&id=<?=$recipeId?>"><?=$recipeDetail['titre']?></a>
+                        <a href="<?= $routes->generate('recipe-detail', ['recipe_id' => $recipeId]) ?>"><?=$recipeDetail['titre']?></a> <!-- TODONOW modifier lien target avec id recipe et modifier titre avec bdd -->
                         <div class="portions">
                             <!-- TODO? Ajouter un include pour le nombre de portions (revient souvent) -->
                             <div>
@@ -79,7 +79,7 @@
                     <!-- TODO boucler uniquement sur les recettes de la semaine, uniquement pour ce jour et ce repas -->
 
                     <article class="menus__day__details__recipe recipe-card">
-                        <a href="./recipe-card&id=<?=$recipeId?>"><?=$recipeDetail['titre']?></a>
+                        <a href="<?= $routes->generate('recipe-detail', ['recipe_id' => $recipeId]) ?>"><?=$recipeDetail['titre']?></a> <!-- TODONOW modifier lien target avec id recipe et modifier titre avec bdd -->
                         <div class="portions">
                             <div>
                                 <button class="portions__remove">-</button>
@@ -143,7 +143,7 @@
     </section>
 
     <div class="btn-see-more">
-        <a href="./week">Voir ma semaine</a>
+        <a href="<?= $routes->generate('week-detail') ?>">Voir ma semaine</a>
     </div>
 
 </section>
@@ -162,7 +162,7 @@
             <!-- TODO boucler uniquement sur les 3 ou 5 dernières recettes ajoutées-->
 
             <article class="last-recipes__recipe recipe-card">
-                <a href="./recipe-card&id=<?=$recipeId?>"><?=$recipeDetail['titre']?></a>
+                <a href="<?= $routes->generate('recipe-detail', ['recipe_id' => $recipeId]) ?>"><?=$recipeDetail['titre']?></a> <!-- TODONOW modifier lien target avec id recipe et modifier titre avec bdd -->
             </article>
         
         <?php endforeach; ?>

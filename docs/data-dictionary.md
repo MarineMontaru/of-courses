@@ -29,6 +29,7 @@
 | description | TEXT | Description of one instruction of the recipe | NOT NULL |
 | batchcook | BOOLEAN | Can the instruction be realized as batch cooking? | - |
 | position | INT |  Position of the instruction among all instructions of the recipe | UNSIGNED, NOT NULL |
+| recipe_id | INT |  Id of the recipe | SECONDARY KEY, UNSIGNED, NOT NULL |
 
 ## Table _Categories_ (`categories`)
 
@@ -99,13 +100,6 @@
 | title | VARCHAR(255) | Title of the book of recipes | NOT NULL |
 | position | INT | Position of the book of recipes among all user's books (_evolution_) | UNSIGNED |
 | userCode | INT | Id of the user who created the recipe | SECONDARY KEY, UNSIGNED, NOT NULL |
-
-## Table of relationship _`FOLLOW`_ between tables _`recipes`_ and _`instructions`_
-
-| Variable | Type | Description | Specific feature |
-| --- | --- | --- | --- |
-| recipeCode | INT | Id of the recipe | PRIMARY KEY, UNSIGNED, NOT NULL |
-| instructionCode | INT | Id of the instruction | PRIMARY KEY, UNSIGNED, NOT NULL |
 
 ## Table of relationship _`BELONG TO`_ between tables _`recipes`_ and _`tags`_
 

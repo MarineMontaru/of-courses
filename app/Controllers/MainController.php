@@ -2,30 +2,27 @@
 
 namespace app\Controllers;
 
+use app\Models\Recipe;
+use app\Models\Instruction;
+use app\Models\Category;
+use app\Models\Difficulty;
+
 class MainController extends CoreController {
 
-    public function homeAction () {
+    public function home () {
         $this->show('home');
     }
 
-    public function booksAction () {
+    public function booksList () {
         $this->show('books');
     }
 
-    public function recipeCardAction () {
-        $this->show('recipe-card');
-    }
-
-    public function searchAction () { 
+    public function searchRecipes () { 
         $this->show('search');
     }
 
-    public function weekAction () {
+    public function weekDetail () {
         $this->show('week');
-    }
-
-    public function accountAction () {
-        $this->show('account');
     }
 
 }

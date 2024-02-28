@@ -1,6 +1,7 @@
 <?php 
 
 namespace app\Models;
+use app\Utils\Database;
 
 class Difficulty {
 
@@ -8,7 +9,19 @@ class Difficulty {
     private $difficulty;
 
 
-
+    /**
+    * Get the difficulty name from its id
+    * @param {INT} $id is the id of the difficulty of recipe
+    * @return {String} returns the name of the difficulty
+    */ 
+    public function find($id) 
+    {
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `difficulties` WHERE `difficulty_id` = {$id}";
+        $pdoStatement = $pdo->query($sql);
+        $difficulty = $pdoStatement->fetchObject(Difficulty::class);
+        return $difficulty;
+    }
 
 
     /**

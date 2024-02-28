@@ -15,11 +15,6 @@ class CoreController {
         global $routes;
         global $baseUri;
 
-        /* TODO supprimer ces require */
-        require __DIR__ . '/../../php/inc/bdd-recettes.php';
-        require __DIR__ . '/../../php/inc/listes.php';
-
-
         require __DIR__ . "/../Views/partials/header.tpl.php";
         require __DIR__ . "/../Views/" . $viewName . ".tpl.php";
         require __DIR__ . "/../Views/partials/footer.tpl.php";
