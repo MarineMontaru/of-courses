@@ -4,6 +4,9 @@ require_once __DIR__ . "./../vendor/autoload.php";
 use app\Controllers\MainController;
 use app\Controllers\ErrorController;
 use app\Controllers\RecipeController;
+use app\Controllers\BooksController;
+use app\Controllers\WeekController;
+use app\Controllers\SearchController;
 use app\Controllers\SessionController;
 
 // ================
@@ -17,17 +20,21 @@ $routes = new AltoRouter();
 $baseUri = $_SERVER['BASE_URI'];	
 $routes->setBasePath($baseUri);
 
-// Create all routes
+// Home routes
 $routes->map('GET', '/', ['controller'=> MainController::class, 'method'=> 'home'], 'home');
 
-$routes->map('GET', '/books', ['controller'=> MainController::class,'method'=> 'booksList'], 'books-list');
-$routes->map('GET', '/book/[i:book_id]', ['controller'=> MainController::class, 'method'=> 'bookDetail'], 'book-detail');
+// Books routes
+$routes->map('GET', '/books', ['controller'=> BooksController::class,'method'=> 'booksList'], 'books-list');
+$routes->map('GET', '/book/[i:id]', ['controller'=> BooksController::class, 'method'=> 'bookDetail'], 'book-detail');
 
-$routes->map('GET', '/recipe/[i:recipe_id]', ['controller'=> RecipeController::class, 'method'=> 'recipeDetail'], 'recipe-detail');
+// Recipe routes
+$routes->map('GET', '/recipe/[i:id]', ['controller'=> RecipeController::class, 'method'=> 'recipeDetail'], 'recipe-detail');
 
-$routes->map('GET', '/search', ['controller'=> MainController::class, 'method'=> 'searchRecipes'], 'search-recipes');
+// Search routes
+$routes->map('GET', '/search', ['controller'=> SearchController::class, 'method'=> 'searchRecipes'], 'search-recipes');
 
-$routes->map('GET', '/week', ['controller'=> MainController::class, 'method'=> 'weekDetail'], 'week-detail');
+// Week routes
+$routes->map('GET', '/week', ['controller'=> WeekController::class, 'method'=> 'weekDetail'], 'week-detail');
 
 // Session routes
 $routes->map('GET', '/login', ['controller'=> SessionController::class, 'method'=> 'login'], 'login');

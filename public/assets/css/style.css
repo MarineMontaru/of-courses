@@ -48,6 +48,11 @@ figure figcaption {
     display: none;
 }
 
+.sticker {
+    width: 30px;
+    height: 30px;
+}
+
 ul {
     list-style-position: inside;
     list-style-type: circle;
@@ -132,6 +137,7 @@ main {
 .hidden {
     display: none;
 }
+
 
 
 /*--Menus--*/
@@ -339,10 +345,13 @@ main {
 /*----------END OF DESKTOP (>= 1024px)----------*/
 /*-----------LARGE SCREENS (>= 1024px)----------*/
 
-.pdg-lr {
-    padding-left: 300px;
-    padding-right: 300px;
-}
+@media (min-width: 1024px) {
 
+    .pdg-lr {
+        padding-left: 300px;
+        padding-right: 300px;
+    }
+
+}
 
 /*-------END OF LARGE SCREENS (>= 1024px)-------*/

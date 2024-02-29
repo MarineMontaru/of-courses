@@ -15,9 +15,9 @@ class CoreController {
         global $routes;
         global $baseUri;
 
-        require __DIR__ . "/../Views/partials/header.tpl.php";
+        require __DIR__ . "/../Views/layout/header.tpl.php";
         require __DIR__ . "/../Views/" . $viewName . ".tpl.php";
-        require __DIR__ . "/../Views/partials/footer.tpl.php";
+        require __DIR__ . "/../Views/layout/footer.tpl.php";
     }
 
 }

@@ -17,8 +17,8 @@ class Season {
         $sql = 'SELECT `seasons`.*
 		    FROM `seasons`
 		    INNER JOIN `recipes_seasons` ON recipes_seasons.season_id = seasons.season_id
-            INNER JOIN `recipes` ON recipes_seasons.recipe_id = recipes.recipe_id 
-	    	WHERE `recipes`.recipe_id = :id';
+            INNER JOIN `recipes` ON recipes_seasons.recipe_id = recipes.id 
+	    	WHERE `recipes`.id = :id';
         $pdoStatement = $pdo->prepare($sql);
 	    $pdoStatement->bindValue(':id', $recipeId, PDO::PARAM_INT);
 	    $pdoStatement->execute();

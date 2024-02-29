@@ -18,7 +18,7 @@ class RecipeController extends CoreController {
 
         // Get all attributes from the recipe
         $recipeModel = new Recipe();
-        $recipe = $recipeModel->findRecipe($params['recipe_id']);
+        $recipe = $recipeModel->findRecipe($params['id']);
         
         // Get the category of the recipe
         $categoryModel = new Category();
@@ -30,11 +30,11 @@ class RecipeController extends CoreController {
 
         // Get all tags
         $tagsModel = new Tag();
-        $tags = $tagsModel->findAllByRecipe($recipe->getRecipeId());
+        $tags = $tagsModel->findAllByRecipe($recipe->getId());
 
         // Get all seasons
         $seasonsModel = new Season();
-        $seasons = $seasonsModel->findAllByRecipe($recipe->getRecipeId());
+        $seasons = $seasonsModel->findAllByRecipe($recipe->getId());
 
         // Get the weather
         $weatherModel = new Weather();
@@ -42,11 +42,11 @@ class RecipeController extends CoreController {
 
         // Get all foods with required quantities
         $foodsModel = new Food();
-        $foods = $foodsModel->findAllByRecipe($recipe->getRecipeId());
+        $foods = $foodsModel->findAllByRecipe($recipe->getId());
 
         // Get all instructions of the recipe
         $instructionsModel = new Instruction();
-        $instructions = $instructionsModel->findAllByRecipeId($params['recipe_id']);
+        $instructions = $instructionsModel->findAllByRecipeId($params['id']);
 
         $this->show('recipe-card', [
             'recipe' => $recipe,

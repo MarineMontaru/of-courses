@@ -17,8 +17,8 @@ class Tag {
         $sql = 'SELECT `tags`.*
 		    FROM `tags`
 		    INNER JOIN `recipes_tags` ON recipes_tags.tag_id = tags.tag_id
-            INNER JOIN `recipes` ON recipes_tags.recipe_id = recipes.recipe_id 
-	    	WHERE `recipes`.recipe_id = :id';
+            INNER JOIN `recipes` ON recipes_tags.recipe_id = recipes.id 
+	    	WHERE `recipes`.id = :id';
         $pdoStatement = $pdo->prepare($sql);
 	    $pdoStatement->bindValue(':id', $recipeId, PDO::PARAM_INT);
 	    $pdoStatement->execute();

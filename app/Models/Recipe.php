@@ -3,10 +3,11 @@
 namespace app\Models;
 
 use app\Utils\Database;
+use PDO;
 
 class Recipe {
 
-    private $recipe_id;
+    private $id;
     private $title;
     private $picture;
     private $creation_date;
@@ -17,28 +18,41 @@ class Recipe {
     private $weather_id;
     private $user_id;
 
+
     /**
-     * Get the recipe from the database
+     * Get the recipe from the database from its id
      * @param {INT} $id is the id of the recipe in the database
      * @return {Object} returns the object Recipe of the id
      */ 
-    public function findRecipe($id) {
-
+    public function findRecipe($id) 
+    {
         $pdo = Database::getPDO();
-        $sql = "SELECT * FROM `recipes` WHERE `recipe_id` = {$id}";
+        $sql = "SELECT * FROM `recipes` WHERE `id` = {$id}";
         $pdoStatement = $pdo->query($sql);
         $recipe = $pdoStatement->fetchObject(Recipe::class);
         return $recipe;
-
     }
 
+    /**
+     * Get the last recipes created in the database
+     * @param {INT} $nb is the number of recipes to be found in the databse
+     * @return {Object} returns array of objects Recipe
+     */ 
+    public function findAllLast($nb) 
+    {
+        $pdo = Database::getPDO();
+        $sql = 'SELECT * FROM `recipes` ORDER BY `creation_date` DESC LIMIT ' . $nb;
+        $pdoStatement = $pdo->query($sql);
+        $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        return $results;    
+    }
 
     /**
      * Get the id of the recipe
      */ 
-    public function getRecipeId()
+    public function getId()
     {
-        return $this->recipe_id;
+        return $this->id;
     }
 
     /**
@@ -46,9 +60,9 @@ class Recipe {
      *
      * @return  self
      */ 
-    public function setRecipeId($recipe_id)
+    public function setId($id)
     {
-        $this->recipe_id = $recipe_id;
+        $this->id = $id;
 
         return $this;
     }

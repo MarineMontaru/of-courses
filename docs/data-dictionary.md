@@ -29,7 +29,7 @@
 | description | TEXT | Description of one instruction of the recipe | NOT NULL |
 | batchcook | BOOLEAN | Can the instruction be realized as batch cooking? | - |
 | position | INT |  Position of the instruction among all instructions of the recipe | UNSIGNED, NOT NULL |
-| recipe_id | INT |  Id of the recipe | SECONDARY KEY, UNSIGNED, NOT NULL |
+| id | INT |  Id of the recipe | SECONDARY KEY, UNSIGNED, NOT NULL |
 
 ## Table _Categories_ (`categories`)
 

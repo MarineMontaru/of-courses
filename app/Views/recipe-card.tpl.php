@@ -1,5 +1,3 @@
-<?php dump($viewData); ?>
-
 <link rel="stylesheet" href="<?= $baseUri ?>/assets/css/recipe-card.css">
 
 
@@ -60,13 +58,11 @@
         <!-- TODO (attention, plusieurs saisons) -->
         <?php if(!empty($viewData['seasons'])): 
             foreach ($viewData['seasons'] as $season): ?>
-                <!-- <img src="../assets/img/<?= $season->getPicture() ?>" alt=""> -->
-                <div class="info-recette__saison"><?= $season->getName() ?></div>
-                
+                <div><?= $season->getName() ?></div>
             <?php endforeach; 
         endif; ?>
         <?php if(!empty($viewData['weather'])): ?>
-            <div class="info-recette__meteo">
+            <div>
                 <p><?= $viewData['weather']->getName() ?></p>
             </div>
         <?php endif; ?>
