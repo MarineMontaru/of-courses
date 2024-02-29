@@ -3,45 +3,67 @@
 namespace app\Models;
 use app\Utils\Database;
 
-class Weather {
+class Weather extends CoreModel {
 
-    private $weather_id;
     private $name;
 
 
     /**
-    * Get the weather name from its id
-    * @param {INT} $id is the id of the weather of recipe
-    * @return {String} returns the name of the weather
-    */ 
-    public function find($id) 
+     * Find a weather in DB from its id
+     *
+     * @param int $id is the id of the weather
+     * @return self
+     */
+    public static function find($id)
     {
         $pdo = Database::getPDO();
-        $sql = "SELECT * FROM `weathers` WHERE `weather_id` = {$id}";
+        $sql = "SELECT * FROM `weathers` WHERE `id` = {$id}";
         $pdoStatement = $pdo->query($sql);
         $weather = $pdoStatement->fetchObject(self::class);
         return $weather;
     }
 
     /**
-     * Get the id of the weather
-     */ 
-    public function getWeatherId()
+     * Find all weathers in DB
+     *
+     * @return array of objects Weather
+     */
+    public static function findAll()
     {
-        return $this->weather_id;
+
     }
 
     /**
-     * Set the id of the weather
+     * Insert a weather in DB
      *
-     * @return  self
-     */ 
-    public function setWeatherId($weather_id)
+     * @return bool true = suceed / false = failed
+     */
+    public function insert()
     {
-        $this->weather_id = $weather_id;
 
-        return $this;
     }
+
+    /**
+     * Update a weather in DB
+     *
+     * @return bool true = suceed / false = failed
+     */
+    public function update()
+    {
+
+    }
+
+    /**
+     * Delete a weather in DB
+     *
+     * @param int $id is the id of the weather
+     * @return bool true = suceed / false = failed
+     */
+    public static function delete($id)
+    {
+
+    }
+
 
     /**
      * Get the name of the weather

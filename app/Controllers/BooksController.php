@@ -6,7 +6,7 @@ class BooksController extends CoreController {
 
     public function booksList () 
     {
-        $this->show('books');
+        $this->show('book/list');
     }
 
 }

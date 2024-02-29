@@ -5,45 +5,65 @@ namespace app\Models;
 use app\Utils\Database;
 use PDO;
 
-class Category {
+class Category extends CoreModel {
 
-    private $category_id;
     private $category;
 
 
     /**
-    * Get the category name from its id
-    * @param {INT} $id is the id of the category of recipe
-    * @return {String} returns the name of the category
-    */ 
-    public function find($id) {
-
+     * Find a category in DB from its id
+     *
+     * @param int $id is the id of the category
+     * @return self
+     */
+    public static function find($id)
+    {
         $pdo = Database::getPDO();
-        $sql = "SELECT * FROM `categories` WHERE `category_id` = {$id}";
+        $sql = "SELECT * FROM `categories` WHERE `id` = {$id}";
         $pdoStatement = $pdo->query($sql);
         $category = $pdoStatement->fetchObject(Category::class);
         return $category;
-
     }
 
     /**
-     * Get the id of the category
-     */ 
-    public function getCategoryId()
-    {
-        return $this->category_id;
-    }
-
-    /**
-     * Set the id of the category
+     * Find all categories in DB
      *
-     * @return  self
-     */ 
-    public function setCategoryId($category_id)
+     * @return self
+     */
+    public static function findAll()
     {
-        $this->category_id = $category_id;
 
-        return $this;
+    }
+
+    /**
+     * Insert a category in DB
+     *
+     * @return bool true = suceed / false = failed
+     */
+    public function insert()
+    {
+
+    }
+
+    /**
+     * Update a category in DB
+     *
+     * @return bool true = suceed / false = failed
+     */
+    public function update()
+    {
+
+    }
+
+    /**
+     * Delete a category in DB
+     *
+     * @param [type] $id is the id of the category
+     * @return bool true = suceed / false = failed
+     */
+    public static function delete($id)
+    {
+
     }
 
     /**

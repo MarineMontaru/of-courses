@@ -18,7 +18,7 @@ class RecipeController extends CoreController {
 
         // Get all attributes from the recipe
         $recipeModel = new Recipe();
-        $recipe = $recipeModel->findRecipe($params['id']);
+        $recipe = $recipeModel->find($params['id']);
         
         // Get the category of the recipe
         $categoryModel = new Category();
@@ -48,7 +48,7 @@ class RecipeController extends CoreController {
         $instructionsModel = new Instruction();
         $instructions = $instructionsModel->findAllByRecipeId($params['id']);
 
-        $this->show('recipe-card', [
+        $this->show('recipe/view', [
             'recipe' => $recipe,
             'category' => $category,
             'difficulty' => $difficulty,

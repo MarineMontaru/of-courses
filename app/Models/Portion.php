@@ -2,30 +2,61 @@
 
 namespace app\Models;
 
-class Portion {
+class Portion extends CoreModel {
 
-    private $portions_id;
     private $portions_nb;
 
 
     /**
-     * Get the id of the portions
-     */ 
-    public function getPortionsId()
+     * Find a portion in DB from its id
+     *
+     * @param int $id is the id of the portion
+     * @return self
+     */
+    public static function find($id)
     {
-        return $this->portions_id;
+
     }
 
     /**
-     * Set the id of the portions
+     * Find all portions in DB
      *
-     * @return  self
-     */ 
-    public function setPortionsId($portions_id)
+     * @return array of objects Portion
+     */
+    public static function findAll()
     {
-        $this->portions_id = $portions_id;
 
-        return $this;
+    }
+
+    /**
+     * Insert a portion in DB
+     *
+     * @return bool true = suceed / false = failed
+     */
+    public function insert()
+    {
+
+    }
+
+    /**
+     * Update a portion in DB
+     *
+     * @return bool true = suceed / false = failed
+     */
+    public function update()
+    {
+
+    }
+
+    /**
+     * Delete a portion in DB
+     *
+     * @param int $id is the id of the portion
+     * @return bool true = suceed / false = failed
+     */
+    public static function delete($id)
+    {
+
     }
 
     /**

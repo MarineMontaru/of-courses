@@ -5,18 +5,40 @@ namespace app\Models;
 use app\Utils\Database;
 use PDO;
 
-class Instruction {
+class Instruction extends CoreModel {
 
-    private $instruction_id;
     private $instruction;
     private $batchcook;
     private $position;
     private $recipe_id;
 
+
     /**
-     * Get the recipe from the database
-     * @param {INT} $id is the id of the recipe in the database
-     * @return {Object} returns the object Recipe of the id
+     * Find an instruction in DB from its id
+     *
+     * @param int $id is the id of the instruction
+     * @return self
+     */
+    public static function find($id)
+    {
+
+    }
+
+    /**
+     * Find all instructions in DB
+     *
+     * @return array of objects Instruction
+     */
+    public static function findAll()
+    {
+
+    }
+
+    /**
+     * Get the instructions from DB for a specific recipe
+     * 
+     * @param int $id is the id of the recipe
+     * @return array of objects Instruction
      */ 
     public function findAllByRecipeId($id)
     {
@@ -27,25 +49,35 @@ class Instruction {
         return $instructions;
     }
 
-
     /**
-     * Get the id of the instruction
-     */ 
-    public function getInstructionId()
+     * Insert an instruction in DB
+     *
+     * @return bool true = suceed / false = failed
+     */
+    public function insert()
     {
-        return $this->instruction_id;
+
     }
 
     /**
-     * Set the id of the instruction
+     * Update an instruction in DB
      *
-     * @return  self
-     */ 
-    public function setInstructionId($instruction_id)
+     * @return bool true = suceed / false = failed
+     */
+    public function update()
     {
-        $this->instruction_id = $instruction_id;
 
-        return $this;
+    }
+
+    /**
+     * Delete an instruction in DB
+     *
+     * @param int $id is the id of the instruction
+     * @return bool true = suceed / false = failed
+     */
+    public static function delete($id)
+    {
+
     }
 
      /**

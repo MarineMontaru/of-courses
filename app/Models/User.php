@@ -2,34 +2,64 @@
 
 namespace app\Models;
 
-class User {
+class User extends CoreModel {
 
-    private $user_id;
     private $name;
     private $firstname;
     private $email;
     
-
-
     /**
-     * Get user's id
-     */ 
-    public function getUserId()
-    {
-        return $this->user_id;
-    }
-
-    /**
-     * Set user's id
+     * Find an user in DB from its id
      *
-     * @return  self
-     */ 
-    public function setUserId($user_id)
+     * @param int $id is the id of the user
+     * @return self
+     */
+    public static function find($id)
     {
-        $this->user_id = $user_id;
 
-        return $this;
     }
+
+    /**
+     * Find all users in DB
+     *
+     * @return array of objects User
+     */
+    public static function findAll()
+    {
+
+    }
+
+    /**
+     * Insert an user in DB
+     *
+     * @return bool true = suceed / false = failed
+     */
+    public function insert()
+    {
+
+    }
+
+    /**
+     * Update an user in DB
+     *
+     * @return bool true = suceed / false = failed
+     */
+    public function update()
+    {
+
+    }
+
+    /**
+     * Delete an user in DB
+     *
+     * @param int $id is the id of the user
+     * @return bool true = suceed / false = failed
+     */
+    public static function delete($id)
+    {
+
+    }
+
 
     /**
      * Get user's name

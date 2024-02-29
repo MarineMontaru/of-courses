@@ -2,9 +2,8 @@
 
 namespace app\Models;
 
-class Book {
+class Book extends CoreModel {
 
-    private $book_id;
     private $title;
     private $position;
     private $creation_date;
@@ -12,25 +11,56 @@ class Book {
     private $user_id;
 
 
-
     /**
-     * Get the id of the book
-     */ 
-    public function getBookId()
+     * Find a book in DB from its id
+     *
+     * @param int $id is the id of the book
+     * @return self
+     */
+    public static function find($id)
     {
-        return $this->book_id;
+
     }
 
     /**
-     * Set the id of the book
+     * Find all books in DB
      *
-     * @return  self
-     */ 
-    public function setBookId($book_id)
+     * @return array of objects Book
+     */
+    public static function findAll()
     {
-        $this->book_id = $book_id;
 
-        return $this;
+    }
+
+    /**
+     * Insert a book in DB
+     *
+     * @return bool true = suceed / false = failed
+     */
+    public function insert()
+    {
+
+    }
+
+    /**
+     * Update a book in DB
+     *
+     * @return bool true = suceed / false = failed
+     */
+    public function update()
+    {
+
+    }
+
+    /**
+     * Delete a book in DB
+     *
+     * @param int $id is the id of the book
+     * @return bool true = suceed / false = failed
+     */
+    public static function delete($id)
+    {
+
     }
 
     /**

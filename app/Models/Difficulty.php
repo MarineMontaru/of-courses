@@ -3,46 +3,67 @@
 namespace app\Models;
 use app\Utils\Database;
 
-class Difficulty {
+class Difficulty extends CoreModel {
 
-    private $difficulty_id;
     private $difficulty;
 
 
     /**
-    * Get the difficulty name from its id
-    * @param {INT} $id is the id of the difficulty of recipe
-    * @return {String} returns the name of the difficulty
-    */ 
-    public function find($id) 
+     * Find a difficulty in DB from its id
+     *
+     * @param int $id is the id of the difficulty
+     * @return self
+     */
+    public static function find($id)
     {
         $pdo = Database::getPDO();
-        $sql = "SELECT * FROM `difficulties` WHERE `difficulty_id` = {$id}";
+        $sql = "SELECT * FROM `difficulties` WHERE `id` = {$id}";
         $pdoStatement = $pdo->query($sql);
         $difficulty = $pdoStatement->fetchObject(Difficulty::class);
         return $difficulty;
     }
 
-
     /**
-     * Get the id of the difficulty level
-     */ 
-    public function getDifficultyId()
-    {
-        return $this->difficulty_id;
-    }
-
-    /**
-     * Set the id of the difficulty level
+     * Find all difficulties in DB
      *
-     * @return  self
-     */ 
-    public function setDifficultyId($difficulty_id)
+     * @return array of objects Difficulty
+     */
+    public static function findAll()
     {
-        $this->difficulty_id = $difficulty_id;
 
-        return $this;
     }
+
+    /**
+     * Insert a difficulty in DB
+     *
+     * @return bool true = suceed / false = failed
+     */
+    public function insert()
+    {
+
+    }
+
+    /**
+     * Update a difficulty in DB
+     *
+     * @return bool true = suceed / false = failed
+     */
+    public function update()
+    {
+
+    }
+
+    /**
+     * Delete a difficulty in DB
+     *
+     * @param int $id is the id of the difficulty
+     * @return bool true = suceed / false = failed
+     */
+    public static function delete($id)
+    {
+
+    }
+
 
     /**
      * Get the name of the difficulty level

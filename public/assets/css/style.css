@@ -28,10 +28,41 @@ h1 {
     font-size: 2.5rem;
 }
 
+/*---Titres des pages---*/
+
 h2 {
     font-size: 1.2rem;
     margin-bottom: 10px;
 }
+
+.page-title {
+    margin-top: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: center;
+}
+
+.active {
+    position: relative;
+    &::after {
+        content:"";
+        background-color: var(--pink-color);
+        height: 5px;
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        animation: soulignement 0.2s ease-in-out forwards;
+        border-radius: 84% 16% 84% 16% / 25% 75% 25% 75% ;
+    }
+}
+
+@keyframes soulignement {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/*------*/
+
 
 h3 {
     margin-bottom: 10px;

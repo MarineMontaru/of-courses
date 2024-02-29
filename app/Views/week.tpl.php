@@ -1,22 +1,21 @@
-<!-- TODO ajouter le lien vers le css dans le header ? (comment récupérer le nom du fichier ) -->
 <link rel="stylesheet" href="<?= $baseUri ?>/assets/css/home.css">
 <link rel="stylesheet" href="<?= $baseUri ?>/assets/css/week.css">
 
-<nav class="week-nav pdg-lr">
+<div class="page-title week-nav pdg-lr">
     
     <!-- TODO mettre les h2 dans des ancres, pour que le curseur apparaisse -->
     <h2 class="active">Mes menus</h2>
     <!-- TODO mettre en JS la classe active sur l'élément sélectionné selon bouton du bas et bouton liste de courses raccourci sur la page d'accueil -->
     <h2>Mes courses</h2>
 
-</nav>
+</div>
 
 
 <!------------ Section "Mes menus" ------------>
 
-<section class="menus">
+<section class="menus pdg-lr">
 
-    <section class="menus__day pdg-lr visible">
+    <section class="menus__day visible">
 
         <h3>Dimanche 14/01</h3>
         <!-- TODO mettre à jour automatiquement le jour avec le jour J -->

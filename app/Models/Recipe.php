@@ -5,9 +5,8 @@ namespace app\Models;
 use app\Utils\Database;
 use PDO;
 
-class Recipe {
+class Recipe extends CoreModel {
 
-    private $id;
     private $title;
     private $picture;
     private $creation_date;
@@ -19,12 +18,14 @@ class Recipe {
     private $user_id;
 
 
+
     /**
-     * Get the recipe from the database from its id
-     * @param {INT} $id is the id of the recipe in the database
-     * @return {Object} returns the object Recipe of the id
-     */ 
-    public function findRecipe($id) 
+     * Find a recipe in DB from its id
+     *
+     * @param int $id is the id of the recipe
+     * @return self
+     */
+    public static function find($id)
     {
         $pdo = Database::getPDO();
         $sql = "SELECT * FROM `recipes` WHERE `id` = {$id}";
@@ -34,9 +35,20 @@ class Recipe {
     }
 
     /**
-     * Get the last recipes created in the database
-     * @param {INT} $nb is the number of recipes to be found in the databse
-     * @return {Object} returns array of objects Recipe
+     * Find all recipes in DB
+     *
+     * @return array of objects Recipe
+     */
+    public static function findAll()
+    {
+
+    }
+
+    /**
+     * Find the last recipes created in the database
+     * 
+     * @param int $nb is the number of recipes to be found in the databse
+     * @return array of objects Recipe
      */ 
     public function findAllLast($nb) 
     {
@@ -48,24 +60,36 @@ class Recipe {
     }
 
     /**
-     * Get the id of the recipe
-     */ 
-    public function getId()
+     * Insert a recipe in DB
+     *
+     * @return bool true = suceed / false = failed
+     */
+    public function insert()
     {
-        return $this->id;
+
     }
 
     /**
-     * Set the id of the recipe
+     * Update a recipe in DB
      *
-     * @return  self
-     */ 
-    public function setId($id)
+     * @return bool true = suceed / false = failed
+     */
+    public function update()
     {
-        $this->id = $id;
 
-        return $this;
     }
+
+    /**
+     * Delete a recipe in DB
+     *
+     * @param int $id is the id of the recipe
+     * @return bool true = suceed / false = failed
+     */
+    public static function delete($id)
+    {
+
+    }
+
 
     /**
      * Get the title of the recipe

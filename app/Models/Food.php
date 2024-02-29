@@ -4,14 +4,41 @@ namespace app\Models;
 use app\Utils\Database;
 use PDO;
 
-class Food {
+class Food extends CoreModel {
 
-    private $food_id;
     private $name;
     private $quantity;
     private $position;
     private $recipe_id;
 
+
+    /**
+     * Find a food in DB from its id
+     *
+     * @param int $id is the id of the food
+     * @return self
+     */
+    public static function find($id)
+    {
+
+    }
+
+    /**
+     * Find all foods in DB
+     *
+     * @return array of objects Food
+     */
+    public static function findAll()
+    {
+
+    }
+
+    /**
+     * Find all foods in DB for a specific recipe
+     *
+     * @param int $recipeId is the id of the recipe
+     * @return array of objects Food
+     */
     public function findAllByRecipe($recipeId) 
     {
         $pdo = Database::getPDO();
@@ -22,23 +49,34 @@ class Food {
     }
 
     /**
-     * Get the id of the food
-     */ 
-    public function getFoodId()
+     * Insert a food in DB
+     *
+     * @return bool true = suceed / false = failed
+     */
+    public function insert()
     {
-        return $this->food_id;
+
     }
 
     /**
-     * Set the id of the food
+     * Update a food in DB
      *
-     * @return  self
-     */ 
-    public function setFoodId($food_id)
+     * @return bool true = suceed / false = failed
+     */
+    public function update()
     {
-        $this->food_id = $food_id;
 
-        return $this;
+    }
+
+    /**
+     * Delete a food in DB
+     *
+     * @param int $id is the id of the food
+     * @return bool true = suceed / false = failed
+     */
+    public static function delete($id)
+    {
+
     }
 
     /**

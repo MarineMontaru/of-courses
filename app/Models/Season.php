@@ -4,19 +4,45 @@ namespace app\Models;
 use app\Utils\Database;
 use PDO;
 
-class Season {
+class Season extends CoreModel {
 
-    private $season_id;
     private $name;
     private $picture;
 
     
+    /**
+     * Find a season in DB from its id
+     *
+     * @param int $id is the id of the season
+     * @return self
+     */
+    public static function find($id)
+    {
+
+    }
+
+    /**
+     * Find all seasons in DB
+     *
+     * @return array of objects Season
+     */
+    public static function findAll()
+    {
+
+    }
+
+    /**
+     * Find all seasons in DB linked to a recipe
+     *
+     * @param int $recipeId is the id of the recipe
+     * @return array of objects Season
+     */
     public function findAllByRecipe($recipeId) 
     {
         $pdo = Database::getPDO();
         $sql = 'SELECT `seasons`.*
 		    FROM `seasons`
-		    INNER JOIN `recipes_seasons` ON recipes_seasons.season_id = seasons.season_id
+		    INNER JOIN `recipes_seasons` ON recipes_seasons.season_id = seasons.id
             INNER JOIN `recipes` ON recipes_seasons.recipe_id = recipes.id 
 	    	WHERE `recipes`.id = :id';
         $pdoStatement = $pdo->prepare($sql);
@@ -27,23 +53,34 @@ class Season {
     }
 
     /**
-     * Get the id of the season
-     */ 
-    public function getSeasonId()
+     * Insert a season in DB
+     *
+     * @return bool true = suceed / false = failed
+     */
+    public function insert()
     {
-        return $this->season_id;
+
     }
 
     /**
-     * Set the id of the season
+     * Update a season in DB
      *
-     * @return  self
-     */ 
-    public function setSeasonId($season_id)
+     * @return bool true = suceed / false = failed
+     */
+    public function update()
     {
-        $this->season_id = $season_id;
 
-        return $this;
+    }
+
+    /**
+     * Delete a season in DB
+     *
+     * @param int $id is the id of the season
+     * @return bool true = suceed / false = failed
+     */
+    public static function delete($id)
+    {
+
     }
 
     /**
