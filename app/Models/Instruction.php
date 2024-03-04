@@ -21,7 +21,11 @@ class Instruction extends CoreModel {
      */
     public static function find($id)
     {
-
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `instructions` WHERE `id` = {$id}";
+        $pdoStatement = $pdo->query($sql);
+        $result = $pdoStatement->fetchObject(self::class);
+        return $result;
     }
 
     /**
@@ -31,7 +35,11 @@ class Instruction extends CoreModel {
      */
     public static function findAll()
     {
-
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `instructions`";
+        $pdoStatement = $pdo->query($sql);
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        return $result;
     }
 
     /**

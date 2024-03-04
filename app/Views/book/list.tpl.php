@@ -18,34 +18,20 @@
 
 <section class="books__list pdg-lr">
 
-    <!-- TODO ajouter boucle sur les différents carnets de l'utilisateur -->
-    <a href="#">
-        <!-- TODO ajouter lien -->
+    <a href="<?= $routes->generate('book-detail-all') ?>">
         <h3>
-            Toutes mes recettes <em>(25)</em>
+            Toutes mes recettes <em>(<?= $viewData['all-user-recipes-nb'] ?>)</em>
         </h3>
     </a>
 
-    <a href="#">
-        <!-- TODO ajouter lien -->
-        <h3>
-            Mes favoris <em>(5)</em>
-        </h3>
-    </a>
-
-    <a href="#">
-        <!-- TODO ajouter lien -->
-        <h3>
-            Idées à tester <em>(12)</em>
-        </h3>
-    </a>
-
-    <a href="#">
-        <!-- TODO ajouter lien -->
-        <h3>
-            Grandes tablées <em>(3)</em>
-        </h3>
-    </a>
+    <?php foreach ($viewData['user-books'] as $userBook) : ?>
+        <a href="<?= $routes->generate('book-detail', ['id' => $userBook->getId()]) ?>">
+            <h3>
+                <?= $userBook->getTitle() ?>
+                <em> (<?= $viewData['books-recipes-nb'][$userBook->getId()] ?>)</em>
+            </h3>
+        </a>
+    <?php endforeach; ?>
 
 </section>
 

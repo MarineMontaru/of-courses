@@ -17,32 +17,25 @@ class RecipeController extends CoreController {
     public function recipeDetail ($params) {
 
         // Get all attributes from the recipe
-        $recipeModel = new Recipe();
-        $recipe = $recipeModel->find($params['id']);
+        $recipe = Recipe::find($params['id']);
         
         // Get the category of the recipe
-        $categoryModel = new Category();
-        $category = $categoryModel->find($recipe->getCategoryId());
+        $category = Category::find($recipe->getCategoryId());
         
         // Get the difficulty of the recipe
-        $difficultyModel = new Difficulty();
-        $difficulty = $difficultyModel->find($recipe->getDifficultyId());
+        $difficulty = Difficulty::find($recipe->getDifficultyId());
 
         // Get all tags
-        $tagsModel = new Tag();
-        $tags = $tagsModel->findAllByRecipe($recipe->getId());
+        $tags = Tag::findAllByRecipe($recipe->getId());
 
         // Get all seasons
-        $seasonsModel = new Season();
-        $seasons = $seasonsModel->findAllByRecipe($recipe->getId());
+        $seasons = Season::findAllByRecipe($recipe->getId());
 
         // Get the weather
-        $weatherModel = new Weather();
-        $weather = $weatherModel->find($recipe->getWeatherId());
+        $weather = Weather::find($recipe->getWeatherId());
 
         // Get all foods with required quantities
-        $foodsModel = new Food();
-        $foods = $foodsModel->findAllByRecipe($recipe->getId());
+        $foods = Food::findAllByRecipe($recipe->getId());
 
         // Get all instructions of the recipe
         $instructionsModel = new Instruction();

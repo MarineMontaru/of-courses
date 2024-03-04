@@ -1,7 +1,9 @@
 <?php 
 
 namespace app\Models;
+
 use app\Utils\Database;
+use PDO;
 
 class Difficulty extends CoreModel {
 
@@ -19,8 +21,8 @@ class Difficulty extends CoreModel {
         $pdo = Database::getPDO();
         $sql = "SELECT * FROM `difficulties` WHERE `id` = {$id}";
         $pdoStatement = $pdo->query($sql);
-        $difficulty = $pdoStatement->fetchObject(Difficulty::class);
-        return $difficulty;
+        $result = $pdoStatement->fetchObject(self::class);
+        return $result;
     }
 
     /**
@@ -30,7 +32,11 @@ class Difficulty extends CoreModel {
      */
     public static function findAll()
     {
-
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `difficulties`";
+        $pdoStatement = $pdo->query($sql);
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        return $result;
     }
 
     /**

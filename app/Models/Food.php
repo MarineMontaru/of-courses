@@ -1,6 +1,7 @@
 <?php
 
 namespace app\Models;
+
 use app\Utils\Database;
 use PDO;
 
@@ -20,7 +21,11 @@ class Food extends CoreModel {
      */
     public static function find($id)
     {
-
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `foods` WHERE `id` = {$id}";
+        $pdoStatement = $pdo->query($sql);
+        $result = $pdoStatement->fetchObject(self::class);
+        return $result;
     }
 
     /**
@@ -30,7 +35,11 @@ class Food extends CoreModel {
      */
     public static function findAll()
     {
-
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `foods`";
+        $pdoStatement = $pdo->query($sql);
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        return $result;
     }
 
     /**
@@ -39,7 +48,7 @@ class Food extends CoreModel {
      * @param int $recipeId is the id of the recipe
      * @return array of objects Food
      */
-    public function findAllByRecipe($recipeId) 
+    public static function findAllByRecipe($recipeId) 
     {
         $pdo = Database::getPDO();
         $sql = "SELECT * FROM `foods` WHERE `recipe_id` = {$recipeId} ORDER BY `position` ASC";

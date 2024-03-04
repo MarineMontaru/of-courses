@@ -2,12 +2,15 @@
 
 namespace app\Models;
 
+use app\Utils\Database;
+use PDO;
+
 class Book extends CoreModel {
 
     private $title;
     private $position;
     private $creation_date;
-    private $updated_date;
+    private $update_date;
     private $user_id;
 
 
@@ -19,7 +22,11 @@ class Book extends CoreModel {
      */
     public static function find($id)
     {
-
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `books` WHERE `id` = {$id}";
+        $pdoStatement = $pdo->query($sql);
+        $result = $pdoStatement->fetchObject(self::class);
+        return $result;
     }
 
     /**
@@ -29,7 +36,28 @@ class Book extends CoreModel {
      */
     public static function findAll()
     {
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `books`";
+        $pdoStatement = $pdo->query($sql);
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        return $result;
+    }
 
+    /**
+     * Find all books owned by an user in DB
+     *
+     * @param int $userId is the id of the user owning the books (currently connected)
+     * @return array of objects Book
+     */
+    public static function findAllByUser($userId)
+    {
+        $pdo = Database::getPDO();
+        $sql = 'SELECT * FROM `books` 
+                WHERE `user_id` = ' . $userId . ' 
+                ORDER BY `title`';
+        $pdoStatement = $pdo->query($sql);
+        $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        return $results;
     }
 
     /**

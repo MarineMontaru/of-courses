@@ -1,6 +1,7 @@
 <?php 
 
 namespace app\Models;
+
 use app\Utils\Database;
 use PDO;
 
@@ -19,7 +20,11 @@ class Tag extends CoreModel {
      */
     public static function find($id)
     {
-
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `tags` WHERE `id` = {$id}";
+        $pdoStatement = $pdo->query($sql);
+        $result = $pdoStatement->fetchObject(self::class);
+        return $result;
     }
 
     /**
@@ -29,7 +34,11 @@ class Tag extends CoreModel {
      */
     public static function findAll()
     {
-
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `tags`";
+        $pdoStatement = $pdo->query($sql);
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        return $result;
     }
 
     /**
@@ -38,7 +47,7 @@ class Tag extends CoreModel {
      * @param int $recipeId is the id of the recipe
      * @return array of objects Tag
      */
-    public function findAllByRecipe($recipeId) 
+    public static function findAllByRecipe($recipeId) 
     {
         $pdo = Database::getPDO();
         $sql = 'SELECT `tags`.*

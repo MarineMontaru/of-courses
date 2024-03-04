@@ -1,13 +1,18 @@
 <link rel="stylesheet" href="<?= $baseUri ?>/assets/css/recipe-card.css">
 
+<div class="page-title pdg-lr">  
 
-<h2 class="pdg-lr"><?= $viewData['recipe']->getTitle() ?></h2>
+    <h2 class="active">
+        <?= $viewData['recipe']->getTitle() ?>
+    </h2>
+
+</div>
 
 <!-- TODO insérer photo recette si existe (peut être null) -->
 
 <section class="infos-recette">
     
-    <!-- Bandeau contenant les informations principales de la recette -->
+    <!-- main information concerning the recipe -->
     <section class="infos-recette__main pdg-lr">
         
         <?php if(!empty($viewData['recipe']->getCategoryId())): ?>
@@ -55,7 +60,6 @@
 
     <section class="infos-recette__quand pdg-lr">
 
-        <!-- TODO (attention, plusieurs saisons) -->
         <?php if(!empty($viewData['seasons'])): 
             foreach ($viewData['seasons'] as $season): ?>
                 <div><?= $season->getName() ?></div>
@@ -72,7 +76,7 @@
 </section>
 
 <section class="ingredients pdg-lr">
-    <h2>Ingrédients</h2>
+    <h3>Ingrédients</h3>
     <ul>
         <!-- TODO répercuter les modifs de portions sur les quantités -->
         <?php foreach ($viewData['foods'] as $food): ?>
@@ -82,10 +86,10 @@
 </section>
 
 <section class="etapes pdg-lr">
-    <h2>Etapes de préparation</h2>
+    <h3>Etapes de préparation</h3>
 
     <section>
-        <h3>Batch cooking</h3>
+        <h4>Batch cooking</h4>
         <ul>
             <?php
             $batchCook = 0;
@@ -103,7 +107,7 @@
     </section>
     
     <section>
-        <h3>Le jour J</h3>
+        <h4>Le jour J</h4>
         <ul>
             <?php
             $dDay = 0;

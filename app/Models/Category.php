@@ -21,8 +21,8 @@ class Category extends CoreModel {
         $pdo = Database::getPDO();
         $sql = "SELECT * FROM `categories` WHERE `id` = {$id}";
         $pdoStatement = $pdo->query($sql);
-        $category = $pdoStatement->fetchObject(Category::class);
-        return $category;
+        $result = $pdoStatement->fetchObject(self::class);
+        return $result;
     }
 
     /**
@@ -32,7 +32,11 @@ class Category extends CoreModel {
      */
     public static function findAll()
     {
-
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `categories`";
+        $pdoStatement = $pdo->query($sql);
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        return $result;
     }
 
     /**

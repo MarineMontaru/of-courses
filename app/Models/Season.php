@@ -1,6 +1,7 @@
 <?php
 
 namespace app\Models;
+
 use app\Utils\Database;
 use PDO;
 
@@ -18,7 +19,11 @@ class Season extends CoreModel {
      */
     public static function find($id)
     {
-
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `seasons` WHERE `id` = {$id}";
+        $pdoStatement = $pdo->query($sql);
+        $result = $pdoStatement->fetchObject(self::class);
+        return $result;
     }
 
     /**
@@ -28,7 +33,11 @@ class Season extends CoreModel {
      */
     public static function findAll()
     {
-
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `seasons`";
+        $pdoStatement = $pdo->query($sql);
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        return $result;
     }
 
     /**
@@ -37,7 +46,7 @@ class Season extends CoreModel {
      * @param int $recipeId is the id of the recipe
      * @return array of objects Season
      */
-    public function findAllByRecipe($recipeId) 
+    public static function findAllByRecipe($recipeId) 
     {
         $pdo = Database::getPDO();
         $sql = 'SELECT `seasons`.*

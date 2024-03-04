@@ -1,7 +1,9 @@
 <?php 
 
 namespace app\Models;
+
 use app\Utils\Database;
+use PDO;
 
 class Weather extends CoreModel {
 
@@ -19,8 +21,8 @@ class Weather extends CoreModel {
         $pdo = Database::getPDO();
         $sql = "SELECT * FROM `weathers` WHERE `id` = {$id}";
         $pdoStatement = $pdo->query($sql);
-        $weather = $pdoStatement->fetchObject(self::class);
-        return $weather;
+        $result = $pdoStatement->fetchObject(self::class);
+        return $result;
     }
 
     /**
@@ -30,7 +32,11 @@ class Weather extends CoreModel {
      */
     public static function findAll()
     {
-
+        $pdo = Database::getPDO();
+        $sql = "SELECT * FROM `weathers`";
+        $pdoStatement = $pdo->query($sql);
+        $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        return $result;
     }
 
     /**
