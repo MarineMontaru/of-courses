@@ -4,7 +4,7 @@
     margin-top: 40px;
 }
 
-.books__add > div {
+.books__add > a {
     display: flex;
     flex-direction: column;
     text-align: center;

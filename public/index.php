@@ -27,6 +27,8 @@ $routes->map('GET', '/', ['controller'=> MainController::class, 'method'=> 'home
 $routes->map('GET', '/books', ['controller'=> BooksController::class,'method'=> 'booksList'], 'books-list');
 $routes->map('GET', '/book/[i:id]', ['controller'=> BooksController::class, 'method'=> 'bookDetail'], 'book-detail');
 $routes->map('GET', '/book/all', ['controller'=> BooksController::class, 'method'=> 'bookDetailAll'], 'book-detail-all');
+$routes->map('GET', '/book/add', ['controller'=> BooksController::class, 'method'=> 'addBook'], 'book-add');
+$routes->map('POST', '/book/add', ['controller'=> BooksController::class, 'method'=> 'addBookPost'], 'book-add-post');
 
 
 // Recipe routes

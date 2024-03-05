@@ -67,7 +67,19 @@ class Book extends CoreModel {
      */
     public function insert()
     {
+        $pdo = Database::getPDO();
+        $sql = 'INSERT INTO `books`
+                (`title`, `position`, `user_id`)
+                VALUES (:title, :position, :user_id)';
 
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->bindValue(':title', $this->title, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':position', $this->position, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':user_id', $this->user_id, PDO::PARAM_INT);
+
+        $pdoStatement->execute();
+        return ($pdoStatement->rowCount() > 0);
+    
     }
 
     /**
@@ -154,9 +166,9 @@ class Book extends CoreModel {
     /**
      * Get the update date of the book
      */ 
-    public function getUpdatedDate()
+    public function getUpdateDate()
     {
-        return $this->updated_date;
+        return $this->update_date;
     }
 
     /**
@@ -164,9 +176,9 @@ class Book extends CoreModel {
      *
      * @return  self
      */ 
-    public function setUpdatedDate($updated_date)
+    public function setUpdateDate($update_date)
     {
-        $this->updated_date = $updated_date;
+        $this->update_date = $update_date;
 
         return $this;
     }

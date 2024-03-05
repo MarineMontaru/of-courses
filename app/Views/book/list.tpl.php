@@ -37,14 +37,14 @@
 
 <section class="books__add pdg-lr">
 
-    <div>
-        <button class="btn-add">+</button>
+    <a href="<?= $routes->generate('book-add') ?>">
+        <p class="btn-add">+</p>
         <p>Ajouter un carnet de recettes</p>
-    </div>
+    </a>
 
-    <div>
-        <button class="btn-add">+</button>
+    <a href="#">
+        <p class="btn-add">+</p>
         <p>Créer une recette</p>
-    </div>
+    </a>
 
 </section>

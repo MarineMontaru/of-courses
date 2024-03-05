@@ -95,7 +95,7 @@
 
 
     <div class="btn-see-more">
-        <a href="<?= $routes->generate('week-detail') ?>">Voir ma semaine</a>
+        <a class="btn" href="<?= $routes->generate('week-detail') ?>">Voir ma semaine</a>
     </div>
 
 </section>

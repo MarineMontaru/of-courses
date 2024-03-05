@@ -62,4 +62,42 @@ class BooksController extends CoreController {
         ]);
     }
 
+    public function addBook () 
+    {
+        $this->show('book/add');
+    }
+
+    public function addBookPost ()
+    {
+        $errorList = [];
+
+        $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        if($title === false || $title === '') {$errorList['title'][] = 'Le titre est obligatoire.';}
+        
+        // TODO modifier user_id selon utilisateur connecté
+        $userId = 1;
+
+        $position = count(Book::findAllByUser($userId)) + 1;
+
+        $bookModel = new Book();
+        $book = $bookModel
+            ->setTitle($title)
+            ->setPosition($position)
+            ->setUserId($userId)
+        ;
+
+
+        $inserted = $book->insert();
+
+        if($inserted === true) {
+			$_SESSION['flashMessages'][] = 'Le carnet de recettes "{$book->getTitle()}" a bien été créé.';
+			global $routes;
+			header('Location: '. $routes->generate('books-list'));
+			exit(); 
+		} else {
+			$errorList['global'] = "Une erreur est survenue lors de la création du carnet de recettes.";
+		}
+
+    }
+
 }

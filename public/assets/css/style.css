@@ -99,6 +99,12 @@ em {
     font-weight: 400;
 }
 
+.btn {
+    background-color: var(--blue-color);
+    color: white;
+    padding: 5px 10px;
+}
+
 
 /*----------------HEADER & FOOTER----------------*/
 
@@ -232,15 +238,8 @@ main {
 .btn-see-more {
     display: flex;
     justify-content: right;
-}
-
-.btn-see-more a {
     margin-top: 20px;
-    background-color: var(--blue-color);
-    color: white;
-    padding: 5px 10px;
 }
-
 
 
 /*--Search--*/
