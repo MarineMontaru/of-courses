@@ -8,10 +8,12 @@
 
 <section class="pdg-lr">
 
-    <form method="POST" action="" class="add-book-form center">
+    <form method="POST" action="" class="add-book-form ">
 
-        <label for="title">Titre du carnet* </label>
-        <input name="title" id="title" type="text" required>
+        <fieldset>
+            <label for="title">Titre du carnet* </label>
+            <input name="title" id="title" type="text" required>
+        </fieldset>
 
         <button class="btn">Créer</button>
 

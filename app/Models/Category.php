@@ -7,7 +7,7 @@ use PDO;
 
 class Category extends CoreModel {
 
-    private $category;
+    private $name;
 
 
     /**
@@ -73,9 +73,9 @@ class Category extends CoreModel {
     /**
      * Get the name of the category
      */ 
-    public function getCategory()
+    public function getName()
     {
-        return $this->category;
+        return $this->name;
     }
 
     /**
@@ -83,9 +83,9 @@ class Category extends CoreModel {
      *
      * @return  self
      */ 
-    public function setCategory($category)
+    public function setName($name)
     {
-        $this->category = $category;
+        $this->name = $name;
 
         return $this;
     }

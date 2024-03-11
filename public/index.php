@@ -9,6 +9,8 @@ use app\Controllers\WeekController;
 use app\Controllers\SearchController;
 use app\Controllers\SessionController;
 
+session_start();
+
 // ================
 // ROUTER
 // ================
@@ -33,6 +35,8 @@ $routes->map('POST', '/book/add', ['controller'=> BooksController::class, 'metho
 
 // Recipe routes
 $routes->map('GET', '/recipe/[i:id]', ['controller'=> RecipeController::class, 'method'=> 'recipeDetail'], 'recipe-detail');
+$routes->map('GET', '/recipe/add', ['controller'=> RecipeController::class, 'method'=> 'recipeAdd'], 'recipe-add');
+$routes->map('POST', '/recipe/add', ['controller'=> RecipeController::class, 'method'=> 'recipeAddPost'], 'recipe-add-post');
 
 // Search routes
 $routes->map('GET', '/search', ['controller'=> SearchController::class, 'method'=> 'searchRecipes'], 'search-recipes');

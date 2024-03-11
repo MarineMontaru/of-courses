@@ -11,7 +11,7 @@
 
     <h2 class="pdg-lr home-search-title">Rechercher une recette, un ingrédient...</h2>
 
-    <div class="search pdg-lr">
+    <div class="search home-search pdg-lr">
         <form action="">
             <input type="text" class="home-search-input" placeholder="Exemples : butternut, risotto...">
             <button><i class="fas fa-search"></i></button>

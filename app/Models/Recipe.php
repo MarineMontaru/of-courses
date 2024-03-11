@@ -258,7 +258,7 @@ class Recipe extends CoreModel {
      * @return  self
      */ 
     public function setCategoryId($category_id)
-    {
+    {        
         $this->category_id = $category_id;
 
         return $this;

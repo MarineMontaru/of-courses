@@ -1,5 +1,6 @@
 <link rel="stylesheet" href="<?= $baseUri ?>/assets/css/recipe-card.css">
 
+
 <div class="page-title pdg-lr">  
 
     <h2 class="active">
@@ -8,12 +9,24 @@
 
 </div>
 
+
 <!-- TODO insérer photo recette si existe (peut être null) -->
 
-<section class="infos-recette">
+
+<section class="pdg-lr recipe-actions">
+
+    <button class="btn">Ajouter au menu</button>
+    <button><i class="fas fa-pen"></i></button>
+    <button><i class="fas fa-folder-open"></i></button>
+    <button><i class="fas fa-share-alt"></i></button>
+
+</section>
+
+
+<section class="infos-recette pdg-lr">
     
     <!-- main information concerning the recipe -->
-    <section class="infos-recette__main pdg-lr">
+    <section class="infos-recette__main">
         
         <?php if(!empty($viewData['recipe']->getCategoryId())): ?>
             <div class="info-recette">
@@ -50,7 +63,7 @@
     
     </section>
 
-    <section class="tags pdg-lr">
+    <section class="tags">
         <?php if(!empty($viewData['tags'])): 
             foreach ($viewData['tags'] as $tag): ?>
             <p class="tag"><?= $tag->getName() ?></p>
@@ -58,7 +71,7 @@
         endif; ?>
     </section>
 
-    <section class="infos-recette__quand pdg-lr">
+    <section class="infos-recette__quand">
 
         <?php if(!empty($viewData['seasons'])): 
             foreach ($viewData['seasons'] as $season): ?>
@@ -75,6 +88,7 @@
   
 </section>
 
+
 <section class="ingredients pdg-lr">
     <h3>Ingrédients</h3>
     <ul>
@@ -84,6 +98,7 @@
         <?php endforeach; ?>
     </ul>
 </section>
+
 
 <section class="etapes pdg-lr">
     <h3>Etapes de préparation</h3>

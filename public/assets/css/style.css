@@ -105,6 +105,22 @@ em {
     padding: 5px 10px;
 }
 
+/*---Formulaires----*/
+
+form,
+form > fieldset {
+    display: flex;
+    flex-direction: column;
+}
+
+form > * {
+    margin-bottom: 10px;
+}
+
+form > button {
+    margin-top: 20px;
+}
+
 
 /*----------------HEADER & FOOTER----------------*/
 
@@ -169,8 +185,8 @@ main {
 }
 
 .pdg-lr {
-    padding-right: 20px;
-    padding-left: 20px;
+    padding-right: 5%;
+    padding-left: 5%;
 }
 
 .center {
@@ -264,10 +280,12 @@ main {
     border: none;
     background-color: white;
     position: absolute;
-    right: 10px;
-    top: 10px;
+    right: 15px;
+    top: -8px;
     font-size: 1.2rem;
 }
+
+
 
 /*--Portions--*/
 
@@ -296,6 +314,8 @@ main {
     border-radius: 50%;
     width: 40px;
     height: 40px;
+    font-size: 1.2em;
+    margin-bottom: 5px;
 }
 
 .portions__remove,
@@ -315,7 +335,6 @@ main {
 }
 
 .portions > p {
-    font-size: 0.8rem;
     text-align: center;
 }
 
@@ -331,8 +350,25 @@ main {
     }
 
     .pdg-lr {
-        padding-left: 60px;
-        padding-right: 60px;
+        padding-left: 15%;
+        padding-right: 15%;
+    }
+
+    form > fieldset {
+        flex-direction: row;
+    }
+
+    form > fieldset > label {
+        margin-right: 20px;
+    }
+
+    form > fieldset > input {
+        flex-grow: 1;
+    }
+     
+    form > button {
+        width: 100px;
+        align-self: center;
     }
 
 }

@@ -42,7 +42,7 @@
         <p>Ajouter un carnet de recettes</p>
     </a>
 
-    <a href="#">
+    <a href="<?= $routes->generate('recipe-add') ?>">
         <p class="btn-add">+</p>
         <p>Créer une recette</p>
     </a>

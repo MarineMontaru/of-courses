@@ -7,7 +7,7 @@ use PDO;
 
 class Difficulty extends CoreModel {
 
-    private $difficulty;
+    private $name;
 
 
     /**
@@ -74,19 +74,19 @@ class Difficulty extends CoreModel {
     /**
      * Get the name of the difficulty level
      */ 
-    public function getDifficulty()
+    public function getName()
     {
-        return $this->difficulty;
+        return $this->name;
     }
 
     /**
-     * Set the name of the difficulty level
+     * Set the name of the name level
      *
      * @return  self
      */ 
-    public function setDifficulty($difficulty)
+    public function setName($name)
     {
-        $this->difficulty = $difficulty;
+        $this->name = $name;
 
         return $this;
     }
