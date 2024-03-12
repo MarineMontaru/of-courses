@@ -12,6 +12,11 @@
 <form method="POST" action="" class="pdg-lr">
 
     <fieldset>
+        <label for="title"><h3>Titre*</h3></label>
+        <input type="text" name="title" class="text">
+    </fieldset>
+
+    <fieldset>
         <label for="category"><h3>Catégorie*</h3></label>
         <select name="category" id="category">
             <?php foreach ($viewData['categories'] as $category) : ?>
@@ -100,16 +105,13 @@
         <ul>
             <!-- TODO ajouter instructions au fur et à mesure -->
             <li>
-                <textarea name="instruction-batch[]" id="instruction-batch">
-                </textarea>
+                <textarea name="instruction-batch[]" id="instruction-batch"></textarea>
             </li>
             <li>
-                <textarea name="instruction-batch[]" id="instruction-batch">
-                </textarea>
+                <textarea name="instruction-batch[]" id="instruction-batch"></textarea>
             </li>
             <li>
-                <textarea name="instruction-batch[]" id="instruction-batch">
-                </textarea>
+                <textarea name="instruction-batch[]" id="instruction-batch"></textarea>
             </li>
         </ul>
 
@@ -117,16 +119,13 @@
         <ul>
             <!-- TODO ajouter instructions au fur et à mesure -->
             <li>
-                <textarea name="instruction-day[]" id="instruction-day">
-                </textarea>
+                <textarea name="instruction-day[]" id="instruction-day"></textarea>
             </li>
             <li>
-                <textarea name="instruction-day[]" id="instruction-day">
-                </textarea>
+                <textarea name="instruction-day[]" id="instruction-day"></textarea>
             </li>
             <li>
-                <textarea name="instruction-day[]" id="instruction-day">
-                </textarea>
+                <textarea name="instruction-day[]" id="instruction-day"></textarea>
             </li>
         </ul>      
 

@@ -31,14 +31,14 @@
         <?php if(!empty($viewData['recipe']->getCategoryId())): ?>
             <div class="info-recette">
                 <i class="fas fa-cookie-bite"></i>
-                <p><?= $viewData['category']->getCategory() ?></p>
+                <p><?= $viewData['category']->getName() ?></p>
             </div>
         <?php endif; ?>
 
         <?php if(!empty($viewData['recipe']->getDifficultyId())): ?>
             <div class="info-recette">
                 <i class="fas fa-utensil-spoon"></i>
-                <p><?= $viewData['difficulty']->getDifficulty() ?></p>
+                <p><?= $viewData['difficulty']->getName() ?></p>
             </div>
         <?php endif; ?>
 

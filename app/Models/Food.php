@@ -64,6 +64,21 @@ class Food extends CoreModel {
      */
     public function insert()
     {
+        $pdo = Database::getPDO();
+        $sql = 'INSERT INTO `foods` 
+                (`name`, `quantity`, `position`, `recipe_id`) 
+                VALUES (:name, :quantity, :position, :recipe_id)';
+        $pdoStatement = $pdo->prepare($sql); // au lieu d'un query
+        $pdoStatement->bindValue(':name', $this->name, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':quantity', $this->quantity, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':position', $this->position, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':recipe_id', $this->recipe_id, PDO::PARAM_INT);
+        $pdoStatement->execute();
+        if($pdoStatement->rowCount() > 0) {
+            $this->id = $pdo->lastInsertId();
+            return true;
+        }
+        return false;
 
     }
 

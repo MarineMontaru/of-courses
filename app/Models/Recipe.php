@@ -112,7 +112,28 @@ class Recipe extends CoreModel {
      */
     public function insert()
     {
+        $pdo = Database::getPDO();
 
+        $sql = 'INSERT INTO `recipes` 
+                (`title`, `time`, `portions_default`, `category_id`, `difficulty_id`, `weather_id`, `user_id`) 
+                VALUES (:title, :total_time, :portions_default, :category_id, :difficulty_id, :weather_id, :user_id)';
+
+        $pdoStatement = $pdo->prepare($sql);
+
+        $pdoStatement->bindValue(':title', $this->title, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':total_time', $this->time, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':portions_default', $this->portions_default, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':category_id', $this->category_id, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':difficulty_id', $this->difficulty_id, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':weather_id', $this->weather_id, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':user_id', $this->user_id, PDO::PARAM_INT);
+
+        $pdoStatement->execute();
+        if($pdoStatement->rowCount() > 0) {
+            $this->id = $pdo->lastInsertId();
+            return true;
+        }
+        return false;
     }
 
     /**

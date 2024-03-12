@@ -76,16 +76,23 @@ class RecipeController extends CoreController {
     {
         $errorList = [];
 
-        $recipe = new Recipe();
-
         //--------------------------------------------------
-        // COLLECT FORM DATA
+        // COLLECT AND VALIDATE DATA FROM THE FORM
         // - check that mandatory fields are not empty
-        // - check that filter_input is not false (with appropriate FILTER_VALIDATE)
+        // - check that filter_input is not false (with appropriate FILTER_VALIDATE and/or FILTER_SANITIZE)
         // - check that the value of <select> fields exists in database
         // - check that INT UNSIGNED fields are positive 
         // - trim the string fields
         //--------------------------------------------------
+
+        // Get the title (mandatory field)
+        $titlePost = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
+        $trimmedTitlePost = trim($titlePost);
+        if (empty($trimmedTitlePost)) {
+            $errorList['title'][] = "Veuillez renseigner un titre.";
+        } else if ($trimmedTitlePost === false) {
+            $errorList['title'][] = "Veuillez saisir un titre valide.";
+        }
 
         // Get and validate the category (mandatory field)
         $categoryPost = filter_input(INPUT_POST, 'category', FILTER_VALIDATE_INT);
@@ -107,7 +114,7 @@ class RecipeController extends CoreController {
         // Get and validate the time needed to cook the recipe (mandatory field)
         $hoursPost = intval(filter_input(INPUT_POST, 'time-hours', FILTER_VALIDATE_INT));
         $minutesPost = intval(filter_input(INPUT_POST, 'time-minutes', FILTER_VALIDATE_INT));
-        if (empty($hours) && empty($minutes)) {
+        if (empty($hoursPost) && empty($minutesPost)) {
             $errorList['time'][] = "Veuillez renseigner un temps total de préparation.";
         } else if ($hoursPost === false || $minutesPost === false || $hoursPost < 0 || $minutesPost < 0) {
             $errorList['time'][] = "Veuillez renseigner un temps total de préparation valide.";
@@ -213,6 +220,108 @@ class RecipeController extends CoreController {
                 $errorList['instructions'][] = "Veuillez renseigner au moins une étape de préparation (batch cooking ou jour J).";
             }
         }
+
+
+        //--------------------------------------------------
+        // DEFINE AND SAVE DATA IN DB
+        //--------------------------------------------------
+
+        if (empty($errorList)) {
+
+            // Define and save data in recipes table
+            // -------------------------------------
+            $recipe = new Recipe();
+            $recipe
+                ->setTitle($trimmedTitlePost)
+                ->setCategoryId($categoryPost)
+                ->setDifficultyId($difficultyPost)
+                ->setTime($timeInMinutesPost)
+                ->setPortionsDefault($portionsPost)
+                ->setWeatherId($weatherPost)
+                ->setUserId(1) // TODO récupérer l'id utilisateur
+                ;
+            $recipeInserted = $recipe->insert();
+
+
+            // Define and save data in relationships tables
+            // --------------------------------------------
+            if($recipeInserted === true) {
+                $recipeId = $recipe->getId();
+
+                // Table recipes_seasons (optional fiel = can be empty)
+                $insertedSeasons = true;
+                if (!empty($seasonsPost)) {
+                    foreach ($seasonsPost as $seasonId) {
+                        $season = Season::find($seasonId);
+                        if ($season !== false) {
+                            $insertedSeason = $season->addToRecipe($recipeId);
+                        }
+                        if ($insertedSeason === false) {
+                            $insertedSeasons = false;
+                        }
+                    }
+                }
+
+                // Table recipes_tags (optional field = can be empty)
+                $insertedTags = true;
+                if (!empty($tagsPost)) {
+                    foreach ($tagsPost as $tagId) {
+                        $tag = Tag::find($tagId);
+                        if ($tag !== false) {
+                            $insertedTag = $tag->addToRecipe($recipeId);
+                        }
+                        if ($insertedTag === false) {
+                            $insertedTags = false;
+                        }
+                    }
+                }
+
+                // Table foods (mandatory field)
+                $insertedFoods = true;
+                foreach ($foodsPostClean as $foodPost) {
+                    // Split int and string in $foodQtyName
+                    $foodQtyName = str_replace(',', '.', $foodPost);
+                    if (preg_match('/^([0-9.]+)\s*([^\d]+.*)$/', $foodQtyName, $matches)) {
+                        $foodQty = $matches[1];
+                        $foodName = $matches[2];
+                    } else {
+                        $foodQty = 0;
+                        $foodName = $foodQtyName;
+                    }
+                    // Insert food into DB
+                    $food = new Food();
+                    $food->setName($foodName);
+                    $food->setQuantity($foodQty);
+                    $food->setPosition(null);
+                    $food->setRecipeId($recipeId);
+                    $insertedFood = $food->insert();
+                    if ($insertedFood === false) {
+                        $insertedFoods = false;
+                    }
+                }
+                
+                // TODO
+                    // $instructionsBatchPostClean (optional field = can be empty)
+                    // $instructionsDayPostClean (optional field = can be empty)
+
+
+
+/*                  Reprendre les conditions ci-dessous une fois que tout est correctement inséré en base   
+                    if($inserted === true) {
+                        $_SESSION['flashMessages'][] = "Le pokémon {$pokemon->getId()} a été ajouté";
+                        global $router;
+                        header('Location: '.$router->generate('list-pokemon'));
+                        exit(); 
+                    } else {
+                        $errorList['global'][] = "Une erreur est survenue lors de l'insertion de la recette en base de données. Veuillez réessayer.";
+                    } */
+
+            } else {
+                $errorList['global'][] = "Une erreur est survenue lors de l'insertion de la recette en base de données. Veuillez réessayer.";
+            }
+            
+        }
+
         
 
         dump(get_defined_vars());

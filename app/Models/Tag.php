@@ -94,6 +94,26 @@ class Tag extends CoreModel {
     }
 
     /**
+     * Add tags to a recipe
+     *
+     * @param int $id is the id of the recipe
+     * @return bool true = suceed / false = failed
+     */
+    public function addToRecipe($recipeId)
+    {
+        $pdo = Database::getPDO();
+        $sql = 'INSERT INTO `recipes_tags` (`recipe_id`, `tag_id`) 
+                VALUES (:recipe_id, :tag_id)';
+        
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->bindValue(':recipe_id', $recipeId, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':tag_id', $this->id, PDO::PARAM_INT);
+        $pdoStatement->execute();
+
+        return ($pdoStatement->rowCount() > 0);
+    }
+
+    /**
      * Get the name of the tag
      */ 
     public function getName()

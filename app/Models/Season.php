@@ -93,6 +93,26 @@ class Season extends CoreModel {
     }
 
     /**
+     * Add seasons to a recipe
+     *
+     * @param int $id is the id of the recipe
+     * @return bool true = suceed / false = failed
+     */
+    public function addToRecipe($recipeId)
+    {
+        $pdo = Database::getPDO();
+        $sql = 'INSERT INTO `recipes_seasons` (`recipe_id`, `season_id`) 
+                VALUES (:recipe_id, :season_id)';
+        
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->bindValue(':recipe_id', $recipeId, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':season_id', $this->id, PDO::PARAM_INT);
+        $pdoStatement->execute();
+
+        return ($pdoStatement->rowCount() > 0);
+    }
+
+    /**
      * Get the name of the season
      */ 
     public function getName()
