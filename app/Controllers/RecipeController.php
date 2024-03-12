@@ -11,6 +11,7 @@ use app\Models\Tag;
 use app\Models\Food;
 use app\Models\Instruction;
 
+use function PHPSTORM_META\type;
 
 class RecipeController extends CoreController {
 
@@ -75,55 +76,54 @@ class RecipeController extends CoreController {
     {
         $errorList = [];
 
-        $categories = Category::findAll();
-        $difficulties = Difficulty::findAll();
-        $seasons = Season::findAll();
-        $weathers = Weather::findAll();
-        $tags = Tag::findAll();
-
         $recipe = new Recipe();
 
-        // Get and validate the category
-        $categoryPost = filter_input(INPUT_POST, 'category', FILTER_SANITIZE_NUMBER_INT);
+        //--------------------------------------------------
+        // COLLECT FORM DATA
+        // - check that mandatory fields are not empty
+        // - check that filter_input is not false (with appropriate FILTER_VALIDATE)
+        // - check that the value of <select> fields exists in database
+        // - check that INT UNSIGNED fields are positive 
+        // - trim the string fields
+        //--------------------------------------------------
+
+        // Get and validate the category (mandatory field)
+        $categoryPost = filter_input(INPUT_POST, 'category', FILTER_VALIDATE_INT);
         if (empty($categoryPost)) {
             $categoryPost = null;
-        } else if (empty($categoryPost)) {
             $errorList['category'][] = "Veuillez renseigner une catégorie.";
-        } else if ($categoryPost === false || Category::find($categoryPost) === false) {
+        } else if ($categoryPost === false || $categoryPost < 0 || Category::find($categoryPost) === false) {
             $errorList['category'][] = "Veuillez renseigner une catégorie valide.";
         }
 
-        // Get and validate the difficulty
-        $difficultyPost = filter_input(INPUT_POST, 'difficulty', FILTER_SANITIZE_NUMBER_INT);
+        // Get and validate the difficulty (optional field)
+        $difficultyPost = filter_input(INPUT_POST, 'difficulty', FILTER_VALIDATE_INT);
         if (empty($difficultyPost)) {
             $difficultyPost = null;
-        } else if (empty($difficultyPost)) {
-            $errorList['difficulty'][] = "Veuillez renseigner un niveau de difficulté.";
-        } else if ($difficultyPost === false || Difficulty::find($difficultyPost) === false) {
+        } else if ($difficultyPost === false || $difficultyPost < 0 || Difficulty::find($difficultyPost) === false) {
             $errorList['difficulty'][] = "Veuillez renseigner un niveau de difficulté valide.";
         }
 
-        // Get and validate the time needed to cook the recipe
-        $hoursPost = intval(filter_input(INPUT_POST, 'time-hours', FILTER_SANITIZE_NUMBER_INT));
-        $minutesPost = intval(filter_input(INPUT_POST, 'time-minutes', FILTER_SANITIZE_NUMBER_INT));
+        // Get and validate the time needed to cook the recipe (mandatory field)
+        $hoursPost = intval(filter_input(INPUT_POST, 'time-hours', FILTER_VALIDATE_INT));
+        $minutesPost = intval(filter_input(INPUT_POST, 'time-minutes', FILTER_VALIDATE_INT));
         if (empty($hours) && empty($minutes)) {
             $errorList['time'][] = "Veuillez renseigner un temps total de préparation.";
         } else if ($hoursPost === false || $minutesPost === false || $hoursPost < 0 || $minutesPost < 0) {
             $errorList['time'][] = "Veuillez renseigner un temps total de préparation valide.";
         } else {
-            // TODO à faire ici ?
-            $timeInMinutes = $minutesPost + 60 * $hoursPost;
+            $timeInMinutesPost = $minutesPost + 60 * $hoursPost;
         }
 
-        // Get and validate the number of portions
-        $portionsPost = intval(filter_input(INPUT_POST, 'portions', FILTER_SANITIZE_NUMBER_INT));
+        // Get and validate the number of portions (mandatory field)
+        $portionsPost = intval(filter_input(INPUT_POST, 'portions', FILTER_VALIDATE_INT));
         if (empty($portionsPost)) {
             $errorList['portions'][] = "Veuillez renseigner un nombre de portions.";
         } else if ($portionsPost === false || $portionsPost <= 0) {
-            $errorList['portions'][] = "Veuillez renseigner un temps total de préparation valide.";
+            $errorList['portions'][] = "Veuillez renseigner un nombre de portions valide.";
         }
 
-        // Get and validate the seasons
+        // Get and validate the seasons (optional field)
         $seasonsPost = filter_input(INPUT_POST, 'season', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
         if (empty($seasonsPost)) {
             $seasonsPost = null;
@@ -131,23 +131,21 @@ class RecipeController extends CoreController {
             $errorList['seasons'][] = "Veuillez saisir une (des) saison(s) valide(s).";
         } else {
             foreach ($seasonsPost as $seasonPost) {
-                if (empty($seasonPost)) {
+                if (empty($seasonPost) || $seasonPost < 0 || Season::find($seasonPost) === false) {
                     $errorList['seasons'][] = "Veuillez saisir une (des) saison(s) valide(s).";
-                } else if (Season::find($seasonPost) === false) {
-                    $errorList['seasons'][] = "Veuillez saisir une (des) saison(s) valide(s).";
-                } 
+                }
             }
         }
 
-        // Get and validate the weather
-        $weatherPost = filter_input(INPUT_POST, 'weather', FILTER_SANITIZE_NUMBER_INT);
+        // Get and validate the weather (optional field)
+        $weatherPost = filter_input(INPUT_POST, 'weather', FILTER_VALIDATE_INT);
         if (empty($weatherPost)) {
             $weatherPost = null;
         } else if ($weatherPost === false || Weather::find($weatherPost) === false) {
-            $errorList['difficulty'][] = "Veuillez renseigner une météo pour préparer la recette valide.";
+            $errorList['weather'][] = "Veuillez renseigner une météo valide.";
         }
 
-        // Get and validate the tags
+        // Get and validate the tags (optional field)
         $tagsPost = filter_input(INPUT_POST, 'tag', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
         if (empty($tagsPost)) {
             $tagsPost = null;
@@ -155,17 +153,14 @@ class RecipeController extends CoreController {
             $errorList['tags'][] = "Veuillez saisir un (des) tag(s) valide(s).";
         } else {
             foreach ($tagsPost as $tagPost) {
-                if (empty($tagPost)) {
-                    $errorList['tags'][] = "Veuillez saisir un (des) tag(s) valide(s).";
-                } else if (Season::find($tagPost) === false) {
+                if (empty($tagPost) || $tagPost < 0 || Tag::find($tagPost) === false) {
                     $errorList['tags'][] = "Veuillez saisir un (des) tag(s) valide(s).";
                 } 
             }
         }
 
-        // Get the foods
+        // Get the foods (mandatory field)
         $foodsPost = filter_input(INPUT_POST, 'food', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
-        dump($foodsPost);
         if (empty($foodsPost)) {
             $errorList['foods'][] = "Veuillez renseigner au moins un aliment.";
         } else if ($foodsPost === false) {
@@ -173,9 +168,10 @@ class RecipeController extends CoreController {
         } else {
             $foodIsEmpty = true;
             foreach ($foodsPost as $foodPost) {
-                if (!empty($foodPost)) {
+                $trimmedFoodPost = trim($foodPost);
+                if (!empty($trimmedFoodPost) && $trimmedFoodPost !== "") {
                     $foodIsEmpty = false;
-                    $foodsPostClean[] = $foodPost;
+                    $foodsPostClean[] = $trimmedFoodPost;
                 }
             }
             if($foodIsEmpty === true) {
@@ -183,11 +179,40 @@ class RecipeController extends CoreController {
             }
         }
 
-        // Get the instructions Batch cooking
+        // Get the instructions Batch cooking (optional field)
+        $instructionsBatchPost = filter_input(INPUT_POST, 'instruction-batch', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+        if ($instructionsBatchPost === false) {
+            $errorList['instruction-batch'][] = "Veuillez saisir une (des) étape(s) de préparation batch cooking valide(s).";
+        } else {
+            $batchInstructionsIsEmpty = true;
+            foreach ($instructionsBatchPost as $instructionBatchPost) {
+                $trimmedInstructionBatchPost = trim($instructionBatchPost);
+                if (!empty($trimmedInstructionBatchPost) && $trimmedInstructionBatchPost !== "") {
+                    $batchInstructionsIsEmpty = false;
+                    $instructionsBatchPostClean[] = $trimmedInstructionBatchPost;
+                }
+            }
+        }
 
-
-        // Get the instructions D-day
-
+        // Get the instructions D-day (optional field, but at least one instruction must be filled between batch cooking and d-day)
+        $instructionsDayPost = filter_input(INPUT_POST, 'instruction-day', FILTER_SANITIZE_SPECIAL_CHARS, FILTER_REQUIRE_ARRAY);
+        if (empty($instructionsDdayPost) && empty($instructionsBatchPost)) {
+            $errorList['instructions'][] = "Veuillez renseigner au moins une étape de préparation.";
+        } else if ($instructionsDayPost === false) {
+            $errorList['instructions-day'][] = "Veuillez saisir une (des) étape(s) de préparation jour J valide(s).";
+        } else {
+            $dayInstructionsIsEmpty = true;
+            foreach ($instructionsDayPost as $instructionDayPost) {
+                $trimmedInstructionDayPost = trim($instructionDayPost);
+                if (!empty($trimmedInstructionDayPost) && $trimmedInstructionDayPost !== "") {
+                    $dayInstructionsIsEmpty = false;
+                    $instructionsDayPostClean[] = $trimmedInstructionDayPost;
+                }
+            }
+            if($dayInstructionsIsEmpty === true && $batchInstructionsIsEmpty === true) {
+                $errorList['instructions'][] = "Veuillez renseigner au moins une étape de préparation (batch cooking ou jour J).";
+            }
+        }
         
 
         dump(get_defined_vars());

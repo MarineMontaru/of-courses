@@ -371,6 +371,11 @@ main {
         align-self: center;
     }
 
+    form > .search-button {
+        width: auto;
+        align-self: unset;
+    }
+
 }
 
 /*----------END OF NOTEBOOK (>= 768px)----------*/

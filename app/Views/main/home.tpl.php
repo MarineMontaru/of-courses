@@ -14,7 +14,7 @@
     <div class="search home-search pdg-lr">
         <form action="">
             <input type="text" class="home-search-input" placeholder="Exemples : butternut, risotto...">
-            <button><i class="fas fa-search"></i></button>
+            <button class="search-button"><i class="fas fa-search"></i></button>
         </form>
     </div>
 

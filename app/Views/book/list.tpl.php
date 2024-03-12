@@ -11,7 +11,7 @@
 
     <form action="">
         <input type="text" placeholder="Exemples : butternut, risotto...">
-        <button><i class="fas fa-search"></i></button>
+        <button class="search-button"><i class="fas fa-search"></i></button>
     </form>
 
 </section>
