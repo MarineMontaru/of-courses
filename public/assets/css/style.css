@@ -106,6 +106,14 @@ em {
     padding: 5px 10px;
 }
 
+input:focus,
+select:focus,
+.btn:focus,
+textarea:focus {
+    box-shadow: 2px 2px 5px var(--grey-color);
+    outline: none;
+}
+
 i {
     background-color: white;
 }
