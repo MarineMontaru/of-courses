@@ -243,9 +243,14 @@ class RecipeController extends CoreController {
             $recipeInserted = $recipe->insert();
 
 
-            // Define and save data in relationships tables
-            // --------------------------------------------
-            if($recipeInserted === true) {
+            // Define and save data in related tables and relationships tables
+            // ---------------------------------------------------------------
+            if($recipeInserted === false) {
+                //TODO gérer l'affichage du formulaire pré-rempli avec ce qu'on a rempli mais qui n'a pas été enregistré
+
+                $errorList['global'][] = "Une erreur est survenue lors de l'insertion de la recette en base de données. Veuillez réessayer.";
+            } 
+            else {
                 $recipeId = $recipe->getId();
 
                 // Table recipes_seasons (optional fiel = can be empty)
@@ -300,33 +305,55 @@ class RecipeController extends CoreController {
                     }
                 }
                 
-                // TODO
-                    // $instructionsBatchPostClean (optional field = can be empty)
-                    // $instructionsDayPostClean (optional field = can be empty)
+                // Table instructions - batch cooking (optional field = can be empty)
+                $insertedInstructionsBatch = true;
+                $position = 1;
+                foreach ($instructionsBatchPostClean as $instruction) {
+                    // Insert food into DB
+                    $instructionBatch = new Instruction();
+                    $instructionBatch->setInstruction($instruction);
+                    $instructionBatch->setIsBatchCookable(1);
+                    $instructionBatch->setPosition($position);
+                    $instructionBatch->setRecipeId($recipeId);
+                    $insertedInstructionBatch = $instructionBatch->insert();
+                    if ($insertedInstructionBatch === false) {
+                        $insertedInstructionsBatch = false;
+                    }
+                    $position++;
+                }
+                // Table instructions - D-day (optional field = can be empty)
+                $insertedInstructionsDay = true;
+                $position = 1;
+                foreach ($instructionsDayPostClean as $instruction) {
+                    // Insert food into DB
+                    $instructionDay = new Instruction();
+                    $instructionDay->setInstruction($instruction);
+                    $instructionDay->setIsBatchCookable(0);
+                    $instructionDay->setPosition($position);
+                    $instructionDay->setRecipeId($recipeId);
+                    $insertedInstructionDay = $instructionDay->insert();
+                    if ($insertedInstructionDay === false) {
+                        $insertedInstructionsDay = false;
+                    }
+                    $position++;
+                }
 
+                // if all info could not be inserted into related tables, then display an error message and delete from db all info inserted for the recipe and its related tables
+                if ($insertedFoods === false || $insertedInstructionsBatch === false || $insertedInstructionsDay === false) {
+                    // TODO delete from db all info inserted for the recipe and its related tables
 
+                    //TODO gérer l'affichage du formulaire pré-rempli avec ce qu'on a rempli mais qui n'a pas été enregistré
 
-/*                  Reprendre les conditions ci-dessous une fois que tout est correctement inséré en base   
-                    if($inserted === true) {
-                        $_SESSION['flashMessages'][] = "Le pokémon {$pokemon->getId()} a été ajouté";
-                        global $router;
-                        header('Location: '.$router->generate('list-pokemon'));
-                        exit(); 
-                    } else {
-                        $errorList['global'][] = "Une erreur est survenue lors de l'insertion de la recette en base de données. Veuillez réessayer.";
-                    } */
-
-            } else {
-                $errorList['global'][] = "Une erreur est survenue lors de l'insertion de la recette en base de données. Veuillez réessayer.";
-            }
-            
+                    $errorList['global'][] = "Une erreur est survenue lors de l'insertion de la recette en base de données. Veuillez réessayer.";
+                }
+                else {
+                    $_SESSION['flashMessages'][] = "La recette {$recipe->getTitle()} a bien été ajoutée.";
+                    global $routes;
+                    header('Location: '. $routes->generate('recipe-detail', ['id' => $recipe->getId()]));
+                    exit();
+                }
+            }            
         }
-
-        
-
-        dump(get_defined_vars());
-
-
     }
 
 }

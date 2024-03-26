@@ -37,7 +37,7 @@
             <div  class="menus__day__details">
 
                 <?php
-                foreach ($bddRecettes as $recipeId => $recipeDetail) : ?>
+                foreach ($recipesDb as $recipeId => $recipeDetail) : ?>
 
                     <article class="menus__day__details__recipe recipe-card">
                         <a href="<?= $routes->generate('recipe-detail', ['id' => $recipeId]) ?>"><?=$recipeDetail['titre']?></a>
@@ -68,7 +68,7 @@
             <div class="menus__day__details">
 
                 <?php
-                foreach ($bddRecettes as $recipeId => $recipeDetail) : ?>
+                foreach ($recipesDb as $recipeId => $recipeDetail) : ?>
 
                     <article class="menus__day__details__recipe recipe-card">
                         <a href="<?= $routes->generate('recipe-detail', ['id' => $recipeId]) ?>"><?=$recipeDetail['titre']?></a>

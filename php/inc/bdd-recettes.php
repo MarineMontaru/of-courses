@@ -1,6 +1,6 @@
 <?php
 
-$bddRecettes = [
+$recipesDb = [
 
     1 => [
         "date de création" => "01/19/2024",

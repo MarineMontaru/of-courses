@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="<?= $baseUri ?>/assets/css/recipe-card.css">
+
 
 
 <div class="page-title pdg-lr">  
@@ -15,7 +15,7 @@
 
 <section class="pdg-lr recipe-actions">
 
-    <button class="btn">Ajouter au menu</button>
+    <button class="btn btn-add">Ajouter au menu</button>
     <button><i class="fas fa-pen"></i></button>
     <button><i class="fas fa-folder-open"></i></button>
     <button><i class="fas fa-share-alt"></i></button>
@@ -23,27 +23,27 @@
 </section>
 
 
-<section class="infos-recette pdg-lr">
+<section class="info-recipe pdg-lr">
     
     <!-- main information concerning the recipe -->
-    <section class="infos-recette__main">
+    <section class="info-recipe__main">
         
         <?php if(!empty($viewData['recipe']->getCategoryId())): ?>
-            <div class="info-recette">
+            <div class="information-recipe">
                 <i class="fas fa-cookie-bite"></i>
                 <p><?= $viewData['category']->getName() ?></p>
             </div>
         <?php endif; ?>
 
         <?php if(!empty($viewData['recipe']->getDifficultyId())): ?>
-            <div class="info-recette">
+            <div class="information-recipe">
                 <i class="fas fa-utensil-spoon"></i>
                 <p><?= $viewData['difficulty']->getName() ?></p>
             </div>
         <?php endif; ?>
 
         <?php if(!empty($viewData['recipe']->getTime())): ?>
-            <div class="info-recette">
+            <div class="information-recipe">
                 <i class="fas fa-clock"></i>
                 <p><?= $viewData['recipe']->getTime() ?></p>
             </div>
@@ -71,7 +71,7 @@
         endif; ?>
     </section>
 
-    <section class="infos-recette__quand">
+    <section class="info-recipe__quand">
 
         <?php if(!empty($viewData['seasons'])): 
             foreach ($viewData['seasons'] as $season): ?>
@@ -109,7 +109,7 @@
             <?php
             $batchCook = 0;
             foreach ($viewData['instructions'] as $instruction) {
-                if ($instruction->getBatchcook() === 1) { ?>
+                if ($instruction->getIsBatchCookable() === 1) { ?>
                     <li><?= $instruction->getInstruction() ?></li>
                     <?php $batchCook = 1;
                 }
@@ -127,7 +127,7 @@
             <?php
             $dDay = 0;
             foreach ($viewData['instructions'] as $instruction) {
-                if ($instruction->getBatchcook() !== 1) { ?>
+                if ($instruction->getIsBatchCookable() !== 1) { ?>
                     <li><?= $instruction->getInstruction() ?></li>
                     <?php $dDay = 1;
                     }

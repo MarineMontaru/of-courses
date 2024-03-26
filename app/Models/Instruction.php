@@ -8,7 +8,7 @@ use PDO;
 class Instruction extends CoreModel {
 
     private $instruction;
-    private $batchcook;
+    private $is_batch_cookable;
     private $position;
     private $recipe_id;
 
@@ -64,7 +64,21 @@ class Instruction extends CoreModel {
      */
     public function insert()
     {
-
+        $pdo = Database::getPDO();
+        $sql = 'INSERT INTO `instructions` 
+                (`instruction`, `is_batch_cookable`, `position`, `recipe_id`) 
+                VALUES (:instruction, :is_batch_cookable, :position, :recipe_id)';
+        $pdoStatement = $pdo->prepare($sql); // au lieu d'un query
+        $pdoStatement->bindValue(':instruction', $this->instruction, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':is_batch_cookable', $this->is_batch_cookable, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':position', $this->position, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':recipe_id', $this->recipe_id, PDO::PARAM_INT);
+        $pdoStatement->execute();
+        if($pdoStatement->rowCount() > 0) {
+            $this->id = $pdo->lastInsertId();
+            return true;
+        }
+        return false;
     }
 
     /**
@@ -111,9 +125,9 @@ class Instruction extends CoreModel {
     /**
      * Get if the instruction can be cooked as batchcooking
      */ 
-    public function getBatchcook()
+    public function getIsBatchCookable()
     {
-        return $this->batchcook;
+        return $this->is_batch_cookable;
     }
 
     /**
@@ -121,9 +135,9 @@ class Instruction extends CoreModel {
      *
      * @return  self
      */ 
-    public function setBatchcook($batchcook)
+    public function setIsBatchCookable($is_batch_cookable)
     {
-        $this->batchcook = $batchcook;
+        $this->is_batch_cookable = $is_batch_cookable;
 
         return $this;
     }

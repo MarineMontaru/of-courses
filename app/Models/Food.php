@@ -79,7 +79,6 @@ class Food extends CoreModel {
             return true;
         }
         return false;
-
     }
 
     /**

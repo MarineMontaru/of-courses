@@ -17,8 +17,9 @@ a {
 }
 
 button {
-    font-size: unset;
+    font-size: 14px;
     border: none;
+    font-family: inherit;
 }
 
 fieldset {

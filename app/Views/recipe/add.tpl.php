@@ -1,5 +1,3 @@
-<link rel="stylesheet" href="<?= $baseUri ?>/assets/css/recipe-card.css">
-
 <div class="page-title pdg-lr">  
 
     <h2 class="active">
@@ -38,13 +36,13 @@
         <label for="time-hours"><h3>Temps total de préparation*</h3></label>
         <div class="number-fieldset">
             <input type="number" name="time-hours" id="time-hours" class="number-input">
-            <p>heures</p>
+            <p>heure(s)</p>
             <input type="number" name="time-minutes" id="time-minutes" class="number-input">
-            <p>minutes</p>
+            <p>minute(s)</p>
         </div>
     </fieldset>
     
-    <fieldset>
+    <fieldset class="number-fieldset">
         <label for="portions"><h3>Nombre de portions*</h3></label>
         <input type="number" name="portions" id="portions" class="number-input">
     </fieldset>

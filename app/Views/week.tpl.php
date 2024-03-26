@@ -32,7 +32,7 @@
             <div  class="menus__day__details">
 
                 <?php
-                foreach ($bddRecettes as $recipeId => $recipeDetail) : ?>
+                foreach ($recipesDb as $recipeId => $recipeDetail) : ?>
                     <!-- TODO boucler uniquement sur les recettes de la semaine, uniquement pour ce jour et ce repas -->
 
                     <article class="menus__day__details__recipe recipe-card">
@@ -68,7 +68,7 @@
             <div class="menus__day__details">
 
                 <?php
-                foreach ($bddRecettes as $recipeId => $recipeDetail) : ?>
+                foreach ($recipesDb as $recipeId => $recipeDetail) : ?>
                     <!-- TODO boucler uniquement sur les recettes de la semaine, uniquement pour ce jour et ce repas -->
 
                     <article class="menus__day__details__recipe recipe-card">
