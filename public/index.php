@@ -51,6 +51,8 @@ $routes->map('GET', '/account', ['controller'=> SessionController::class, 'metho
 $routes->map('GET', '/login', ['controller'=> SessionController::class, 'method'=> 'login'], 'login');
 $routes->map('POST', '/login', ['controller'=> SessionController::class, 'method'=> 'loginPost'], 'login-post');
 $routes->map('GET', '/logout', ['controller'=> SessionController::class, 'method'=> 'logout'], 'logout');
+$routes->map('GET', '/create-account', ['controller'=> SessionController::class, 'method'=> 'createAccount'], 'create-account');
+$routes->map('POST', '/create-account', ['controller'=> SessionController::class, 'method'=> 'createAccountPost'], 'create-account-post');
 
 
 // ================

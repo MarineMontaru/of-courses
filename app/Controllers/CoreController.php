@@ -34,6 +34,8 @@ class CoreController {
             // 'login' => all
             // 'login-post' => all
             // 'logout' => all
+            // 'create-account'  => all
+            // 'create-account-post' => all
 		];
 
  		if(array_key_exists($route, $acl)) {

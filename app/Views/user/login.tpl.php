@@ -9,7 +9,7 @@
   <form method="POST" class="authentication">
   
     <fieldset>
-      <label for="email"><h3>Adresse mail*</h3></label>
+      <label for="email"><h4>Adresse mail*</h4></label>
       <input type="email" 
         id="email" 
         class="<?= isset($viewData['errorList']['email']) ? 'is-invalid' : '' ?>" 
@@ -24,11 +24,10 @@
           <?php endforeach;
         endif;
       ?>
-
     </fieldset>
   
     <fieldset>
-      <label for="password"><h3>Mot de passe*</h3></label>
+      <label for="password"><h4>Mot de passe*</h4></label>
       <input type="password" 
         id="password" 
         class="<?= isset($viewData['errorList']['password']) ? 'is-invalid' : '' ?>" 
@@ -48,11 +47,10 @@
     <!-- TODO ajouter lien vers page mdp oublié -->
     <a class="forgot-pwd center" href="#"><em>Mot de passe oublié ?</em></a>
 
-  </form>   
+  </form>
 
   <button class="btn create-account">
-    <!-- TODO ajouter lien vers page création compte -->
-    <a href="#">Je crée mon compte</a>
+    <a href="<?= $routes->generate('create-account') ?>">Je crée mon compte</a>
   </button> 
   
 </div>

@@ -393,15 +393,17 @@ main {
 }
 
 
-/*--Authentication--*/
+/*--Authentication & create account--*/
 
-.authentication-container {
+.authentication-container,
+.create-account-container {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .authentication,
+.btn.create-account,
 .create-account {
     width: 400px;
     max-width: calc(100vw - 30px);
@@ -411,10 +413,6 @@ main {
     margin-bottom: 30px;
 }
 
-.create-account {
-    margin-top: 40px;
-}
-
 .authentication::after {
     content: '';
     height: 1px;
@@ -422,6 +420,11 @@ main {
     align-self: center;
     width: 150px;
 }
+
+.btn.create-account {
+    margin-top: 40px;
+}
+
 
 
 

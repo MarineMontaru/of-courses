@@ -69,7 +69,21 @@ class AppUser extends CoreModel {
      */
     public function insert()
     {
-
+        $pdo = Database::getPDO();
+        $sql = 'INSERT INTO `users` 
+                (`email`, `firstname`, `lastname`, `password`, `role`) 
+                VALUES (:email, :firstname, :lastname, :password, "user")';
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->bindValue(':email', $this->email, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':firstname', $this->firstname, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':lastname', $this->lastname, PDO::PARAM_STR);
+        $pdoStatement->bindValue(':password', $this->password, PDO::PARAM_STR);
+        $pdoStatement->execute();
+        if($pdoStatement->rowCount() > 0) {
+            $this->id = $pdo->lastInsertId();
+            return true;
+        }
+        return false;
     }
 
     /**
