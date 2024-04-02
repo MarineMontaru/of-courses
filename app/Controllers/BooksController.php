@@ -2,6 +2,7 @@
 
 namespace app\Controllers;
 
+use app\Models\AppUser;
 use app\Models\Book;
 use app\Models\Recipe;
 
@@ -9,9 +10,10 @@ class BooksController extends CoreController {
 
     public function booksList () 
     {
-        //TODO récupérer l'id de l'utilisateur (quand authentification OK)
-        $userId = 1;
-
+        // Get current user's id
+        $user = AppUser::findByEmail($_SESSION['connectedUser']['email']);
+        $userId = $user->getId();
+ 
         // Get the number of recipes contained in all user's books or created by this user
         $allUserRecipes = Recipe::findAllByUser($userId);
         $allUserRecipesNb = count($allUserRecipes);
@@ -30,13 +32,14 @@ class BooksController extends CoreController {
             'all-user-recipes-nb' => $allUserRecipesNb,
             'user-books' => $userBooks,
             'books-recipes-nb' => $booksRecipesNb
-        ]);
+        ]); 
     }
 
     public function bookDetailAll () 
     {
-         //TODO récupérer l'id de l'utilisateur (quand authentification OK)
-         $userId = 1;
+        // Get current user's id
+        $user = AppUser::findByEmail($_SESSION['connectedUser']['email']);
+        $userId = $user->getId();
 
         //Get all recipes contained in all user's books or created by this user (without duplicate)
         $recipes = Recipe::findAllByUser($userId);
@@ -74,8 +77,9 @@ class BooksController extends CoreController {
         $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
         if($title === false || $title === '') {$errorList['title'][] = 'Le titre est obligatoire.';}
         
-        // TODO modifier user_id selon utilisateur connecté
-        $userId = 1;
+        // Get current user's id
+        $user = AppUser::findByEmail($_SESSION['connectedUser']['email']);
+        $userId = $user->getId();
 
         $position = count(Book::findAllByUser($userId)) + 1;
 

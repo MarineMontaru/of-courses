@@ -4,6 +4,7 @@
     --dark-color: #252934;
     --grey-color: #949494;
     --highlight-color: #F69A7A;
+    --invalid-color: red;
 }
 
 html {
@@ -111,12 +112,12 @@ i {
 }
 
 .is-invalid {
-    border: solid red 2px;
+    border: solid var(--invalid-color) 2px;
 }
 
 .error-msg {
     font-style: italic;
-    color: red;
+    color: var(--invalid-color);
 }
 
 /*---Formulaires----*/
@@ -163,7 +164,7 @@ form > fieldset > select {
     background-color: white;
 }
 
-form > button {
+form:not(:has(i)) > button {
     margin-top: 40px;
     width: 100%;
 }
@@ -172,10 +173,8 @@ input:focus,
 select:focus,
 .btn:focus,
 textarea:focus {
-    box-shadow: 2px 2px 5px var(--grey-color);
-    outline: none;
+    outline: var(--dark-color) 1px solid;
 }
-
 
 /*----------------HEADER & FOOTER----------------*/
 
@@ -336,7 +335,7 @@ main {
     background-color: white;
     position: absolute;
     right: 15px;
-    top: -8px;
+    top: 8px;
     font-size: 1.2rem;
 }
 
@@ -398,14 +397,33 @@ main {
 
 .authentication-container {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
 }
 
 .authentication,
-.authentication * {
+.create-account {
     width: 400px;
     max-width: calc(100vw - 30px);
 }
+
+.forgot-pwd {
+    margin-bottom: 30px;
+}
+
+.create-account {
+    margin-top: 40px;
+}
+
+.authentication::after {
+    content: '';
+    height: 1px;
+    background-color: grey;
+    align-self: center;
+    width: 150px;
+}
+
+
 
 
 /*------------------END OF MAIN------------------*/

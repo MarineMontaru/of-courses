@@ -1,6 +1,8 @@
 <link rel="stylesheet" href="<?= $baseUri ?>/assets/css/home.css">
 <link rel="stylesheet" href="<?= $baseUri ?>/assets/css/week.css">
 
+<p>En cours de construction</p>
+
 <div class="page-title week-nav pdg-lr">
     
     <!-- TODO mettre les h2 dans des ancres, pour que le curseur apparaisse -->

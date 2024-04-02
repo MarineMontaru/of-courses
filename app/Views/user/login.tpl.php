@@ -5,6 +5,7 @@
 </div>
 
 <div class="authentication-container pdg-lr">
+
   <form method="POST" class="authentication">
   
     <fieldset>
@@ -13,7 +14,9 @@
         id="email" 
         class="<?= isset($viewData['errorList']['email']) ? 'is-invalid' : '' ?>" 
         name="email" 
-        value="<?= $viewData['email'] ?? '' ?>">
+        required
+        value="<?= $viewData['email'] ?? '' ?>"
+        title="Veuillez saisir une adresse mail au format exemple@xxx.yy">
       <?php
         if (isset($viewData['errorList']['email'])) : 
           foreach ($viewData['errorList']['email'] as $error) : ?>
@@ -29,7 +32,8 @@
       <input type="password" 
         id="password" 
         class="<?= isset($viewData['errorList']['password']) ? 'is-invalid' : '' ?>" 
-        name="password">
+        name="password"
+        required>
       <?php
         if (isset($viewData['errorList']['password'])) : 
           foreach ($viewData['errorList']['password'] as $error) : ?>
@@ -41,8 +45,14 @@
   
     <button type='submit' class="btn">Se connecter</button>
   
-    <a href="#"><em>Mot de passe oublié ?</em></a>
+    <!-- TODO ajouter lien vers page mdp oublié -->
+    <a class="forgot-pwd center" href="#"><em>Mot de passe oublié ?</em></a>
 
-  </form>
+  </form>   
 
+  <button class="btn create-account">
+    <!-- TODO ajouter lien vers page création compte -->
+    <a href="#">Je crée mon compte</a>
+  </button> 
+  
 </div>
