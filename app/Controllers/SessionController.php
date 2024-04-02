@@ -91,7 +91,8 @@ class SessionController extends CoreController {
                         "lastname" => $user->getLastname(),
                         "role" => $user->getRole()
                     ];
-                    header('Location: '.$routes->generate('home'));
+
+                    header('Location: '.$routes->generate($_SESSION['lastRoute']));
                     // TODO rediriger vers la page sur laquelle l'utilisateur était précédemment
                 }
             } 

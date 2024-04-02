@@ -1,6 +1,3 @@
-<?php dump($viewData); 
-dump($_POST); ?>
-
 <div class="page-title pdg-lr">  
     <h2 class="active">
         Créer un compte

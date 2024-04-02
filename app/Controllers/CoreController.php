@@ -88,6 +88,9 @@ class CoreController {
         // If user is not connected yet
         else {
             global $routes;
+            global $match;
+            $_SESSION['lastRoute'] = $match['name'];
+
             header('Location: '. $routes->generate('login'));
         }
     }
