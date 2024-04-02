@@ -1,6 +1,3 @@
-
-
-
 <div class="page-title pdg-lr">  
 
     <h2 class="active">
@@ -71,7 +68,7 @@
         endif; ?>
     </section>
 
-    <section class="info-recipe__quand">
+    <section class="info-recipe__when">
 
         <?php if(!empty($viewData['seasons'])): 
             foreach ($viewData['seasons'] as $season): ?>

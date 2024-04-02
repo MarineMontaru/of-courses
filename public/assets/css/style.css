@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Corinthia&family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
 
 :root {
-    --blue-color: #252934;
+    --dark-color: #252934;
     --grey-color: #949494;
-    --pink-color: #F69A7A;
+    --highlight-color: #F69A7A;
 }
 
 html {
@@ -14,7 +14,7 @@ body {
     font-family: 'Poppins', sans-serif;
     margin: 0;
     transition: 300ms ease-in-out;
-    color: var(--blue-color);
+    color: var(--dark-color);
     position: relative;
 }
 
@@ -48,7 +48,7 @@ h2 {
 
 .active::after {
     content:"";
-    background-color: var(--pink-color);
+    background-color: var(--highlight-color);
     height: 5px;
     position: absolute;
     bottom: -5px;
@@ -101,21 +101,22 @@ em {
 }
 
 .btn {
-    background-color: var(--blue-color);
+    background-color: var(--dark-color);
     color: white;
     padding: 5px 10px;
 }
 
-input:focus,
-select:focus,
-.btn:focus,
-textarea:focus {
-    box-shadow: 2px 2px 5px var(--grey-color);
-    outline: none;
-}
-
 i {
     background-color: white;
+}
+
+.is-invalid {
+    border: solid red 2px;
+}
+
+.error-msg {
+    font-style: italic;
+    color: red;
 }
 
 /*---Formulaires----*/
@@ -136,13 +137,18 @@ form > fieldset select {
     font-family: inherit;
 }
 
-form > fieldset > input,
-form > fieldset > select,
-.number-fieldset > input {
+form > fieldset input,
+form > fieldset select,
+form > fieldset textarea,
+.number-fieldset input {
     padding: 10px;
     border: var(--grey-color) 1px solid;
     border-radius: 30px;
 }
+
+/* form > fieldset li {
+    margin-bottom: 10px;
+} */
 
 .number-fieldset > input {
     width: 80px;
@@ -158,8 +164,16 @@ form > fieldset > select {
 }
 
 form > button {
-    margin-top: 20px;
+    margin-top: 40px;
     width: 100%;
+}
+
+input:focus,
+select:focus,
+.btn:focus,
+textarea:focus {
+    box-shadow: 2px 2px 5px var(--grey-color);
+    outline: none;
 }
 
 
@@ -211,7 +225,7 @@ header {
 }
 
 .nav-actif {
-    color: var(--pink-color);
+    color: var(--highlight-color);
 }
 
 /*-------------END OF HEADER & FOOTER------------*/
@@ -258,10 +272,10 @@ main {
 .menus__day__lunch aside,
 .menus__day__diner aside {
     width: 30px;
-    border-right: solid 3px var(--pink-color);
+    border-right: solid 3px var(--highlight-color);
     margin-right: 5px;
     font-weight: 700;
-    color: var(--pink-color);
+    color: var(--highlight-color);
 }
 
 .menus__day__lunch aside p,
@@ -285,7 +299,7 @@ main {
     box-shadow: 0 0 10px var(--grey-color);
     margin: 5px;
     padding: 10px 10px 10px 20px;
-    color: var(--blue-color);
+    color: var(--dark-color);
 }
 
 .menus__day__details .recipe-card:first-of-type {
@@ -309,7 +323,7 @@ main {
 .search > form > input {
     width: 100%;
     padding: 10px 40px 10px 10px;
-    border: solid var(--pink-color) 1px;
+    border: solid var(--highlight-color) 1px;
     border-radius: 20px;
 }
 
@@ -349,7 +363,7 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: var(--pink-color);
+    background-color: var(--highlight-color);
     color: white;
     text-align: center;
     border-radius: 50%;
@@ -379,6 +393,19 @@ main {
     text-align: center;
 }
 
+
+/*--Authentication--*/
+
+.authentication-container {
+    display: flex;
+    justify-content: center;
+}
+
+.authentication,
+.authentication * {
+    width: 400px;
+    max-width: calc(100vw - 30px);
+}
 
 
 /*------------------END OF MAIN------------------*/

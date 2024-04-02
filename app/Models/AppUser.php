@@ -5,11 +5,13 @@ namespace app\Models;
 use app\Utils\Database;
 use PDO;
 
-class User extends CoreModel {
+class AppUser extends CoreModel {
 
-    private $name;
+    private $lastname;
     private $firstname;
     private $email;
+    private $password;
+    private $role;
     
     /**
      * Find an user in DB from its id
@@ -20,10 +22,29 @@ class User extends CoreModel {
     public static function find($id)
     {
         $pdo = Database::getPDO();
-        $sql = "SELECT * FROM `users` WHERE `id` = {$id}";
-        $pdoStatement = $pdo->query($sql);
+        $sql = 'SELECT * FROM `users` WHERE `id` = :id';
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->bindValue(':id', $id, PDO::PARAM_INT);
+        $pdoStatement->execute();
         $result = $pdoStatement->fetchObject(self::class);
         return $result;
+    }
+
+    /**
+     * Find an user in DB from its email
+     *
+     * @param int $id is the email of the user
+     * @return self
+     */
+    public static function findByEmail($email)
+    {
+        $pdo = Database::getPDO();
+            $sql = 'SELECT * FROM `users` WHERE `email` = :email';
+            $pdoStatement = $pdo->prepare($sql);
+            $pdoStatement->bindValue(':email', $email, PDO::PARAM_STR);
+            $pdoStatement->execute();
+            $result = $pdoStatement->fetchObject(self::class);
+            return $result;
     }
 
     /**
@@ -35,7 +56,8 @@ class User extends CoreModel {
     {
         $pdo = Database::getPDO();
         $sql = "SELECT * FROM `users`";
-        $pdoStatement = $pdo->query($sql);
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->execute();
         $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
         return $result;
     }
@@ -73,21 +95,21 @@ class User extends CoreModel {
 
 
     /**
-     * Get user's name
+     * Get user's lastname
      */ 
-    public function getName()
+    public function getLastname()
     {
-        return $this->name;
+        return $this->lastname;
     }
 
     /**
-     * Set user's id
+     * Set user's lastname
      *
      * @return  self
      */ 
-    public function setName($name)
+    public function setLastname($lastname)
     {
-        $this->name = $name;
+        $this->lastname = $lastname;
 
         return $this;
     }
@@ -128,6 +150,46 @@ class User extends CoreModel {
     public function setEmail($email)
     {
         $this->email = $email;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of password
+     */ 
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set the value of password
+     *
+     * @return  self
+     */ 
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of role
+     */ 
+    public function getRole()
+    {
+        return $this->role;
+    }
+
+    /**
+     * Set the value of role
+     *
+     * @return  self
+     */ 
+    public function setRole($role)
+    {
+        $this->role = $role;
 
         return $this;
     }

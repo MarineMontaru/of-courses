@@ -3,23 +3,14 @@ import {home} from "./home.js";
 
 const app = {
 
-    initElements: function () {
+    init: function () {
         app.classHome = document.querySelector('.last-recipes');
         app.classWeek = document.querySelector('.courses');
-        app.init();
-    },
-
-    init: function () {
-        
-        if(app.classHome) {
-            home.init();
-        };
-
-        if(app.classWeek) {
-            week.init();
-        }
+                
+        if(app.classHome) {home.init();};
+        if(app.classWeek) {week.init();}
     }
 
 }
 
-document.addEventListener("DOMContentLoaded", app.initElements);
+document.addEventListener("DOMContentLoaded", app.init);

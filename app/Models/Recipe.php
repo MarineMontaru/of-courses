@@ -28,8 +28,10 @@ class Recipe extends CoreModel {
     public static function find($id)
     {
         $pdo = Database::getPDO();
-        $sql = "SELECT * FROM `recipes` WHERE `id` = {$id}";
-        $pdoStatement = $pdo->query($sql);
+        $sql = "SELECT * FROM `recipes` WHERE `id` = :id";
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->bindValue(':id', $id, PDO::PARAM_INT);
+        $pdoStatement->execute();
         $result = $pdoStatement->fetchObject(self::class);
         return $result;
     }
@@ -43,7 +45,8 @@ class Recipe extends CoreModel {
     {
         $pdo = Database::getPDO();
         $sql = "SELECT * FROM `recipes`";
-        $pdoStatement = $pdo->query($sql);
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->execute();
         $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
         return $result;
     }
@@ -59,8 +62,10 @@ class Recipe extends CoreModel {
         $pdo = Database::getPDO();
         $sql = 'SELECT * FROM `recipes` 
                 ORDER BY `creation_date` DESC 
-                LIMIT ' . $nb;
-        $pdoStatement = $pdo->query($sql);
+                LIMIT :nb';
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->bindValue(':nb', $nb, PDO::PARAM_INT);
+        $pdoStatement->execute();
         $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
         return $results;
     }
@@ -79,10 +84,12 @@ class Recipe extends CoreModel {
                     ON `recipes`.`id` = `recipes_books`.`recipe_id`
                 LEFT JOIN `books` 
                     ON `books`.`id` = `recipes_books`.`book_id` 
-                WHERE `books`.`user_id` = ' . $userId . ' 
-                    OR `recipes`.`user_id` = ' . $userId . ' 
+                WHERE `books`.`user_id` = :userId 
+                    OR `recipes`.`user_id` = :userId
                 ORDER BY `recipes`.`title`';
-        $pdoStatement = $pdo->query($sql);
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $pdoStatement->execute();
         $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
         return $results;    
     }
@@ -98,9 +105,11 @@ class Recipe extends CoreModel {
         $pdo = Database::getPDO();
         $sql = 'SELECT DISTINCT `recipes`.* FROM `recipes` 
                 INNER JOIN `recipes_books` ON `recipes`.`id` = `recipes_books`.`recipe_id`
-                WHERE `recipes_books`.`book_id` = ' . $bookId . '
+                WHERE `recipes_books`.`book_id` = :bookId 
                 ORDER BY `recipes`.`title`';
-        $pdoStatement = $pdo->query($sql);
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->bindValue(':bookId', $bookId, PDO::PARAM_INT);
+        $pdoStatement->execute();
         $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
         return $results;    
     }

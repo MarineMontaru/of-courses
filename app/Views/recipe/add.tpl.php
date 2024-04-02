@@ -1,9 +1,7 @@
 <div class="page-title pdg-lr">  
-
     <h2 class="active">
         Créer une recette
     </h2>
-
 </div>
 
 

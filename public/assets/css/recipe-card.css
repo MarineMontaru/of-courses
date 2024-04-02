@@ -29,7 +29,7 @@
 
 .information-recipe,
 .tags,
-.info-recipe__quand {
+.info-recipe__when {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,14 +50,14 @@
 .information-recipe i {
     font-size: 20px;
     margin-bottom: 5px;
-    background-color: var(--pink-color);
+    background-color: var(--highlight-color);
     color: white;
     border-radius: 50%;
     padding: 10px;
 }
 
 .tag,
-.info-recipe__quand > div {
+.info-recipe__when > div {
     margin: 5px;
     padding: 2px 5px;
     font-weight: 700;
@@ -65,12 +65,12 @@
 }
 
 .tag {
-    border: solid var(--pink-color) 1px;
-    color: var(--pink-color);
+    border: solid var(--highlight-color) 1px;
+    color: var(--highlight-color);
 }
 
-.info-recipe__quand > div {
-    background-color: var(--pink-color);
+.info-recipe__when > div {
+    background-color: var(--highlight-color);
     color: white;
 } 
 

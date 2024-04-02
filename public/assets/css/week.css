@@ -7,7 +7,7 @@ form {
     margin-bottom: 20px;
 }
 
-.en-stock + label {
+.checked + label {
     color: grey;
     font-style: italic;
     text-decoration: line-through;

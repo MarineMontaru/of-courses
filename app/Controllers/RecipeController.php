@@ -11,8 +11,6 @@ use app\Models\Tag;
 use app\Models\Food;
 use app\Models\Instruction;
 
-use function PHPSTORM_META\type;
-
 class RecipeController extends CoreController {
 
     public function recipeDetail ($params) {
@@ -69,7 +67,6 @@ class RecipeController extends CoreController {
             'weathers' => $weathers,
             'tags' => $tags
         ]);
-
     }
 
     public function recipeAddPost () 

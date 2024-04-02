@@ -14,24 +14,28 @@ export const home = {
         'Burger de canard'
     ],
 
-    init: function () {
+    init: function () 
+    {
         home.initElements();
         home.bind();
     },
 
-    initElements: function () {
+    initElements: function () 
+    {
         home.sliderGauche = document.querySelectorAll('.last-recipes__nav')[0];
         home.sliderDroite = document.querySelectorAll('.last-recipes__nav')[1];
         home.recettes = document.querySelectorAll('.last-recipes__recipe');
         home.recettes[home.recetteCourante].classList.add('current-recipe-slider');
     },
 
-    bind: function () {
+    bind: function () 
+    {
         home.sliderGauche.addEventListener('click', home.handleSliderPrecedent);
         home.sliderDroite.addEventListener('click', home.handleSliderSuivant);
     },
 
-    handleSliderSuivant: function () {
+    handleSliderSuivant: function () 
+    {
         home.nouvelleRecette = home.recetteCourante >= home.dernieresRecettes.length - 1
             ? 0
             : home.recetteCourante + 1;
@@ -39,7 +43,8 @@ export const home = {
         home.afficherRecette(home.nouvelleRecette);     
     },
 
-    handleSliderPrecedent: function () {
+    handleSliderPrecedent: function () 
+    {
         home.nouvelleRecette = home.recetteCourante === 0
             ? home.dernieresRecettes.length - 1
             : home.recetteCourante - 1;
@@ -47,7 +52,8 @@ export const home = {
         home.afficherRecette(home.nouvelleRecette);     
     },
 
-    afficherRecette: function(nouvelleRecette) {
+    afficherRecette: function(nouvelleRecette) 
+    {
         for (const recette of home.recettes) {
             recette.classList.remove('current-recipe-slider');
         }

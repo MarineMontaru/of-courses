@@ -22,8 +22,10 @@ class Food extends CoreModel {
     public static function find($id)
     {
         $pdo = Database::getPDO();
-        $sql = "SELECT * FROM `foods` WHERE `id` = {$id}";
-        $pdoStatement = $pdo->query($sql);
+        $sql = "SELECT * FROM `foods` WHERE `id` = :id";
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->bindValue(':id', $id, PDO::PARAM_INT);
+        $pdoStatement->execute();
         $result = $pdoStatement->fetchObject(self::class);
         return $result;
     }
@@ -37,7 +39,8 @@ class Food extends CoreModel {
     {
         $pdo = Database::getPDO();
         $sql = "SELECT * FROM `foods`";
-        $pdoStatement = $pdo->query($sql);
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->execute();
         $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
         return $result;
     }
@@ -51,8 +54,10 @@ class Food extends CoreModel {
     public static function findAllByRecipe($recipeId) 
     {
         $pdo = Database::getPDO();
-        $sql = "SELECT * FROM `foods` WHERE `recipe_id` = {$recipeId} ORDER BY `position` ASC";
-        $pdoStatement = $pdo->query($sql);
+        $sql = "SELECT * FROM `foods` WHERE `recipe_id` = :recipeId ORDER BY `position` ASC";
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->bindValue(':recipeId', $recipeId, PDO::PARAM_INT);
+        $pdoStatement->execute();
         $foods = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
         return $foods;
     }
@@ -68,7 +73,7 @@ class Food extends CoreModel {
         $sql = 'INSERT INTO `foods` 
                 (`name`, `quantity`, `position`, `recipe_id`) 
                 VALUES (:name, :quantity, :position, :recipe_id)';
-        $pdoStatement = $pdo->prepare($sql); // au lieu d'un query
+        $pdoStatement = $pdo->prepare($sql);
         $pdoStatement->bindValue(':name', $this->name, PDO::PARAM_STR);
         $pdoStatement->bindValue(':quantity', $this->quantity, PDO::PARAM_STR);
         $pdoStatement->bindValue(':position', $this->position, PDO::PARAM_INT);

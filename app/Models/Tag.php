@@ -21,8 +21,10 @@ class Tag extends CoreModel {
     public static function find($id)
     {
         $pdo = Database::getPDO();
-        $sql = "SELECT * FROM `tags` WHERE `id` = {$id}";
-        $pdoStatement = $pdo->query($sql);
+        $sql = "SELECT * FROM `tags` WHERE `id` = :id";
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->bindValue(':id', $id, PDO::PARAM_INT);
+        $pdoStatement->execute();
         $result = $pdoStatement->fetchObject(self::class);
         return $result;
     }
@@ -36,7 +38,8 @@ class Tag extends CoreModel {
     {
         $pdo = Database::getPDO();
         $sql = "SELECT * FROM `tags`";
-        $pdoStatement = $pdo->query($sql);
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->execute();
         $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
         return $result;
     }

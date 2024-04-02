@@ -22,8 +22,10 @@ class Instruction extends CoreModel {
     public static function find($id)
     {
         $pdo = Database::getPDO();
-        $sql = "SELECT * FROM `instructions` WHERE `id` = {$id}";
-        $pdoStatement = $pdo->query($sql);
+        $sql = "SELECT * FROM `instructions` WHERE `id` = :id";
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->bindValue(':id', $id, PDO::PARAM_INT);
+        $pdoStatement->execute();
         $result = $pdoStatement->fetchObject(self::class);
         return $result;
     }
@@ -37,7 +39,8 @@ class Instruction extends CoreModel {
     {
         $pdo = Database::getPDO();
         $sql = "SELECT * FROM `instructions`";
-        $pdoStatement = $pdo->query($sql);
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->execute();
         $result = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
         return $result;
     }
@@ -51,8 +54,10 @@ class Instruction extends CoreModel {
     public function findAllByRecipeId($id)
     {
         $pdo = Database::getPDO();
-        $sql = "SELECT * FROM `instructions` WHERE `recipe_id` = {$id} ORDER BY `position` ASC";
-        $pdoStatement = $pdo->query($sql);
+        $sql = "SELECT * FROM `instructions` WHERE `recipe_id` = :id ORDER BY `position` ASC";
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->bindValue(':id', $id, PDO::PARAM_INT);
+        $pdoStatement->execute();
         $instructions = $pdoStatement->fetchAll(PDO::FETCH_CLASS, Instruction::class);
         return $instructions;
     }
@@ -68,7 +73,7 @@ class Instruction extends CoreModel {
         $sql = 'INSERT INTO `instructions` 
                 (`instruction`, `is_batch_cookable`, `position`, `recipe_id`) 
                 VALUES (:instruction, :is_batch_cookable, :position, :recipe_id)';
-        $pdoStatement = $pdo->prepare($sql); // au lieu d'un query
+        $pdoStatement = $pdo->prepare($sql);
         $pdoStatement->bindValue(':instruction', $this->instruction, PDO::PARAM_STR);
         $pdoStatement->bindValue(':is_batch_cookable', $this->is_batch_cookable, PDO::PARAM_STR);
         $pdoStatement->bindValue(':position', $this->position, PDO::PARAM_INT);

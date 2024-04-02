@@ -22,6 +22,9 @@ $routes = new AltoRouter();
 $baseUri = $_SERVER['BASE_URI'];	
 $routes->setBasePath($baseUri);
 
+
+//!\\ THINK TO ADD NEW ROUTES TO THE ACL IN THE CORECONTROLLER !!!
+
 // Home routes
 $routes->map('GET', '/', ['controller'=> MainController::class, 'method'=> 'home'], 'home');
 
@@ -44,9 +47,10 @@ $routes->map('GET', '/search', ['controller'=> SearchController::class, 'method'
 $routes->map('GET', '/week', ['controller'=> WeekController::class, 'method'=> 'weekDetail'], 'week-detail');
 
 // Session routes
+$routes->map('GET', '/account', ['controller'=> SessionController::class, 'method'=> 'account'], 'account');
 $routes->map('GET', '/login', ['controller'=> SessionController::class, 'method'=> 'login'], 'login');
 $routes->map('POST', '/login', ['controller'=> SessionController::class, 'method'=> 'loginPost'], 'login-post');
-$routes->map('GET', '/login', ['controller'=> SessionController::class, 'method'=> 'logout'], 'logout');
+$routes->map('GET', '/logout', ['controller'=> SessionController::class, 'method'=> 'logout'], 'logout');
 
 
 // ================

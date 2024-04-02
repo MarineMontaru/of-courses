@@ -50,7 +50,7 @@
 
                 </section>
 
-                <a href="<?= $routes->generate('login') ?>"> 
+                <a href="<?= $routes->generate('account') ?>"> 
                     <i class="fas fa-user"></i>
                     <span>Mon compte</span>
                 </a>

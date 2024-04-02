@@ -27,7 +27,7 @@
 .last-recipes {
     padding-top: 20px;
     padding-bottom: 20px;
-    background-color: var(--pink-color);
+    background-color: var(--highlight-color);
     color: white;
 }
 
