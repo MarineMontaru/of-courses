@@ -37,8 +37,7 @@ main > * {
 /*-----------------LAST RECIPES------------------*/
 
 .last-recipes {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding: 40px 0 40px 0;
     background-color: var(--highlight-color);
     color: white;
 }
@@ -68,7 +67,8 @@ main > * {
 
 .last-recipes__nav {
     color: white;
-    font-size: 30px;
+    font-size: 2rem;
+
 }
 
 

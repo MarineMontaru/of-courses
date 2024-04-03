@@ -5,9 +5,6 @@
     --grey-color: #949494;
     --highlight-color: #F0A87B;
     --invalid-color: red;
-}
-
-html {
     font-size: 14px;
 }
 
@@ -32,7 +29,7 @@ h1 {
 /*---Titres des pages---*/
 
 h2 {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     margin-bottom: 10px;
 }
 
@@ -45,22 +42,25 @@ h2 {
 
 .active {
     position: relative;
+    z-index: 10;
 }
 
 .active::after {
     content:"";
     background-color: var(--highlight-color);
-    height: 5px;
+    opacity: 0.5;
+    height: 1.5rem;
     position: absolute;
-    bottom: -5px;
-    left: 0;
+    z-index: -1;
+    bottom: 2px;
+    left: -10px;
     animation: soulignement 0.2s ease-in-out forwards;
-    border-radius: 84% 16% 84% 16% / 25% 75% 25% 75% ;
+    border-radius: 97% 3% 85% 15% / 63% 48% 52% 37% ;
 }
 
 @keyframes soulignement {
     from { width: 0; }
-    to { width: 100%; }
+    to { width: calc(100% + 20px); }
 }
 
 /*------*/
@@ -144,7 +144,7 @@ form > fieldset textarea,
 .number-fieldset input {
     padding: 10px;
     border: var(--grey-color) 1px solid;
-    border-radius: 30px;
+    border-radius: 5px;
 }
 
 /* form > fieldset li {
@@ -240,7 +240,7 @@ main {
 
 .pdg-lr {
     width: 90%;
-    max-width: 600px;
+    max-width: 800px;
 }
 
 .center {
@@ -323,7 +323,7 @@ main {
     width: 100%;
     padding: 10px 40px 10px 10px;
     border: solid var(--highlight-color) 1px;
-    border-radius: 20px;
+    border-radius: 5px;
 }
 
 .search > form > input::placeholder {
@@ -368,7 +368,6 @@ main {
     border-radius: 50%;
     width: 40px;
     height: 40px;
-    font-size: 1.2em;
     margin-bottom: 5px;
 }
 
@@ -380,10 +379,7 @@ main {
     border: none;
 }
 
-.portions__remove {
-    font-size: 1.5rem;
-}
-
+.portions__remove,
 .portions__add {
     font-size: 1.5rem;
 }
@@ -434,7 +430,7 @@ main {
 
 @media (min-width: 768px) {
 
-    html {
+    :root {
         font-size: 16px;
     }
 
@@ -449,10 +445,6 @@ main {
 /*--------------DESKTOP (>= 1024px)-------------*/
 
 @media (min-width: 1024px) {
-
-    h2 {
-        font-size: 1.5rem;
-    }
 
     .navbar__shortcuts {
         position: unset;
@@ -478,15 +470,3 @@ main {
     }
 
 }
-
-
-
-/*----------END OF DESKTOP (>= 1024px)----------*/
-/*-----------LARGE SCREENS (>= 1024px)----------*/
-
-@media (min-width: 1024px) {
-
-
-}
-
-/*-------END OF LARGE SCREENS (>= 1024px)-------*/

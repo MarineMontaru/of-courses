@@ -1,21 +1,25 @@
-<div class="page-title pdg-lr">  
-
-    <h2 class="active">
-        <?= $viewData['recipe']->getTitle() ?>
-    </h2>
-
-</div>
+<link rel="stylesheet" href="<?= $baseUri ?>/assets/css/recipe-card.css">
 
 
-<!-- TODO insérer photo recette si existe (peut être null) -->
+<section class="recipe-header">  
+    
+    <figure class="recipe-picture">
+        <img src="<?= $baseUri . $viewData['recipe']->getPicture(); ?>" alt="Photo de la recette">
+    </figure>
 
-
-<section class="pdg-lr recipe-actions">
-
-    <button class="btn btn-add">Ajouter au menu</button>
-    <button><i class="fas fa-pen"></i></button>
-    <button><i class="fas fa-folder-open"></i></button>
-    <button><i class="fas fa-share-alt"></i></button>
+    <section class="recipe-header__main">
+        <section class="pdg-lr recipe-header__title">
+            <h2>
+                <?= $viewData['recipe']->getTitle() ?>
+            </h2>
+        </section>
+        <section class="pdg-lr recipe-header__actions">
+            <button class="btn btn-add">Ajouter au menu</button>
+            <button><i class="fas fa-pen"></i></button>
+            <button><i class="fas fa-folder-open"></i></button>
+            <button><i class="fas fa-share-alt"></i></button>
+        </section>
+    </section>
 
 </section>
 
