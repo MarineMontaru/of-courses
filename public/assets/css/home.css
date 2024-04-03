@@ -1,10 +1,22 @@
+main > * {
+    margin-bottom: 40px;
+}
+
 /*--------------------SEARCH--------------------*/
 
 .home-search {
     position: relative;
+    height: 150px;
+
+}
+
+.home-search,
+.last-recipes {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .home-search > figure {
@@ -66,7 +78,7 @@
 @media (min-width: 480px) {
     
     .home-search {
-        height: 180px;
+        height: 200px;
     }
 
 }

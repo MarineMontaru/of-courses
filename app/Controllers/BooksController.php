@@ -23,9 +23,13 @@ class BooksController extends CoreController {
 
         // Get the recipes contained in each user's book
         $booksRecipes = [];
-        foreach ($userBooks as $userBook) {
-            $bookRecipes = Recipe::findAllInBook($userBook->getId());
-            $booksRecipesNb[$userBook->getId()] = count($bookRecipes);
+        if (empty($userBooks)) {
+            $booksRecipesNb = 0;
+        } else {
+            foreach ($userBooks as $userBook) {
+                $bookRecipes = Recipe::findAllInBook($userBook->getId());
+                $booksRecipesNb[$userBook->getId()] = count($bookRecipes);
+            }
         }
 
         $this->show('book/list', [

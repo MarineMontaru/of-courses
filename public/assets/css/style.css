@@ -3,7 +3,7 @@
 :root {
     --dark-color: #252934;
     --grey-color: #949494;
-    --highlight-color: #F69A7A;
+    --highlight-color: #F0A87B;
     --invalid-color: red;
 }
 
@@ -80,7 +80,7 @@ figure > img {
     object-fit: cover;
     width: 100%;
     height: 100%;
-    object-position: top;
+    object-position: center;
 }
 
 figure figcaption {
@@ -231,16 +231,16 @@ header {
 /*---------------------MAIN----------------------*/
 
 main {
-    padding: 60px 0 100px 0;
-}
-
-.container {
-    margin-bottom: 40px;
+    padding-top: 60px;
+    padding-bottom: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .pdg-lr {
-    padding-right: 5%;
-    padding-left: 5%;
+    width: 90%;
+    max-width: 600px;
 }
 
 .center {
@@ -438,11 +438,6 @@ main {
         font-size: 16px;
     }
 
-    .pdg-lr {
-        padding-left: 15%;
-        padding-right: 15%;
-    }
-
     form > .search-button {
         width: auto;
         align-self: unset;
@@ -457,11 +452,6 @@ main {
 
     h2 {
         font-size: 1.5rem;
-    }
-
-    .pdg-lr {
-        padding-left: 100px;
-        padding-right: 100px;
     }
 
     .navbar__shortcuts {
@@ -496,10 +486,6 @@ main {
 
 @media (min-width: 1024px) {
 
-    .pdg-lr {
-        padding-left: 300px;
-        padding-right: 300px;
-    }
 
 }
 

@@ -10,6 +10,7 @@ use app\Models\Season;
 use app\Models\Tag;
 use app\Models\Food;
 use app\Models\Instruction;
+use app\Models\AppUser;
 
 class RecipeController extends CoreController {
 
@@ -225,6 +226,12 @@ class RecipeController extends CoreController {
 
         if (empty($errorList)) {
 
+            // Get current user's id
+            // -------------------------------------
+            $user = AppUser::findByEmail($_SESSION['connectedUser']['email']);
+            $userId = $user->getId();
+
+
             // Define and save data in recipes table
             // -------------------------------------
             $recipe = new Recipe();
@@ -235,7 +242,7 @@ class RecipeController extends CoreController {
                 ->setTime($timeInMinutesPost)
                 ->setPortionsDefault($portionsPost)
                 ->setWeatherId($weatherPost)
-                ->setUserId(1) // TODO récupérer l'id utilisateur
+                ->setUserId($userId)
                 ;
             $recipeInserted = $recipe->insert();
 
@@ -287,7 +294,7 @@ class RecipeController extends CoreController {
                         $foodQty = $matches[1];
                         $foodName = $matches[2];
                     } else {
-                        $foodQty = 0;
+                        $foodQty = '';
                         $foodName = $foodQtyName;
                     }
                     // Insert food into DB

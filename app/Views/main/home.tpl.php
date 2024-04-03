@@ -1,17 +1,14 @@
 <link rel="stylesheet" href="<?= $baseUri ?>/assets/css/home.css">
 
-<section class="container home-search">
+<section class="home-search">
 
     <figure>
-        <img src="<?= $baseUri ?>/assets/img/photo-livre-cuilleres.jpg" alt="Photo livre de cuisine et cuillères doseuses">
-        <figcaption>
-            Photo de <a href="https://unsplash.com/fr/@karaeads?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Kara Eads</a> sur <a href="https://unsplash.com/fr/photos/gobelet-doseur-sur-papier-blanc-AemWnTSPxoE?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-        </figcaption>
+        <img src="<?= $baseUri ?>/assets/img/myrtilles.jpg" alt="Myrtilles sur une planche à découper en bois">
     </figure>             
 
     <h2 class="pdg-lr home-search-title">Rechercher une recette, un ingrédient...</h2>
 
-    <div class="search home-search pdg-lr">
+    <div class="search pdg-lr">
         <form action="">
             <input type="text" class="home-search-input" placeholder="Exemples : butternut, risotto...">
             <button class="search-button"><i class="fas fa-search"></i></button>
@@ -20,7 +17,7 @@
 
 </section>
 
-<section class="container pdg-lr menus">
+<section class="pdg-lr menus">
 
     <h2>Mes prochains menus</h2>
 <!--
@@ -100,9 +97,9 @@
 
 </section>
 
-<section class="container pdg-lr last-recipes">
+<section class="last-recipes">
 
-    <h2>Les dernières recettes</h2>
+    <h2 class="pdg-lr">Les dernières recettes</h2>
     
     <section class="last-recipes__container">
 
