@@ -45,22 +45,34 @@ h2 {
     z-index: 10;
 }
 
-.active::after {
+.active::before {
     content:"";
-    background-color: var(--highlight-color);
-    opacity: 0.5;
+    background-color: white;
     height: 1.5rem;
     position: absolute;
     z-index: -1;
     bottom: 2px;
-    left: -10px;
-    animation: soulignement 0.2s ease-in-out forwards;
-    border-radius: 97% 3% 85% 15% / 63% 48% 52% 37% ;
+    right: -10px;
+    width: calc(100% + 20px);
+    animation: highlighting 0.25s 0.2s ease-in-out forwards;
 }
 
-@keyframes soulignement {
-    from { width: 0; }
-    to { width: calc(100% + 20px); }
+.active::after {
+    content:"";
+    background-color: var(--highlight-color);
+    opacity: 0.4;
+    height: 1.5rem;
+    position: absolute;
+    z-index: -10;
+    width: calc(100% + 20px);
+    bottom: 2px;
+    left: -10px;
+    border-radius: 97% 3% 85% 15% / 63% 48% 52% 37%;
+}
+
+@keyframes highlighting {
+    from { width: calc(100% + 20px); }
+    to { width: 0; }
 }
 
 /*------*/
@@ -105,6 +117,7 @@ em {
     background-color: var(--dark-color);
     color: white;
     padding: 5px 10px;
+    border-radius: 5px;
 }
 
 i {
@@ -146,10 +159,6 @@ form > fieldset textarea,
     border: var(--grey-color) 1px solid;
     border-radius: 5px;
 }
-
-/* form > fieldset li {
-    margin-bottom: 10px;
-} */
 
 .number-fieldset > input {
     width: 80px;
@@ -327,15 +336,17 @@ main {
 }
 
 .search > form > input::placeholder {
+    font-family: 'Poppins', sans-serif;
     font-style: italic;
+    font-size: 1rem;
 }
 
 .search > form > button {
     border: none;
     background-color: white;
     position: absolute;
-    right: 15px;
-    top: 8px;
+    right: 10px;
+    top: 10px;
     font-size: 1.2rem;
 }
 
@@ -429,10 +440,6 @@ main {
 /*---------TABLET AND NOTEBOOK (>= 768px)--------*/
 
 @media (min-width: 768px) {
-
-    :root {
-        font-size: 16px;
-    }
 
     form > .search-button {
         width: auto;
