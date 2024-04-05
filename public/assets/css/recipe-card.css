@@ -79,6 +79,7 @@
     padding: 2px 5px;
     font-weight: 700;
     display: inline;
+    border-radius: 5px;
 }
 
 .tag {

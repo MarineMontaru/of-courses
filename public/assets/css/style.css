@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Corinthia&family=Poppins:ital,wght@0,400;0,700;1,400&display=swap');
+@import url(https://fonts.bunny.net/css?family=montez:400);
 
 :root {
     --dark-color: #252934;
@@ -21,16 +21,18 @@ body::-webkit-scrollbar {
 }
 
 h1 {
-    font-family: 'Corinthia', cursive;
+    font-family: 'Montez', handwriting;
     font-weight: 400;
-    font-size: 2.5rem;
+    font-size: 2rem;
 }
 
 /*---Titres des pages---*/
 
 h2 {
-    font-size: 1.5rem;
+    font-size: 2.5rem;
+    font-weight: 400;
     margin-bottom: 10px;
+    font-family: 'Montez', handwriting;
 }
 
 .page-title {
@@ -104,6 +106,15 @@ figure figcaption {
     height: 30px;
 }
 
+.thumbnail {
+    width: 50px;
+    height: 50px;
+}
+
+.thumbnail img {
+    border-radius: 5px;
+}
+
 ul {
     list-style-position: inside;
     list-style-type: circle;
@@ -113,15 +124,15 @@ em {
     font-weight: 400;
 }
 
+button {
+    cursor: pointer;
+}
+
 .btn {
     background-color: var(--dark-color);
     color: white;
     padding: 5px 10px;
     border-radius: 5px;
-}
-
-i {
-    background-color: white;
 }
 
 .is-invalid {
@@ -304,10 +315,25 @@ main {
 
 .recipe-card {
     display: flex;
-    box-shadow: 0 0 10px var(--grey-color);
-    margin: 5px;
-    padding: 10px 10px 10px 20px;
+    margin: 10px;
+    padding: 10px;
     color: var(--dark-color);
+    border: solid 1px var(--grey-color);
+    border-radius: 5px;;
+}
+
+.recipe-card:hover {
+    animation: darkenBackgroung 0.2s ease-in-out forwards;
+}
+
+@keyframes darkenBackgroung {
+    to {
+        outline: solid 2px var(--dark-color);
+    }
+}
+
+.recipe-card .thumbnail {
+    margin-right: 10px;
 }
 
 .menus__day__details .recipe-card:first-of-type {

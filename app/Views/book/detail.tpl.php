@@ -16,23 +16,20 @@
     <?php 
     // If no recipe in the book
     if (empty($viewData['recipes'])) { ?>
-
         <p><em>Aucune recette dans le carnet.</em></p>
-
     <?php 
     } else { 
-
         foreach ($viewData['recipes'] as $recipe) : ?>
-        
-        <a href="<?= $routes->generate('recipe-detail', ['id' => $recipe->getId()]) ?>">
-            <article class="recipe-card">
-                <?= $recipe->getTitle() ?>
-            </article>
-        </a>
-
-        <?php 
-        endforeach;
-
+            <a href="<?= $routes->generate('recipe-detail', ['id' => $recipe->getId()]) ?>">
+                <article class="recipe-card">
+                    <figure class="thumbnail">
+                        <?php $picture = $recipe->getPicture()??'/assets/img/cuillere_bois.jpg'; ?>
+                        <img src="<?= $baseUri . $picture ?>" alt="Photo de la recette">
+                    </figure>
+                    <?= $recipe->getTitle() ?>
+                </article>
+            </a>
+        <?php endforeach;
     } ?>
 
 </section>
