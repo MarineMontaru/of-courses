@@ -9,7 +9,7 @@
 
     <fieldset>
         <label for="title"><h3>Titre*</h3></label>
-        <input type="text" name="title" class="text">
+        <input type="text" name="title" id="title" class="text">
     </fieldset>
 
     <fieldset>
