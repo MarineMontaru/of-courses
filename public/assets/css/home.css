@@ -6,8 +6,7 @@ main > * {
 
 .home-search {
     position: relative;
-    height: 150px;
-
+    height: 250px;
 }
 
 .home-search,
@@ -71,23 +70,7 @@ main > * {
 
 }
 
-
 /*--------------END OF LAST RECIPES--------------*/
-/*--------------------TABLET---------------------*/
-
-@media (min-width: 480px) {
-    
-    .home-search {
-        height: 200px;
-    }
-
-}
-
-/*----------------END OF TABLET------------------*/
-/*---------TABLET AND NOTEBOOK (>= 768px)--------*/
-
-
-/*----------END OF NOTEBOOK (>= 768px)----------*/
 /*--------------DESKTOP (>= 1024px)-------------*/
 
 @media (min-width: 1024px) {
@@ -97,7 +80,6 @@ main > * {
     }
 
 }
-
 
 /*----------END OF DESKTOP (>= 1024px)----------*/
 

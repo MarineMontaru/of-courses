@@ -21,7 +21,18 @@
     color: white;
 }
 
+@media (min-width: 480px) {
 
+    .no-recipe-figure {
+        position: relative;
+        margin: 0 auto;
+        max-width: 500px;
+    }
+    
+    .no-recipe {
+        position: absolute;
+        top: 80px;
+        left: 60px;
+    }
 
-
-
+}
