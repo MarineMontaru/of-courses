@@ -86,6 +86,7 @@ class RecipeController extends CoreController {
         // Get the title (mandatory field)
         $titlePost = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
         $trimmedTitlePost = trim($titlePost);
+        dump($trimmedTitlePost);
         if (empty($trimmedTitlePost)) {
             $errorList['title'][] = "Veuillez renseigner un titre.";
         } else if ($trimmedTitlePost === false) {
@@ -352,11 +353,27 @@ class RecipeController extends CoreController {
                 }
                 else {
                     $_SESSION['flashMessages'][] = "La recette {$recipe->getTitle()} a bien été ajoutée.";
+                    // TODO gérer l'affichage du message flash en JS
                     global $routes;
                     header('Location: '. $routes->generate('recipe-detail', ['id' => $recipe->getId()]));
                     exit();
                 }
             }            
+        } else { 
+            $categories = Category::findAll();
+            $difficulties = Difficulty::findAll();
+            $seasons = Season::findAll();
+            $weathers = Weather::findAll();
+            $tags = Tag::findAll();
+    
+            $this->show('recipe/add', [
+                'categories' => $categories,
+                'difficulties' => $difficulties,
+                'seasons' => $seasons,
+                'weathers' => $weathers,
+                'tags' => $tags,
+                'errorList' => $errorList
+            ]);
         }
     }
 

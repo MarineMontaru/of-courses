@@ -79,7 +79,9 @@ class BooksController extends CoreController {
         $errorList = [];
 
         $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-        if($title === false || $title === '') {$errorList['title'][] = 'Le titre est obligatoire.';}
+        if($title === false || $title === '') {
+            $errorList['title'][] = 'Le titre est obligatoire.';
+        }
         
         // Get current user's id
         $user = AppUser::findByEmail($_SESSION['connectedUser']['email']);
@@ -111,19 +113,34 @@ class BooksController extends CoreController {
         // Get current user's id
         $user = AppUser::findByEmail($_SESSION['connectedUser']['email']);
         $userId = $user->getId();
+        if ($userId === false || $userId ="") {
+            $errorList['global'][] = 'Une erreur est survenue. Veuillez réessayer.';
+        }
 
         // Get keywords entered into search form
         $keywords = filter_input(INPUT_POST, 'keywords', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+        if ($keywords === false || $keywords = "" || empty($keywords)) {
+            $errorList['keywords'][] = 'Veuillez renseigner un mot clé.';
+        }
 
-        // Get recipes matching keywords and in user's books
-        $matchRecipes = Recipe::findAllByUserAndByKeywords($userId, $keywords);
-        
-        $recipesNb = count($matchRecipes);
+        if (!empty($errorList)) {
+            $this->show('book/search', [
+                'keywords' => $keywords,
+                'recipes' => null,
+                'recipesNb' => null,
+                'errorList' => $errorList
+            ]);
+        } else {
+            // Get recipes matching keywords and in user's books
+            $matchRecipes = Recipe::findAllByUserAndByKeywords($userId, $keywords);
+            
+            $recipesNb = count($matchRecipes);
 
-        $this->show('book/search', [
-            'keywords' => $keywords,
-            'recipes' => $matchRecipes,
-            'recipesNb' => $recipesNb
-        ]);
+            $this->show('book/search', [
+                'keywords' => $keywords,
+                'recipes' => $matchRecipes,
+                'recipesNb' => $recipesNb
+            ]);
+        }
     }
 }

@@ -137,15 +137,6 @@ button {
     border-radius: 5px;
 }
 
-.is-invalid {
-    border: solid var(--invalid-color) 2px;
-}
-
-.error-msg {
-    font-style: italic;
-    color: var(--invalid-color);
-}
-
 /*---Formulaires----*/
 
 form,
@@ -468,6 +459,17 @@ main {
     margin-top: 40px;
 }
 
+/*--Errors--*/
+
+input.is-invalid,
+.is-invalid {
+    border: solid var(--invalid-color) 2px;
+}
+
+.error-msg {
+    font-style: italic;
+    color: var(--invalid-color);
+}
 
 
 
