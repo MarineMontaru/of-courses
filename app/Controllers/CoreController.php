@@ -21,6 +21,7 @@ class CoreController {
 		$acl = [
             // 'home' => all
             'books-list' => ['user', 'admin'],
+            'books-list-post' => ['user', 'admin'],
             'book-detail' => ['user', 'admin'],
             'book-detail-all' => ['user', 'admin'],
             'book-add' => ['user', 'admin'],

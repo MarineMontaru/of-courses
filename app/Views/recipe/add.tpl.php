@@ -127,7 +127,7 @@
 
     </fieldset>
 
-    <button class="btn">Valider</button>
+    <button type="submit" class="btn">Valider</button>
 
 </form>
 

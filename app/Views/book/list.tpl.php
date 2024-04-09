@@ -8,9 +8,11 @@
 
 <section class="books__search search pdg-lr">
 
-    <form action="">
-        <input type="text" placeholder="Exemples : butternut, risotto...">
-        <button class="search-button"><i class="fas fa-search"></i></button>
+    <form method="POST" action="">
+        <input type="text" name="keywords" placeholder="Exemples : butternut, risotto...">
+        <button type="submit" class="search-button">
+            <i class="fas fa-search"></i>
+        </button>
     </form>
 
 </section>

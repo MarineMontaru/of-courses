@@ -28,10 +28,12 @@
             <a href="<?= $routes->generate('recipe-detail', ['id' => $recipe->getId()]) ?>">
                 <article class="recipe-card">
                     <figure class="thumbnail">
-                        <?php $picture = $recipe->getPicture()??'/assets/img/cuillere_bois.jpg'; ?>
-                        <img src="<?= $baseUri . $picture ?>" alt="Photo de la recette">
+                        <?php 
+                            $picture = $recipe->getPicture() ?? '/assets/img/photo-grey.png'; 
+                        ?>
+                        <img src="<?= $baseUri . $picture ?>" class="recipe-photo" alt="Photo de la recette">
                     </figure>
-                    <?= $recipe->getTitle() ?>
+                    <p><?= $recipe->getTitle() ?></p>
                 </article>
             </a>
         <?php endforeach;

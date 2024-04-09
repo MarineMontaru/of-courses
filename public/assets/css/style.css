@@ -114,7 +114,7 @@ figure figcaption {
 }
 
 .thumbnail img {
-    border-radius: 5px;
+    border-radius: 97% 3% 85% 15% / 63% 48% 52% 37%;
 }
 
 ul {
@@ -320,8 +320,8 @@ main {
     margin: 10px;
     padding: 10px;
     color: var(--dark-color);
-    border: solid 1px var(--grey-color);
-    border-radius: 5px;;
+    align-items: center;
+    border-radius: 5px;
 }
 
 .recipe-card:hover {
@@ -330,12 +330,19 @@ main {
 
 @keyframes darkenBackgroung {
     to {
-        outline: solid 2px var(--dark-color);
+        background-color: rgba(128, 128, 128, 0.2);
     }
 }
 
 .recipe-card .thumbnail {
     margin-right: 10px;
+    height: 50px;
+    width: 50px;
+}
+
+.recipe-card p {
+    max-width: calc(100% - 70px);  
+    position: relative;
 }
 
 .menus__day__details .recipe-card:first-of-type {
@@ -361,6 +368,7 @@ main {
     padding: 10px 40px 10px 10px;
     border: solid var(--highlight-color) 1px;
     border-radius: 5px;
+    font-size: 1rem;
 }
 
 .search > form > input::placeholder {

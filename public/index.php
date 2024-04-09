@@ -30,10 +30,12 @@ $routes->map('GET', '/', ['controller'=> MainController::class, 'method'=> 'home
 
 // Books routes
 $routes->map('GET', '/books', ['controller'=> BooksController::class,'method'=> 'booksList'], 'books-list');
+$routes->map('POST', '/books', ['controller'=> BooksController::class, 'method'=> 'booksListPost'], 'book-list-post');
 $routes->map('GET', '/book/[i:id]', ['controller'=> BooksController::class, 'method'=> 'bookDetail'], 'book-detail');
 $routes->map('GET', '/book/all', ['controller'=> BooksController::class, 'method'=> 'bookDetailAll'], 'book-detail-all');
 $routes->map('GET', '/book/add', ['controller'=> BooksController::class, 'method'=> 'addBook'], 'book-add');
 $routes->map('POST', '/book/add', ['controller'=> BooksController::class, 'method'=> 'addBookPost'], 'book-add-post');
+
 
 // Recipe routes
 $routes->map('GET', '/recipe/[i:id]', ['controller'=> RecipeController::class, 'method'=> 'recipeDetail'], 'recipe-detail');

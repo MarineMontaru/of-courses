@@ -11,7 +11,7 @@
     <div class="search pdg-lr">
         <form action="">
             <input type="text" class="home-search-input" placeholder="Exemples : butternut, risotto...">
-            <button class="search-button"><i class="fas fa-search"></i></button>
+            <button type="submit" class="search-button"><i class="fas fa-search"></i></button>
         </form>
     </div>
 
@@ -40,11 +40,11 @@
                         <a href="<?= $routes->generate('recipe-detail', ['id' => $recipeId]) ?>"><?=$recipeDetail['titre']?></a>
                         <div class="portions">
                             <div>
-                                <button class="portions__remove">-</button>
+                                <button type="button" class="portions__remove">-</button>
                                 <div class="portions__nb">  
                                     <p>4</p> 
                                 </div>
-                                <button class="portions__add">+</button>
+                                <button type="button" class="portions__add">+</button>
                             </div>
                             <p>portions</p>
                         </div>
@@ -71,11 +71,11 @@
                         <a href="<?= $routes->generate('recipe-detail', ['id' => $recipeId]) ?>"><?=$recipeDetail['titre']?></a>
                         <div class="portions">
                             <div>
-                                <button class="portions__remove">-</button>
+                                <button type="button" class="portions__remove">-</button>
                                 <div class="portions__nb">  
                                     <p>4</p> 
                                 </div>
-                                <button class="portions__add">+</button>
+                                <button type="button" class="portions__add">+</button>
                             </div>
                             <p>portions</p>
                         </div>

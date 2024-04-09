@@ -94,7 +94,6 @@ class BooksController extends CoreController {
             ->setUserId($userId)
         ;
 
-
         $inserted = $book->insert();
 
         if($inserted === true) {
@@ -105,7 +104,26 @@ class BooksController extends CoreController {
 		} else {
 			$errorList['global'] = "Une erreur est survenue lors de la création du carnet de recettes.";
 		}
-
     }
 
+    public function booksListPost ()
+    {
+        // Get current user's id
+        $user = AppUser::findByEmail($_SESSION['connectedUser']['email']);
+        $userId = $user->getId();
+
+        // Get keywords entered into search form
+        $keywords = filter_input(INPUT_POST, 'keywords', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+
+        // Get recipes matching keywords and in user's books
+        $matchRecipes = Recipe::findAllByUserAndByKeywords($userId, $keywords);
+        
+        $recipesNb = count($matchRecipes);
+
+        $this->show('book/search', [
+            'keywords' => $keywords,
+            'recipes' => $matchRecipes,
+            'recipesNb' => $recipesNb
+        ]);
+    }
 }

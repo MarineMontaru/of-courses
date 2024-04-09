@@ -15,7 +15,7 @@
             <input name="title" id="title" type="text" required>
         </fieldset>
 
-        <button class="btn">Créer</button>
+        <button type="button" class="btn">Créer</button>
 
     </form>
 

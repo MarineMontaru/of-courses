@@ -42,12 +42,12 @@
                         <div class="portions">
                             <!-- TODO? Ajouter un include pour le nombre de portions (revient souvent) -->
                             <div>
-                                <button class="portions__remove">-</button>
+                                <button type="button" class="portions__remove">-</button>
                                 <div class="portions__nb">  
                                     <p>4</p> 
                                 </div>
                                 <!-- TODO modifier le nb de portions selon ce qui est dans la semaine -->
-                                <button class="portions__add">+</button>
+                                <button type="button" class="portions__add">+</button>
                             </div>
                             <p>portions</p>
                         </div>
@@ -78,12 +78,12 @@
                         <div class="portions">
                             <!-- TODO? Ajouter un include pour le nombre de portions (revient souvent) -->
                             <div>
-                                <button class="portions__remove">-</button>
+                                <button type="button" class="portions__remove">-</button>
                                 <div class="portions__nb">  
                                     <p>4</p> 
                                 </div>
                                 <!-- TODO modifier le nb de portions selon ce qui est dans la semaine -->
-                                <button class="portions__add">+</button>
+                                <button type="button" class="portions__add">+</button>
                             </div>
                             <p>portions</p>
                         </div>

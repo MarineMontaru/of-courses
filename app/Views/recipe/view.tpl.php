@@ -14,10 +14,10 @@
             </h2>
         </section>
         <section class="pdg-lr recipe-header__actions">
-            <button class="btn btn-add">Ajouter au menu</button>
-            <button><i class="fas fa-pen"></i></button>
-            <button><i class="fas fa-folder-open"></i></button>
-            <button><i class="fas fa-share-alt"></i></button>
+            <button type="button" class="btn btn-add">Ajouter au menu</button>
+            <button type="button"><i class="fas fa-pen"></i></button>
+            <button type="button"><i class="fas fa-folder-open"></i></button>
+            <button type="button"><i class="fas fa-share-alt"></i></button>
         </section>
     </section>
 
@@ -52,12 +52,12 @@
 
         <div class="portions">
             <div>
-                <button class="portions__remove">-</button>
+                <button type="button" class="portions__remove">-</button>
                 <div class="portions__nb">  
                     <!-- TODO ?? modifier le nb de portions selon ce qui est dans la semaine/dans la recette par défaut -->
                     <p><?= $viewData['recipe']->getPortionsDefault() ?></p>
                 </div>
-                <button class="portions__add">+</button>
+                <button type="button" class="portions__add">+</button>
             </div>
             <p>portions</p>
         </div>

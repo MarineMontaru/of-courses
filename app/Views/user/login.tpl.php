@@ -49,7 +49,7 @@
 
   </form>
 
-  <button class="btn create-account">
+  <button type="button" class="btn create-account">
     <a href="<?= $routes->generate('create-account') ?>">Je crée mon compte</a>
   </button> 
   

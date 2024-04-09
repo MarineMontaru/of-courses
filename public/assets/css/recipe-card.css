@@ -134,27 +134,3 @@
     }  
 
 }
-
-/* recipe-header,
-.recipe-header__main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.recipe-picture > img {
-    width: 100vw;
-    max-height: 400px;
-}
-
-.recipe-header__title {
-    display: flex;
-} */
-
-/*---------MEDIA >= 768px--------*/
-
-@media (min-width: 1024px) {
-
-
-
-}

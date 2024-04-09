@@ -115,6 +115,32 @@ class Recipe extends CoreModel {
     }
 
     /**
+     * Find all recipes contained in the books of a specific user, matching some keywords filled in search form
+     * 
+     * @param int $userId is user's id
+     * @param string $keywords are the keywords filled in the search form
+     * @return array of objects Recipe
+     */ 
+    public static function findAllByUserAndByKeywords($userId, $keywords) 
+    {
+        $sqlKeywords = "%" . $keywords . "%";
+
+        $pdo = Database::getPDO();
+        $sql = 'SELECT DISTINCT `recipes`.* FROM `recipes` 
+                INNER JOIN `foods` ON `foods`.`recipe_id` = `recipes`.`id`
+                WHERE 
+                    (((`foods`.`name` LIKE :sqlKeywords) OR (`recipes`.`title` LIKE :sqlKeywords)) 
+                    AND `recipes`.`user_id` = :userId)
+                ORDER BY `recipes`.`title`';
+        $pdoStatement = $pdo->prepare($sql);
+        $pdoStatement->bindValue(':userId', $userId, PDO::PARAM_INT);
+        $pdoStatement->bindValue(':sqlKeywords', $sqlKeywords, PDO::PARAM_STR);
+        $pdoStatement->execute();
+        $results = $pdoStatement->fetchAll(PDO::FETCH_CLASS, self::class);
+        return $results;    
+    }
+
+    /**
      * Insert a recipe in DB
      *
      * @return bool true = suceed / false = failed
