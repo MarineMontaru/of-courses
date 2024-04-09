@@ -9,4 +9,9 @@ class SearchController extends CoreController {
         $this->show('search');
     }
 
+    public function searchRecipesPost ()
+    {
+        
+    }
+
 }

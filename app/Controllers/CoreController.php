@@ -30,6 +30,7 @@ class CoreController {
             'recipe-add' => ['user', 'admin'],
             'recipe-add-post' => ['user', 'admin'],
             // 'search-recipes' => all
+            // 'search-recipes-post' => all
             'week-detail' => ['user', 'admin'],
             'account' => ['user', 'admin'],
             // 'login' => all

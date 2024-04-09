@@ -44,6 +44,7 @@ $routes->map('POST', '/recipe/add', ['controller'=> RecipeController::class, 'me
 
 // Search routes
 $routes->map('GET', '/search', ['controller'=> SearchController::class, 'method'=> 'searchRecipes'], 'search-recipes');
+$routes->map('POST', '/search', ['controller'=> SearchController::class, 'method'=> 'searchRecipesPost'], 'search-recipes-post');
 
 // Week routes
 $routes->map('GET', '/week', ['controller'=> WeekController::class, 'method'=> 'weekDetail'], 'week-detail');
