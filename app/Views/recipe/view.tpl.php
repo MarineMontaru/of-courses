@@ -8,16 +8,25 @@
     </figure>
 
     <section class="recipe-header__main">
-        <section class="pdg-lr recipe-header__title">
-            <h2>
+        <section class="pdg-lr recipe-header__title-container">
+            <h2 class="recipe-header__title">
                 <?= $viewData['recipe']->getTitle() ?>
             </h2>
         </section>
         <section class="pdg-lr recipe-header__actions">
-            <button type="button" class="btn btn-add">Ajouter au menu</button>
-            <button type="button"><i class="fas fa-pen"></i></button>
-            <button type="button"><i class="fas fa-folder-open"></i></button>
-            <button type="button"><i class="fas fa-share-alt"></i></button>
+            <button type="button" class="btn btn-add">
+                <i class="far fa-calendar"></i>
+                <strong>Ajouter au menu</strong>
+            </button>
+            <button type="button" class="button-icon">
+                <i class="fas fa-pen"></i>
+            </button>
+            <button type="button" class="button-icon">
+                <i class="fas fa-folder-open"></i>
+            </button>
+            <button type="button" class="button-icon">
+                <i class="fas fa-share-alt"></i>
+            </button>
         </section>
     </section>
 

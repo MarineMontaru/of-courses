@@ -86,7 +86,7 @@ class RecipeController extends CoreController {
         // Get the title (mandatory field)
         $titlePost = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
         $trimmedTitlePost = trim($titlePost);
-        dump($trimmedTitlePost);
+
         if (empty($trimmedTitlePost)) {
             $errorList['title'][] = "Veuillez renseigner un titre.";
         } else if ($trimmedTitlePost === false) {

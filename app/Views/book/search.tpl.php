@@ -1,5 +1,3 @@
-<?php dump(get_defined_vars()); ?>
-
 <link rel="stylesheet" href="<?= $baseUri ?>/assets/css/books.css">
 
 <div class="page-title pdg-lr">
